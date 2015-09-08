@@ -851,6 +851,14 @@ svg {
 	    font-weight: bold;
 	    font-size: 1.25em;
 	}
+	.retour {
+	    background: transparent;
+	    border: 0 none;
+	    color: #fff;
+	    font-weight: bold;
+	    height: 100%;
+	    line-height: 1;
+	}
     }
     .damier {
 	height: calc( 100% - 6em );
