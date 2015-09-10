@@ -17,7 +17,7 @@ module Portail
 
             AnnuaireWrapper::Apps.query_defaults
                                  .map do |appli|
-              next if %w(ANNUAIRE ANN_ENT PORTAIL SSO).include? appli['id']
+              next if %w(ANNUAIRE ANN_ENT PORTAIL SSO STARTBOX).include? appli['id']
 
               default = config[:apps][:default][ appli['id'].to_sym ]
 
@@ -28,7 +28,7 @@ module Portail
               appli[ 'type' ] = 'INTERNAL'
 
               appli
-            end.to_json
+            end.compact.to_json
           end
 
           app.get "#{APP_PATH}/api/apps/?" do
