@@ -804,7 +804,7 @@ svg {
 	box-shadow: 0 0 0 4px #8e8e8e;
 	opacity: 1;
     }
-    &.creation {
+    &.creation,&.pronote {
 	width: 21em;
 	height: 11em;
 	padding: 0.25em;
@@ -819,6 +819,17 @@ svg {
 	}
 	input {
 	    color: #16161d;
+	}
+    }
+    &.pronote {
+	height: 10em;
+	a {
+	    label {
+		color: #fff;
+	    }
+	    img {
+		height: 35%;
+	    }
 	}
     }
 }
