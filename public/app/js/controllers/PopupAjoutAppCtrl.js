@@ -7,9 +7,7 @@ angular.module( 'portailApp' )
 		       $scope.prefix = APP_PATH;
 		       Apps.query_default().$promise
 			   .then( function( response ) {
-			       $scope.apps = _(response).reject( function( app ) {
-				   return app.application_id == 'PORTAIL' || app.application_id == 'ANNUAIRE';
-			       } );
+			       $scope.apps = response;
 
 			       _($scope.apps).each( function( app ) {
 				   app.available = function() {

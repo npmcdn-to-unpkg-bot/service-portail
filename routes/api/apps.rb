@@ -17,6 +17,8 @@ module Portail
 
             AnnuaireWrapper::Apps.query_defaults
                                  .map do |appli|
+              next if %w(ANNUAIRE ANN_ENT PORTAIL SSO).include? appli['id']
+
               default = config[:apps][:default][ appli['id'].to_sym ]
 
               appli.merge! default unless default.nil?
