@@ -1,19 +1,6 @@
 <div class="row portail ressources-numeriques">
-    <div class="aside">
-		<div class="scroller">
-			<p class="laius">
-				Retrouvez ici les ressources numériques que votre établissement a sélectionné pour vous.
-				Ces ressources peuvent être des manuels scolaires en ligne, des dictionnaires,
-				des sites proposant des ressources pour s'entraîner, etc...
-			</p>
-			<p class="laius">
-				Si rien n'est affiché dans cette page, c'est que votre établissement n'a pas encore activé les ressources numériques.
-				Vous pouvez contacter un de vos administrateur de l'ENT pour lui demander l'activation de celles-ci.
-			</p>
-		</div>
-	</div>
     <div class="main">
-		<div class="damier">
+		<div class="damier white">
 			<div data-ng-repeat="ressource in ressources_numeriques| orderBy:'index'"
 			 class="case animate scale-fade-in"
 			 data-ng-class="{'empty': !ressource.code}"
@@ -25,4 +12,17 @@
 			</div>
 		</div>
     </div>
+    <div class="aside">
+		<div class="scroller white">
+			<p class="laius">
+				Retrouvez ici les ressources numériques que votre établissement a sélectionné pour vous.
+				Ces ressources peuvent être des manuels scolaires en ligne, des dictionnaires,
+				des sites proposant des ressources pour s'entraîner, etc...
+			</p>
+			<p class="laius">
+				Si rien n'est affiché dans cette page, c'est que votre établissement n'a pas encore activé les ressources numériques.
+				Vous pouvez contacter un de vos administrateur de l'ENT pour lui demander l'activation de celles-ci.
+			</p>
+		</div>
+	</div>
 </div>

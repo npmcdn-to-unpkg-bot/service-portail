@@ -54,10 +54,10 @@ body {
     max-width: 100%;
     padding: 0;
     width: 100%;
-    * {
+/*    * {
 		margin: 0;
 		padding: 0;
-    }
+    }*/
 }
 .main {
 	position: absolute;
@@ -78,7 +78,7 @@ body {
 	left: 0px;
     background-color: #16161d;
     box-shadow: 0 0 8px black;
-    z-index: 999;
+/*    z-index: 999;*/
     .header {
 		height: 25%;
     }
@@ -91,7 +91,7 @@ body {
 		right: 0px;
 		background-position: center center;
 		background-repeat: no-repeat;
-		background-size: contain;
+		background-size: cover;
 		.user-info {
 		    text-align: left;
 		    display: block;
@@ -171,6 +171,13 @@ body {
 		    width: 100%;
 			height: 330px;
 		    opacity: 0.6;
+			background-position: 50% 100%;
+			background-size: contain;
+			background-repeat: no-repeat;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none; 
+			user-select: none;
 		}
 		.carousel-control.right,
 		.carousel-control.left {
@@ -294,7 +301,6 @@ body {
 		width: 200px;
 		height: 200px;
 		display: inline-block;
-/*		float: left;*/
 		position: relative;
 		margin-right: 4px;
 		margin-bottom: 4px;
@@ -528,6 +534,10 @@ body {
     }
 }
 
+.damier .floating-button {
+	box-shadow: 1px 1px 5px black;
+}
+
 .logolaclasse img,
 .logolaclasse h3,
 .damier .petite.case .icone,
@@ -550,22 +560,50 @@ body {
     overflow: hidden;
 }
 
+.white {
+	background-color: #fefefe;
+}
+
+a:link {
+	text-decoration: none;
+}
+
 .en-tete {
     color: #fff;
     border: 0;
-    height: 3em;
+    height: 42px;
     line-height: 3;
-    max-height: 3em;
-    min-height: 3em;
+    max-height: 42px;
+    min-height: 42px;
+	position: absolute;
+	box-shadow: 0px 0px 5px black;
+
+	.user {
+		border: 2px solid #323232;
+		position: absolute;
+		top: 0px;
+		left: 42px;
+		width: 42px;
+		height: 42px;
+		background-size: cover;
+
+		.initiales {
+			font-size: 30px;
+			color: white;
+			margin: 0px;
+			padding-top: 6px;
+			text-align: center;
+		}
+	}
+
     .petit-logo {
 		display: inline-block;
 		float: left;
-		padding-top: 1px;
-		width: 3em;
-		height: 3em;
+		width: 42px;
+		height: 42px;
 		background-position: left top;
 		background-repeat: no-repeat;
-		background-size: auto 90%;
+		background-size: auto 100%;
     }
     .titre {
 		font-weight: bolder;
@@ -573,9 +611,12 @@ body {
 		padding-left: 1em;
     }
     .profil-select-wrapper {
+		width: calc( 100% - 84px );
 		height: 100%;
 		border: 0;
-		float: right;
+		position: absolute;
+		top: 0px;
+		right: 0px;
 		color: #fff;
     }
     .user-menu {
@@ -653,7 +694,7 @@ body {
 }
 
 .iframe {
-    height: calc( 100% - 3em );
+/*    height: calc( 100% - 3em );*/
     iframe {
 		border: 0;
 		padding: 0;
@@ -684,6 +725,9 @@ body {
     header {
 		padding: 20px;
     }
+	.form {
+		padding: 20px;
+	}
     accordion {
 		.panel {
 		    background: transparent;
@@ -1000,7 +1044,7 @@ svg {
 }
 
 .news > ul[rn-carousel] {
-	height: 550px;
+	height: 600px;
 }
 
 .mainapp {
@@ -1011,7 +1055,7 @@ svg {
 	bottom: 0px;
 }
 
-/* TEST ONLY */
+/* webkit scrollbars */
 *:hover::-webkit-scrollbar {
 	width: 10px;
 }
@@ -1027,6 +1071,24 @@ svg {
 	background-color: white;
 	border: 4px solid black;
 }
+
+.gris4::-webkit-scrollbar {
+	background-color: #323232;
+}
+.gris4::-webkit-scrollbar-thumb {
+	background-color: white;
+	border: 4px solid #323232;
+}
+
+.white::-webkit-scrollbar {
+	background-color: #fefefe;
+}
+.white::-webkit-scrollbar-thumb {
+	background-color: black;
+	border: 4px solid #fefefe;
+}
+
+
 
 
 #toast-container {

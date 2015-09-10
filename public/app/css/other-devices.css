@@ -51,13 +51,13 @@
 
     .aside .user .user-info a { width: 42px; }
 
-    .damier { height: calc( 100% - 42px ); }
+/*    .damier { height: calc( 100% - 42px ); }*/
 
     /* Page profil utilisateur */
 	.user-profil { height: calc( 100% - 42px ); }
 
     /* Page app wrapper */
-    .en-tete .profil-select-wrapper { width: calc( 100% - 42px ); }
+/*    .en-tete .profil-select-wrapper { width: calc( 100% - 42px ); }*/
 }
 
 /* -xs */

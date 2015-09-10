@@ -1,6 +1,25 @@
 <div class="row portail classes-culturelles-numeriques">
+	<div class="main">
+		<div class="damier white">
+			<div class="case animate scale-fade-in {{thematique.couleur}}"
+				data-ng-repeat="thematique in thematiques">
+				<a title="{{thematique.description}}"
+					data-ng-href="{{thematique.url}}"
+					target="_blank">
+					<img draggable="false" class="icone" data-ng-src="{{prefix}}{{thematique.icon}}">
+					<span class="app-name ">{{thematique.nom}}</span>
+				</a>
+			</div><div class="case animate scale-fade-in gris1"
+				data-ng-if="!display_archives">
+				<a title="Projets archivés" href data-ng-click="toggle_archives()">
+					<img draggable="false" class="icone" data-ng-src="{{prefix}}/app/vendor/laclasse-common-client/images/06_thematiques.svg">
+					<span class="app-name">Projets archivés</span>
+				</a>
+			</div>
+		</div>
+	</div>
 	<div class="aside" data-ng-if="!display_archives">
-		<div class="scroller" style="position: relative">
+		<div class="scroller white" style="position: relative">
 			<p class="laius">
 				Des collégiens qui jouent sur le web et sur scène avec des auteurs de théâtre et des écrivains, qui découvrent que design et développement durable peuvent s'allier contre le gaspillage alimentaire, qui cartographient leur territoire grâce à la Big Data en compagnie d'un philosophe, ou encore qui réalisent une enquête-expo sur la grande guerre avec les archives du Rhône, tout cela ce sont les Classes Culturelles Numériques de laclasse.com. 50 classes, du cm2 à la 3ème engagées dans 5 projets collaboratifs et innovants sur l'ENT, à suivre en ligne toute l'année, et lors des rencontres finales.
 			</p>
@@ -23,29 +42,6 @@
 				Retrouver et revisitez les travaux des classes sur ces projets, ici.<br/><br/>
 				<button class="btn btn-default" data-ng-click="toggle_archives()"><i class="glyphicon glyphicon-arrow-left"></i> Retour</button>
 			</p>
-		</div>
-	</div>
-
-	<div class="main">
-		<div class="damier">
-
-			<div class="case animate scale-fade-in {{thematique.couleur}}"
-				data-ng-repeat="thematique in thematiques">
-				<a title="{{thematique.description}}"
-					data-ng-href="{{thematique.url}}"
-					target="_blank">
-					<img draggable="false" class="icone" data-ng-src="{{prefix}}{{thematique.icon}}">
-					<span class="app-name ">{{thematique.nom}}</span>
-				</a>
-			</div>
-
-			<div class="case animate scale-fade-in gris1"
-				data-ng-if="!display_archives">
-				<a title="Projets archivés" href data-ng-click="toggle_archives()">
-					<img draggable="false" class="icone" data-ng-src="{{prefix}}/app/vendor/laclasse-common-client/images/06_thematiques.svg">
-					<span class="app-name">Projets archivés</span>
-				</a>
-			</div>
 		</div>
 	</div>
 </div>
