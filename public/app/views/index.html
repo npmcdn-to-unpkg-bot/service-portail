@@ -1,5 +1,5 @@
 <div class="portail">
-	<div class="main">
+	<div class="main scroller gris4">
 		<div data-ui-view="main"></div>
 	</div>
     <div class="aside">
@@ -13,20 +13,21 @@
 
 			<div class="user"
 				 data-ng-style="{ 'background-image': 'url(' + current_user.avatar + ')' }">
-				<span class="user-info">
-					<a data-ui-sref="portail.user">
-						<h3 class="hidden-xs hidden-sm full-name">{{current_user.prenom}} {{current_user.nom}}</h3>
-						<h3 class="hidden-md hidden-lg initiales">{{current_user.prenom[0]}}{{current_user.nom[0]}}</h3>
-					</a>
-					<select class="gris4"
-						data-ng-controller="ProfilActifCtrl"
-						data-ng-model="current_user.profil_actif"
-						data-ng-change="reload()"
-						data-ng-options="profil as profil.etablissement_nom + ' : ' + profil.profil_nom group by profil.etablissement_nom for profil in current_user.profils track by profil.index" >
-					</select>
-					<a class="btn hidden-xs hidden-sm logout" data-ng-href="{{prefix}}/logout" title="Déconnexion de Laclasse.com">se déconnecter</a>
-				</span>
-
+				<div class="user-info-bg">
+					<span class="user-info">
+						<a data-ui-sref="portail.user">
+							<h3 class="hidden-xs hidden-sm full-name">{{current_user.prenom}} {{current_user.nom}}</h3>
+							<h3 class="hidden-md hidden-lg initiales">{{current_user.prenom[0]}}{{current_user.nom[0]}}</h3>
+						</a>
+						<select class="gris4"
+							data-ng-controller="ProfilActifCtrl"
+							data-ng-model="current_user.profil_actif"
+							data-ng-change="reload()"
+							data-ng-options="profil as profil.etablissement_nom + ' : ' + profil.profil_nom group by profil.etablissement_nom for profil in current_user.profils track by profil.index" >
+						</select>
+						<a class="btn hidden-xs hidden-sm logout" data-ng-href="{{prefix}}/logout" title="Déconnexion de Laclasse.com">se déconnecter</a>
+					</span>
+				</div>
 				<span class="connect-register" data-ng-if="!current_user.is_logged">
 					<a href="{{prefix}}/login" title="Connexion avec Laclasse.com">se connecter</a>
 				</span>

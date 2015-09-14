@@ -9,10 +9,10 @@
     /* Page loggué */
     .aside { height: 42px; right: 0px; width: 100%; }
 	.main {
-		left: 0px; top: 42px;
+		left: 0px; top: 48px;
 	}
 	.mainapp {
-		top: 42px;
+		top: 48px;
 	}
 	.mainapp .main {
 		top: 0px;
