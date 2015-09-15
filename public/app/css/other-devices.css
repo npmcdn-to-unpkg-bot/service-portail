@@ -39,8 +39,10 @@
 
 /* -xs */
 @media screen and (orientation: landscape) and (max-height: 640px) {
-    .damier .petite.case { height: 33%; }
+    .damier .petite.case,
+    .damier.modification .petite.case { height: 33%; }
 }
 @media screen and (orientation: landscape) and (max-height: 400px) {
-    .damier .petite.case { height: 50%; }
+    .damier .petite.case,
+    .damier.modification .petite.case { height: 50%; }
 }
