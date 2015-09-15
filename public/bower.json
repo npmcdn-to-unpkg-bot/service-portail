@@ -2,40 +2,41 @@
   "name": "app",
   "version": "0.0.0",
   "dependencies": {
-      "Font-Awesome": "latest",
-      "angular": "~1.4",
-      "angular-animate": "~1.4",
-      "angular-bootstrap": "latest",
-      "angular-bootstrap-checkbox": "latest",
-      "angular-carousel": "latest",
-      "angular-cookies": "~1.4",
-      "angular-delay": "latest",
-      "angular-i18n": "~1.4",
-      "angular-moment": "latest",
-      "angular-resource": "~1.4",
-      "angular-sanitize": "~1.4",
-      "angular-toastr": "latest",
-      "angular-touch": "latest",
-      "angular-ui-router": "latest",
-      "angular-ui-sortable": "latest",
-      "bootstrap": "latest",
-      "es5-shim": "latest",
-      "jquery": "latest",
-      "json3": "latest",
-      "laclasse-common-client": "https://github.com/laclasse-com/laclasse-common-client.git#latest",
-      "ng-color-picker": "https://github.com/cycojesus/ng-color-picker.git#latest",
-      "ng-file-upload": "latest",
-      "ng-flow": "latest",
-      "ng-switcher": "*",
-      "ngAnimate": "latest",
-      "underscore": "latest"
+    "Font-Awesome": "latest",
+    "angular": "~1.4",
+    "angular-animate": "~1.4",
+    "angular-bootstrap": "latest",
+    "angular-bootstrap-checkbox": "latest",
+    "angular-carousel": "latest",
+    "angular-cookies": "~1.4",
+    "angular-delay": "latest",
+    "angular-i18n": "~1.4",
+    "angular-moment": "latest",
+    "angular-resource": "~1.4",
+    "angular-sanitize": "~1.4",
+    "angular-toastr": "latest",
+    "angular-touch": "latest",
+    "angular-ui-router": "latest",
+    "angular-ui-sortable": "latest",
+    "bootstrap": "latest",
+    "es5-shim": "latest",
+    "jquery": "latest",
+    "json3": "latest",
+    "laclasse-common-client": "https://github.com/laclasse-com/laclasse-common-client.git#latest",
+    "ng-color-picker": "https://github.com/cycojesus/ng-color-picker.git#latest",
+    "ng-file-upload": "latest",
+    "ng-flow": "latest",
+    "ng-switcher": "*",
+    "ngAnimate": "latest",
+    "ngFitText": "~3.3.3",
+    "underscore": "latest"
   },
-    "devDependencies": {
-	"angular-mocks": "~1.4",
-	"angular-scenario": "~1.4",
-	"angular-touch": "~1.4"
-    },
-    "resolutions": {
-	"angular": "~1.4"
-    }
+  "devDependencies": {
+    "angular-mocks": "~1.4",
+    "angular-scenario": "~1.4",
+    "angular-touch": "~1.4"
+  },
+  "resolutions": {
+    "angular": "~1.4"
+  }
 }
