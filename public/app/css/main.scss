@@ -63,19 +63,20 @@ body {
     background-color: #16161d;
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     z-index: 999;
+    overflow-y: auto;
     .header {
 	height: 25%;
     }
     .logolaclasse,
     .user {
 	height: 25%;
+	min-height: 200px;
     }
     .user {
 	background-position: center center;
 	background-repeat: no-repeat;
-	background-size: contain;
-	.user-info {
-	    text-align: left;
+	background-size: cover;
+	.user-info-bg {
 	    display: block;
 	    position: relative;
 	    height: 100%;
@@ -85,49 +86,34 @@ body {
 	    &:hover {
 		background-color: rgba( 0, 0, 0, 0.2 );
 	    }
-	    * {
-		float: left;
-		width: 100%;
-	    }
-	    h3 {
-		font-weight: 700;
+	    .user-info {
 		position: absolute;
-		left: 0;
-		&.initiales {
-		    top: 20%;
-		}
-		&.full-name {
-		    top: 40%;
-		}
-	    }
-	    a {
-		color: #fff;
-	    }
-	    .logout {
-		border: 1px solid #fff;
-		background-color: rgba( 0, 0, 0, 0.6 );
-		text-transform: uppercase;
-		width: 11em;
-		padding: 0.25em;
-		position: absolute;
-		top: 85%;
-		left: calc( 50% - 11em / 2 );
-	    }
-	    select {
-		color: #fff;
-		background-color: rgba( 0, 0, 0, 0.6 );
-		border: 0;
-		font-weight: lighter;
-		width: 100%;
-		position: absolute;
-		top: 70%;
-		left: 0;
-	    }
-	    svg {
 		bottom: 0;
-		left: 0;
-		opacity: 0.5;
-		position: absolute;
+		padding: 0.5em;
+		text-align: left;
+		* {
+		    width: 100%;
+		    margin-top: 10px;
+		}
+		a {
+		    color: #fff;
+		}
+		.logout {
+		    border: 1px solid #fff;
+		    background-color: rgba( 0, 0, 0, 0.6 );
+		    text-transform: uppercase;
+		    padding: 0.25em;
+		}
+		select {
+		    color: #fff;
+		    background-color: rgba( 0, 0, 0, 0.6 );
+		    border: 0;
+		    font-weight: lighter;
+		    width: 100%;
+		}
+		svg {
+		    opacity: 0.5;
+		}
 	    }
 	}
     }
@@ -136,15 +122,20 @@ body {
     }
     .news {
 	height: 75%;
+	min-height: 400px;
 	.bouton-config-news {
 	    background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-gris.svg');
 	}
+	li { text-align: center; }
 	.news-image {
-	    transition: all 0.4s ease-in-out 0s;
+	    -moz-user-select: none;
+	    background-position: 50% 100%;
+	    background-repeat: no-repeat;
+	    background-size: contain;
+	    height: 330px;
 	    margin: auto;
-	    width: 100%;
-	    max-height: 67%;
 	    opacity: 0.6;
+	    transition: all 0.4s ease-in-out 0s;
 	}
 	.carousel-control.right,
 	.carousel-control.left {
@@ -221,6 +212,7 @@ body {
 	.rn-carousel-indicator {
 	    span,
 	    span.active {
+		font-size: 24px;
 		height: 12px;
 		width: 12px;
 		margin: 1px 6px;
@@ -233,7 +225,7 @@ body {
     }
 }
 
-.logolaclasse h3 {
+.logolaclasse .ent-name {
     color: #fff;
     font-weight: 700;
     padding: 0;
@@ -254,8 +246,8 @@ body {
 	float: left;
 	position: relative;
 
-	&.unavailable {
-	    opacity: 0.33;
+	&.unavailable span, &.unavailable img {
+	    opacity: 0.2;
 	}
 	&.petite {
 	    .toggle-configure {
@@ -436,7 +428,7 @@ body {
     cursor: pointer;
     a {
 	h3 {
-	    font-size: 2em;
+	    font-size: 1.75em;
 	    font-weight: bold;
 	    line-height: 2em;
 	}
