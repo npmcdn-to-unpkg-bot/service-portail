@@ -104,7 +104,8 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/ng-flow/dist/ng-flow-standalone.js',
                                                           'public/app/vendor/ng-color-picker/color-picker.js',
                                                           'public/app/vendor/angular-carousel/dist/angular-carousel.js',
-                                                          'public/app/vendor/angular-toastr/dist/angular-toastr.tpls.js' ] )
+                                                          'public/app/vendor/angular-toastr/dist/angular-toastr.tpls.js',
+                                                          'public/app/vendor/ngFitText/src/ng-FitText.js' ] )
     File.open( './public/app/vendor/vendor.min.js', 'w' )
         .write( uglified )
     File.open( './public/app/vendor/vendor.min.js.map', 'w' )
@@ -115,8 +116,8 @@ namespace :preprocess_assets do
                                                            .reject { |fichier| /min\.js$/.match fichier }
                                                            .sort )
     File.open( './public/app/js/portail.min.js', 'w' )
-      .write( uglified )
+        .write( uglified )
     File.open( './public/app/js/portail.min.js.map', 'w' )
-      .write( source_map )
+        .write( source_map )
   end
 end
