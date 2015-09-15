@@ -26,6 +26,7 @@
 					      margin-top: 0; }
     .aside .user .user-info-bg .user-info a .initiales { line-height: 1.6; }
     .aside .user .user-info-bg .user-info select { width: auto;
+						   max-width: 90%;
 						   height: 100%;
 						   float: right; }
     .damier { height: calc( 100% - 3em ); }
