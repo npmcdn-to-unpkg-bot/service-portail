@@ -244,11 +244,12 @@ body {
     .case {
 	float: left;
 	position: relative;
-
 	&.unavailable span, &.unavailable img {
 	    opacity: 0.2;
 	}
 	&.petite {
+	    min-height: 200px;
+
 	    .toggle-configure {
 		background: transparent;
 		position: absolute;
@@ -300,6 +301,7 @@ body {
 		max-height: 2.2em;
 		left: 0;
 		bottom: 10px;
+		padding: 10px;
 		.glyphicon {
 		    font-size: 75%;
 		}
