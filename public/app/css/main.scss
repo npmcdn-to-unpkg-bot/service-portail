@@ -64,6 +64,9 @@ body {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     z-index: 999;
     overflow-y: auto;
+    .bouton-config-news {
+	background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-gris.svg');
+    }
     .header {
 	height: 25%;
     }
@@ -123,29 +126,17 @@ body {
     .news {
 	height: 75%;
 	min-height: 400px;
-	.bouton-config-news {
-	    background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-gris.svg');
-	}
 	li { text-align: center; }
-	.news-image {
+	.carousel-image {
 	    -moz-user-select: none;
-	    background-position: 50% 100%;
+	    background-position: center center;
 	    background-repeat: no-repeat;
 	    background-size: contain;
-	    height: 330px;
+	    height: 66.666%;
+	    min-height: 244px;
 	    margin: auto;
 	    opacity: 0.6;
 	    transition: all 0.4s ease-in-out 0s;
-	}
-	.carousel-control.right,
-	.carousel-control.left {
-	    background-image: none;
-	}
-	.carousel-control .icon-prev,
-	.carousel-control .icon-next,
-	.carousel-control .glyphicon-chevron-left,
-	.carousel-control .glyphicon-chevron-right {
-	    top: 33%;
 	}
 	.carousel-caption {
 	    background-color: rgba(255,255,255,0.1);
@@ -176,20 +167,6 @@ body {
 		color: #ddd;
 		font-size: 0.8em;
 		float: right;
-	    }
-	}
-	.rn-carousel-controls {
-	    .rn-carousel-control {
-		font-family: FontAwesome;
-		color: #fff;
-		font-size: 3em;
-		top: 33%;
-	    }
-	    .rn-carousel-control-prev::before {
-		content: '';
-	    }
-	    .rn-carousel-control-next::before {
-		content: '';
 	    }
 	}
     }
