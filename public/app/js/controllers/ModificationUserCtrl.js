@@ -62,7 +62,6 @@ angular.module( 'portailApp' )
 		       };
 
 		       $scope.fermer = function( sauvegarder ) {
-			   var leave = true;
 			   if ( sauvegarder && dirty ) {
 			       var password_confirmed = true;
 			       if ( !_($scope.password.old).isEmpty() && !_($scope.password.new1).isEmpty() ) {
@@ -74,7 +73,6 @@ angular.module( 'portailApp' )
 				       toastr.error( 'Confirmation de mot de passe incorrecte.',
 						     'Erreur',
 						     { timeout: 100000 } );
-				       leave = false;
 				   }
 			       }
 
@@ -87,21 +85,25 @@ angular.module( 'portailApp' )
 					    !_($scope.uploaded_avatar.type.match( "image/.*" )).isNull() ) {
 					   currentUser.avatar.upload( $scope.uploaded_avatar )
 					       .then( function( response ) {
-						   $scope.current_user = response.data;
+						   currentUser.reset_cache();
+						   $state.go( 'portail.logged' );
+						   $state.reload();
 					       } );
 				       } else if ( $scope.apply_reset_avatar ) {
 					   currentUser.avatar.delete()
 					       .then( function( response ) {
-						   $scope.current_user = response.data;
+						   currentUser.reset_cache();
+						   $state.go( 'portail.logged' );
+						   $state.reload();
 					       } );
 				       } else {
-					   currentUser.get( true );
+					   currentUser.reset_cache();
+					   $state.go( 'portail.logged' );
+					   $state.reload();
 				       }
 				   } );
 			       }
-			   }
-
-			   if ( leave ) {
+			   } else {
 			       $state.go( 'portail.logged' );
 			   }
 		       };
