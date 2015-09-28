@@ -4,7 +4,7 @@ angular.module( 'portailApp' )
     .controller( 'IframeCtrl',
 		 [ '$scope', '$stateParams', '$sce', '$state', 'currentUser', 'Apps',
 		   function ( $scope, $stateParams, $sce, $state, currentUser, Apps ) {
-		       currentUser.get().then( function ( response ) {
+		       currentUser.get( false ).then( function ( response ) {
 			   $scope.current_user = response;
 
 			   // Les applications de l'utilisateur

@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'DamierAppsCtrl',
-		 [ '$scope', '$modal', '$log', '$q', '$http', 'current_user', 'Apps', 'APP_PATH', 'CASES', 'COULEURS',
-		   function( $scope, $modal, $log, $q, $http, current_user, Apps, APP_PATH, CASES, COULEURS ) {
+		 [ '$scope', '$modal', '$log', '$q', '$http', 'current_user', 'apps', 'Apps', 'APP_PATH', 'CASES', 'COULEURS',
+		   function( $scope, $modal, $log, $q, $http, current_user, apps, Apps, APP_PATH, CASES, COULEURS ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
 		       $scope.modification = false;
@@ -105,9 +105,9 @@ angular.module( 'portailApp' )
 			   } )
 			       .result.then( function( new_app ) {
 				   var recipient = _.chain($scope.cases)
-					   .select( function( c ) { return !_(c.app).has( 'libelle' ); } )
-					   .first()
-					   .value();
+				       .select( function( c ) { return !_(c.app).has( 'libelle' ); } )
+				       .first()
+				       .value();
 				   new_app.index = recipient.index;
 
 				   new_app.dirty = true;
@@ -151,19 +151,18 @@ angular.module( 'portailApp' )
 				   }
 			       } );
 
-			       $q.all( promesses ).then( retrieve_apps );
+			       $q.all( promesses ).then( retrieve_apps( true ) );
 			   }
 		       };
 
-		       var retrieve_apps = function() {
+		       var retrieve_apps = function( force_reload ) {
 			   $scope.cases = _( angular.copy( CASES ) ).map( function( c, i ) {
 			       c.index = i;
 
 			       return c;
 			   } );
 
-			   Apps.query()
-			       .$promise
+			   apps.query( force_reload )
 			       .then( function( response ) {
 				   $scope.current_apps = response;
 
@@ -177,5 +176,5 @@ angular.module( 'portailApp' )
 			       } );
 		       };
 
-		       retrieve_apps();
+		       retrieve_apps( false );
 		   } ] );

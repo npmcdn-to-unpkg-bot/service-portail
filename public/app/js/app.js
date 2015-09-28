@@ -25,7 +25,7 @@ angular.module( 'portailApp', [ 'ngResource',
 		       .state( 'portail', {
 			   resolve: { current_user: [ 'currentUser',
 						      function( currentUser ) {
-							  return currentUser.get()
+							  return currentUser.get( false )
 							      .then( function( response ) {
 								  return response;
 							      } );
@@ -58,7 +58,7 @@ angular.module( 'portailApp', [ 'ngResource',
 		       .state( 'app',
 			       { resolve: { current_user: [ 'currentUser',
 							    function( currentUser ) {
-								return currentUser.get()
+								return currentUser.get( false )
 								    .then( function( response ) {
 									return response;
 								    } );

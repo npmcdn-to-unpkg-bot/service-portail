@@ -47,7 +47,15 @@ angular.module( 'portailApp' )
     .service( 'currentUser',
 	      [ '$http', 'Upload', '$resource', 'APP_PATH', 'User', 'UserRessources', 'UserRegroupements',
 		function( $http, Upload, $resource, APP_PATH, User, UserRessources, UserRegroupements ) {
-		    this.get = function() { return User.get().$promise; };
+		    var user = null;
+
+		    this.get = function( force_reload ) {
+			if ( _(user).isNull() || force_reload ) {
+			    user = User.get().$promise;
+			}
+			return user;
+		    };
+
 		    this.ressources = function() { return UserRessources.query().$promise; };
 		    this.regroupements = function() { return UserRegroupements.query().$promise; };
 		    this.eleves_regroupement = function( id ) { return UserRegroupements.eleves( { id: id } ).$promise; };

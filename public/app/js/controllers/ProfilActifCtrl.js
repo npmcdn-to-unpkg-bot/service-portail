@@ -12,7 +12,7 @@ angular.module( 'portailApp' )
 			       });
 		       };
 
-		       currentUser.get().then( function( response ) {
+		       currentUser.get( false ).then( function( response ) {
 			   $scope.current_user = response;
 		       });
 		   } ] );

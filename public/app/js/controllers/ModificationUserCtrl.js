@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'ModificationUserCtrl',
-		 [ '$scope', '$state', '$q', 'toastr', 'current_user', 'currentUser', 'Apps', 'APP_PATH',
-		   function( $scope, $state, $q, toastr, current_user, currentUser, Apps, APP_PATH ) {
+		 [ '$scope', '$state', '$q', 'toastr', 'current_user', 'currentUser', 'apps', 'APP_PATH',
+		   function( $scope, $state, $q, toastr, current_user, currentUser, apps, APP_PATH ) {
 		       var dirty = false;
 
 		       $scope.prefix = APP_PATH;
@@ -32,8 +32,7 @@ angular.module( 'portailApp' )
 			   dirty = true;
 		       };
 
-		       Apps.query()
-			   .$promise
+		       apps.query( false )
 			   .then( function( response ) {
 			       $scope.password.changeable = _.chain(response).find({application_id: 'TELESRV'}).isUndefined().value();
 			   } );
@@ -92,6 +91,8 @@ angular.module( 'portailApp' )
 					       .then( function( response ) {
 						   $scope.current_user = response.data;
 					       } );
+				       } else {
+					   currentUser.get( true );
 				       }
 				   } );
 			       }

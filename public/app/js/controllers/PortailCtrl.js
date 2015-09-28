@@ -19,8 +19,8 @@ angular.module( 'portailApp' )
 		       $scope.annonce = ""; //"En moment sur Laclasse.com : La version 3 sort des cartons !";
 		       $scope.newsfeed = [];
 
-		       var retrieve_news = function() {
-			   news.get()
+		       var retrieve_news = function( force_reload ) {
+			   news.get( force_reload )
 			       .then( function( response ) {
 				   $scope.newsfeed = _(response.data).map( function( item, index ) {
 				       item.id = index;
@@ -39,11 +39,11 @@ angular.module( 'portailApp' )
 			       controller: 'PopupConfigNewsFluxesCtrl'
 			   } )
 			       .result.then( function() {
-				   retrieve_news();
+				   retrieve_news( true );
 			       } );
 		       };
 
-		       retrieve_news();
+		       retrieve_news( false );
 
 		       if ( $scope.current_user.default_password ) {
 			   $modal.open( {
