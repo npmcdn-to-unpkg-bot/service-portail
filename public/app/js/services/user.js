@@ -55,6 +55,9 @@ angular.module( 'portailApp' )
 			}
 			return user;
 		    };
+		    this.reset_cache = function() {
+			user = null;
+		    };
 
 		    this.ressources = function() { return UserRessources.query().$promise; };
 		    this.regroupements = function() { return UserRegroupements.query().$promise; };

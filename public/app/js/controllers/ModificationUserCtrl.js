@@ -48,6 +48,7 @@ angular.module( 'portailApp' )
 			   $scope.apply_reset_avatar = false;
 			   $scope.current_user.new_avatar = flowFile.file;
 			   $scope.uploaded_avatar = flowFile.file;
+			   $scope.mark_as_dirty();
 		       };
 
 		       $scope.reset_avatar = function() {
@@ -79,6 +80,8 @@ angular.module( 'portailApp' )
 
 			       if ( password_confirmed ) {
 				   $scope.current_user.$update().then( function() {
+				       currentUser.reset_cache();
+
 				       if ( !_($scope.uploaded_avatar).isNull() &&
 					    $scope.uploaded_avatar.type != "" &&
 					    !_($scope.uploaded_avatar.type.match( "image/.*" )).isNull() ) {
