@@ -16,6 +16,8 @@ angular.module( 'portailApp' )
 					 { ouvert: false,
 					   enabled: false } ];
 
+		       $scope.operation_on_avatar = false;
+
 		       $scope.open_datepicker = function( $event ) {
 			   $event.preventDefault();
 			   $event.stopPropagation();
@@ -83,15 +85,19 @@ angular.module( 'portailApp' )
 				       if ( !_($scope.uploaded_avatar).isNull() &&
 					    $scope.uploaded_avatar.type != "" &&
 					    !_($scope.uploaded_avatar.type.match( "image/.*" )).isNull() ) {
+					   $scope.operation_on_avatar = true;
 					   currentUser.avatar.upload( $scope.uploaded_avatar )
 					       .then( function( response ) {
+						   $scope.operation_on_avatar = false;
 						   currentUser.reset_cache();
 						   $state.go( 'portail.logged' );
 						   $state.reload();
 					       } );
 				       } else if ( $scope.apply_reset_avatar ) {
+					   $scope.operation_on_avatar = true;
 					   currentUser.avatar.delete()
 					       .then( function( response ) {
+						   $scope.operation_on_avatar = false;
 						   currentUser.reset_cache();
 						   $state.go( 'portail.logged' );
 						   $state.reload();
