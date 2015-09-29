@@ -63,8 +63,7 @@ namespace :preprocess_assets do
                                'public/app/vendor/laclasse-common-client/css/floating-buttons.css',
                                'public/app/vendor/laclasse-common-client/css/flippable.css',
                                'public/app/vendor/laclasse-common-client/css/bootstrap-theme.css',
-                               'public/app/vendor/ng-color-picker/color-picker.css',
-                               'public/app/vendor/whirl/dist/whirl.css' ]
+                               'public/app/vendor/ng-color-picker/color-picker.css' ]
                              .map { |fichier| File.read( fichier ) }.join,
                              syntax: :scss,
                              style: :compressed )

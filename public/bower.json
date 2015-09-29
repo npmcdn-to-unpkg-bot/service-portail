@@ -29,8 +29,7 @@
     "ng-switcher": "*",
     "ngAnimate": "latest",
     "ngFitText": "~3.3.3",
-    "underscore": "latest",
-    "whirl": "~1.0.0"
+    "underscore": "latest"
   },
   "devDependencies": {
     "angular-mocks": "~1.4",
