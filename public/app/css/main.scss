@@ -606,10 +606,19 @@ body {
 		    padding: 1em;
 		}
 		div.avatar {
+		    position: relative;
 		    text-align: center;
 		    float: right;
 		    min-width: 100px;
 		    max-width: 250px;
+		    .upload-progress {
+			position: absolute;
+			bottom: 0;
+			opacity: 0.5;
+			width: 91%;
+			height: 0;
+			background-color: #1aa1cc;
+		    }
 		}
 	    }
 	}
