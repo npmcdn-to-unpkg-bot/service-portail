@@ -69,6 +69,8 @@ class SinatraApp < Sinatra::Base
   ##### routes #################################################################
 
   before  do
+    cache_control :public, :must_revalidate, max_age: 60
+
     pass if %r{#{APP_PATH}/(auth|login|status)/}.match(request.path)
     login! request.path_info unless logged?
   end
