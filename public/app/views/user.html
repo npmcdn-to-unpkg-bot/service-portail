@@ -84,11 +84,10 @@
 						    data-ng-model="current_user.ville">
 				    </div>
 
-				    <div class="form-group">
+				    <div class="form-group" data-ng-if="!current_user.hide_email">
 					    <label>Courriel principal :</label>
 					    <input type="text" class="form-control"
 						    data-ng-disabled="true"
-						    data-ng-change="mark_as_dirty()"
 						    data-ng-model="current_user.info.MailAdressePrincipal">
 				    </div>
 			    </div>

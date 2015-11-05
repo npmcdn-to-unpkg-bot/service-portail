@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'ModificationUserCtrl',
-		 [ '$scope', '$state', '$q', 'toastr', 'current_user', 'currentUser', 'apps', 'APP_PATH',
-		   function( $scope, $state, $q, toastr, current_user, currentUser, apps, APP_PATH ) {
+		 [ '$scope', '$state', 'toastr', 'current_user', 'currentUser', 'apps', 'APP_PATH',
+		   function( $scope, $state, toastr, current_user, currentUser, apps, APP_PATH ) {
 		       var dirty = false;
 
 		       $scope.prefix = APP_PATH;
@@ -41,6 +41,7 @@ angular.module( 'portailApp' )
 		       $scope.uploaded_avatar = null;
 
 		       $scope.current_user = current_user;
+		       $scope.current_user.hide_email = $scope.current_user.profil_actif.profil_id === 'TUT' && !_( $scope.current_user.info.MailAdressePrincipal.match( /laclasse.com$/ ) ).isNull();
 		       $scope.apply_reset_avatar = false;
 		       $scope.current_user.editable = _($scope.current_user.id_jointure_aaf).isNull();
 
@@ -52,36 +53,10 @@ angular.module( 'portailApp' )
 			   $scope.current_user.new_avatar = flowFile.file;
 			   $scope.uploaded_avatar = flowFile.file;
 			   $scope.mark_as_dirty();
-
-			   // if ( $scope.uploaded_avatar.type != "" &&
-			   //	!_($scope.uploaded_avatar.type.match( "image/.*" )).isNull() ) {
-			   //     $scope.operation_on_avatar = true;
-			   //     currentUser.avatar.upload( $scope.uploaded_avatar )
-			   //	   .progress(function (evt) {
-			   //	       $scope.progress_percentage = parseInt(100.0 * evt.loaded / evt.total);
-
-			   //	       console.log('progress: ' + $scope.progress_percentage + '% ' + evt.config.file.name);
-			   //	   }).success(function (data, status, headers, config) {
-			   //	       $scope.operation_on_avatar = false;
-			   //	       currentUser.reset_cache();
-			   //	       $state.reload();
-			   //	   }).error(function (data, status, headers, config) {
-			   //	       console.log('error status: ' + status);
-			   //	   });
-			   // }
 		       };
 
 		       $scope.reset_avatar = function() {
 			   $scope.apply_reset_avatar = true;
-
-			   // $scope.operation_on_avatar = true;
-			   // currentUser.avatar.delete()
-			   //     .then( function( response ) {
-			   //	   $scope.operation_on_avatar = false;
-			   //	   currentUser.reset_cache();
-			   //	   $state.go( 'portail.logged' );
-			   //	   $state.reload();
-			   //     } );
 		       };
 
 		       $scope.check_password = function( password ) {
