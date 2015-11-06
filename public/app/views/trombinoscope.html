@@ -27,7 +27,6 @@
     <div class="damier">
 	    <div data-ng-repeat="regroupement in regroupements | filter:{ libelle: filters.text.regroupement } | orderBy:'type' | orderBy:'libelle'"
 		    class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in"
-		    data-ng-style="{'background-color': regroupement.color}"
 		    data-ng-if="!eleves && ( ( regroupement.type == 'classe' && filters.regroupements_types.classes ) || ( regroupement.type == 'groupe_eleve' && filters.regroupements_types.groupes_eleves ) )">
 		    <a title="Voir le trombinoscope du regroupement {{regroupement.libelle}}"
 			    data-ng-click="showElevesRegroupement( regroupement )"
@@ -39,7 +38,6 @@
 
 	    <div data-ng-repeat="eleve in eleves | filter:filters.text.user | orderBy:'nom'"
 		    class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in"
-		    data-ng-style="{'background-color': eleve.color}"
 		    data-ng-if="eleves">
 		    <img draggable="false"
 			    class="avatar"
