@@ -35,9 +35,10 @@
 			    <h3 class="college-name">{{regroupement.etablissement_nom}}</h3>
 		    </a>
 
-		    <div class="actions">
+		    <div class="actions" data-ng-if="actions.regroupement.length > 0">
 			    <button class="btn btn-default"
 				    data-ng-repeat="action in actions.regroupement"
+				    data-uib-tooltip="{{action.tooltip}}"
 				    data-ng-click="action.do( regroupement )">
 				    <span class="glyphicon" aria-hidden="true"
 					    data-ng-class="'glyphicon-' + action.glyphicon"></span>
@@ -55,9 +56,10 @@
 		    <h1 class="trombi-last-name">{{eleve.nom}}</h1>
 		    <h3 class="trombi-first-name">{{eleve.prenom}}</h3>
 
-		    <div class="actions">
+		    <div class="actions" data-ng-if="actions.people.length > 0">
 			    <button class="btn btn-default"
 				    data-ng-repeat="action in actions.people"
+				    data-uib-tooltip="{{action.tooltip}}"
 				    data-ng-click="action.do( eleve )">
 				    <span class="glyphicon" aria-hidden="true"
 					    data-ng-class="'glyphicon-' + action.glyphicon"></span>

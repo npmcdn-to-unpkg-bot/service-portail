@@ -14,32 +14,36 @@ angular.module( 'portailApp' )
 
 		       $scope.actions = {
 			   regroupement: [
-			       {
-				   glyphicon: 'envelope',
-				   do: function( regroupement ) {
-				       console.log( 'Gonna send a nice email to ' + regroupement.libelle );
-				   }
-			       },
-			       {
-				   glyphicon: 'calendar',
-				   do: function( regroupement ) {
-				       console.log( 'Gonna show the CTXT for ' + regroupement.libelle );
-				   }
-			       }
+			       // {
+			       //	   glyphicon: 'envelope',
+			       //	   tooltip: 'Écrire un email',
+			       //	   do: function( regroupement ) {
+			       //	       console.log( 'Gonna send a nice email to ' + regroupement.libelle );
+			       //	   }
+			       // },
+			       // {
+			       //	   glyphicon: 'calendar',
+			       //	   tooltip: 'Ouvrir le cahier de textes',
+			       //	   do: function( regroupement ) {
+			       //	       console.log( 'Gonna show the CTXT for ' + regroupement.libelle );
+			       //	   }
+			       // }
 			   ],
 			   people: [
-			       {
-				   glyphicon: 'envelope',
-				   do: function( people ) {
-				       console.log( 'Gonna send a nice email to ' + people.prenom + ' ' + people.nom );
-				   }
-			       },
-			       {
-				   glyphicon: 'refresh',
-				   do: function( people ) {
-				       console.log( 'Gonna show the SUIVI for ' + people.prenom + ' ' + people.nom );
-				   }
-			       }
+			       // {
+			       //	   glyphicon: 'envelope',
+			       //	   tooltip: 'Écrire un email',
+			       //	   do: function( people ) {
+			       //	       console.log( 'Gonna send a nice email to ' + people.prenom + ' ' + people.nom );
+			       //	   }
+			       // },
+			       // {
+			       //	   glyphicon: 'refresh',
+			       //	   tooltip: 'Ouvrir le suivi',
+			       //	   do: function( people ) {
+			       //	       console.log( 'Gonna show the SUIVI for ' + people.prenom + ' ' + people.nom );
+			       //	   }
+			       // }
 			   ]
 		       };
 
