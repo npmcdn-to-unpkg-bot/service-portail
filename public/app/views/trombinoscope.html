@@ -36,7 +36,12 @@
 		    </a>
 
 		    <div class="actions">
-			    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+			    <button class="btn btn-default"
+				    data-ng-repeat="action in actions.regroupement"
+				    data-ng-click="action.do( regroupement )">
+				    <span class="glyphicon" aria-hidden="true"
+					    data-ng-class="'glyphicon-' + action.glyphicon"></span>
+			    </button>
 		    </div>
 	    </div>
 
@@ -51,7 +56,12 @@
 		    <h3 class="trombi-first-name">{{eleve.prenom}}</h3>
 
 		    <div class="actions">
-			    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+			    <button class="btn btn-default"
+				    data-ng-repeat="action in actions.people"
+				    data-ng-click="action.do( eleve )">
+				    <span class="glyphicon" aria-hidden="true"
+					    data-ng-class="'glyphicon-' + action.glyphicon"></span>
+			    </button>
 		    </div>
 	    </div>
     </div>

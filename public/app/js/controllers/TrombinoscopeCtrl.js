@@ -12,6 +12,37 @@ angular.module( 'portailApp' )
 			   order_asc: true
 		       };
 
+		       $scope.actions = {
+			   regroupement: [
+			       {
+				   glyphicon: 'envelope',
+				   do: function( regroupement ) {
+				       console.log( 'Gonna send a nice email to ' + regroupement.libelle );
+				   }
+			       },
+			       {
+				   glyphicon: 'calendar',
+				   do: function( regroupement ) {
+				       console.log( 'Gonna show the CTXT for ' + regroupement.libelle );
+				   }
+			       }
+			   ],
+			   people: [
+			       {
+				   glyphicon: 'envelope',
+				   do: function( people ) {
+				       console.log( 'Gonna send a nice email to ' + people.prenom + ' ' + people.nom );
+				   }
+			       },
+			       {
+				   glyphicon: 'refresh',
+				   do: function( people ) {
+				       console.log( 'Gonna show the SUIVI for ' + people.prenom + ' ' + people.nom );
+				   }
+			       }
+			   ]
+		       };
+
 		       currentUser.regroupements().then( function ( response ) {
 			   $scope.regroupements = response;
 
