@@ -34,6 +34,10 @@
 			    <h1 class="classe-name">{{regroupement.libelle}}</h1>
 			    <h3 class="college-name">{{regroupement.etablissement_nom}}</h3>
 		    </a>
+
+		    <div class="actions">
+			    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+		    </div>
 	    </div>
 
 	    <div data-ng-repeat="eleve in eleves | filter:filters.text.user | orderBy:'nom'"
@@ -45,6 +49,9 @@
 			    data-ng-if="eleve.avatar != ''"/>
 		    <h1 class="trombi-last-name">{{eleve.nom}}</h1>
 		    <h3 class="trombi-first-name">{{eleve.prenom}}</h3>
+
+		    <div class="actions">
+			    <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+		    </div>
 	    </div>
     </div>
-</div>

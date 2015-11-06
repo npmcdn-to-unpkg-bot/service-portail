@@ -869,40 +869,62 @@ svg {
     }
     .damier {
 	height: calc( 100% - 6em );
-    }
-    .avatar {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	opacity: 0.6;
-	z-index: 1;
-    }
-    .petite.case{
-	.classe-name,
-	.college-name,
-	.trombi-first-name,
-	.trombi-last-name {
-	    display: flex;
-	    justify-content: center;
-	    align-content: center;
-	    flex-direction: column; /* column | row */
-	    font-weight: bold;
-	    z-index: 2;
-	    color: #fff;
-	}
-	.classe-name,
-	.trombi-first-name {
-	    height: 60%;
-	}
-	.college-name,
-	.trombi-last-name {
-	    /* height: 40%; */
-	}
-	&.classe{
-	    span {
-		height: auto;
+	.petite.case{
+	    opacity: 0.75;
+	    .avatar {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: 0.6;
+		z-index: 1;
+	    }
+	    .classe-name,
+	    .college-name,
+	    .trombi-first-name,
+	    .trombi-last-name {
+		display: flex;
+		justify-content: center;
+		align-content: center;
+		flex-direction: column; /* column | row */
+		font-weight: bold;
+		z-index: 2;
+		color: #fff;
+	    }
+	    .classe-name,
+	    .trombi-first-name {
+		height: 60%;
+	    }
+	    .college-name,
+	    .trombi-last-name {
+		/* height: 40%; */
+	    }
+	    &.classe{
+		span {
+		    height: auto;
+		}
+	    }
+	    &.regroupement {
+		background-color: #d8b84a;
+	    }
+	    &.people {
+		background-color: #c4c3a7;
+	    }
+	    .actions {
+		display: none;
+	    }
+	    &:hover {
+		opacity: 1;
+		.actions {
+		    display: block;
+		    background-color: rgba(64, 64, 64, 0.5);
+		    height: auto;
+		    padding: 5px;
+		    position: absolute;
+		    right: 0;
+		    top: 0;
+		}
 	    }
 	}
     }
