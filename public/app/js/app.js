@@ -21,16 +21,17 @@ angular.module( 'portailApp', [ 'ngResource',
 	       function ( $stateProvider, $urlRouterProvider, APP_PATH ) {
 		   $urlRouterProvider.otherwise( '/' );
 
+		   var get_current_user = function( currentUser ) {
+		       return currentUser.get( false )
+			   .then( function( response ) {
+			       return response;
+			   } );
+		   };
+
 		   $stateProvider
 		       .state( 'portail', {
 			   resolve: { current_user: [ 'currentUser',
-						      function( currentUser ) {
-							  return currentUser.get( false )
-							      .then( function( response ) {
-								  return response;
-							      } );
-						      }
-						    ]
+						      get_current_user ]
 				    },
 			   templateUrl: 'views/index.html',
 			   controller: 'PortailCtrl'
@@ -57,13 +58,7 @@ angular.module( 'portailApp', [ 'ngResource',
 			       } )
 		       .state( 'app',
 			       { resolve: { current_user: [ 'currentUser',
-							    function( currentUser ) {
-								return currentUser.get( false )
-								    .then( function( response ) {
-									return response;
-								    } );
-							    }
-							  ]
+							    get_current_user ]
 					  },
 				 url: '/app',
 				 templateUrl: 'views/app-wrapper.html',
