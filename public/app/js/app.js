@@ -105,4 +105,12 @@ angular.module( 'portailApp', [ 'ngResource',
 				 }
 			       } );
 	       }
-	     ] );
+	     ] )
+    .run( [ '$rootScope', 'logger',
+	    function( $rootScope, logger ) {
+		$rootScope.$on( '$stateChangeSuccess',
+				function( event, toState, toParams, fromState, fromParams ) {
+				    logger.log( 'PORTAIL' );
+				} );
+	    }
+	  ] );
