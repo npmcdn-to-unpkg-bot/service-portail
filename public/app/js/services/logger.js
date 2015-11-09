@@ -2,20 +2,17 @@ angular.module( 'portailApp' )
     .service( 'logger',
 	      [ '$http', '$state', '$q', 'APP_PATH', 'currentUser',
 		function( $http, $state, $q, APP_PATH, currentUser ) {
-		    this.log = function( app_id ) {
-			var get_ip = _.memoize( function() {
-			    return $http.get( 'https://api.ipify.org?format=json' );
-			} );
+		    var ip = null;
+		    var _ip = $http.get( 'https://api.ipify.org?format=json' )
+			    .then( function( response ) {
+				ip = response.data.ip;
+			    } );
 
+		    this.log = function( app_id ) {
 			var user = null;
-			var ip = null;
 			var _user = currentUser.get( false )
 				.then( function( response ) {
 				    user = response;
-				} );
-			var _ip = get_ip()
-				.then( function( response ) {
-				    ip = response.data.ip;
 				} );
 
 			$q.all( [ _user, _ip ] )

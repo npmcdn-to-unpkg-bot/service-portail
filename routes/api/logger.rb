@@ -11,6 +11,7 @@ module Portail
           app.post "#{APP_PATH}/api/logger/?" do
             params = JSON.parse( request.body.read )
 
+            # param :ip, String, required: true
             # param :uid, String, required: true
             # param :uai, String, required: true
             # param :timestamp, BigNum, required: true
