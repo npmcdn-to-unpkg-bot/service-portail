@@ -1,18 +1,34 @@
 angular.module( 'portailApp' )
     .service( 'logger',
-	      [ '$http', '$state', 'APP_PATH', 'currentUser',
-		function( $http, $state, APP_PATH, currentUser ) {
+	      [ '$http', '$state', '$q', 'APP_PATH', 'currentUser',
+		function( $http, $state, $q, APP_PATH, currentUser ) {
 		    this.log = function( app_id ) {
-			currentUser.get( false )
-			    .then( function( user ) {
+			var get_ip = _.memoize( function() {
+			    return $http.get( 'https://api.ipify.org?format=json' );
+			} );
+
+			var user = null;
+			var ip = null;
+			var _user = currentUser.get( false )
+				.then( function( response ) {
+				    user = response;
+				} );
+			var _ip = get_ip()
+				.then( function( response ) {
+				    ip = response.data.ip;
+				} );
+
+			$q.all( [ _user, _ip ] )
+			    .then( function(  ) {
 				$http.post( APP_PATH + '/api/logger',
-					    { app_id: app_id,
+					    { ip: ip,
+					      app_id: app_id,
 					      uid: user.uid,
 					      uai: user.profil_actif.etablissement_code_uai,
 					      user_type: user.profil_actif.profil_id,
 					      timestamp: Date.now(),
 					      url: APP_PATH + $state.current.url,
-					      params: $state.params } );
+					      params: _($state.params).map( function( value, key ) { return key + '=' + value; } ).join( '&' ) } );
 			    } );
 		    };
 		}

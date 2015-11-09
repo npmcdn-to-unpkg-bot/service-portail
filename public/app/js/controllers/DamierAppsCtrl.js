@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'DamierAppsCtrl',
-		 [ '$scope', '$modal', '$log', '$q', '$http', 'current_user', 'apps', 'Apps', 'APP_PATH', 'CASES', 'COULEURS',
-		   function( $scope, $modal, $log, $q, $http, current_user, apps, Apps, APP_PATH, CASES, COULEURS ) {
+		 [ '$scope', '$uibModal', '$log', '$q', '$http', 'current_user', 'apps', 'Apps', 'APP_PATH', 'CASES', 'COULEURS',
+		   function( $scope, $uibModal, $log, $q, $http, current_user, apps, Apps, APP_PATH, CASES, COULEURS ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
 		       $scope.modification = false;
@@ -89,7 +89,7 @@ angular.module( 'portailApp' )
 		       };
 
 		       $scope.add_tile = function() {
-			   $modal.open( {
+			   $uibModal.open( {
 			       templateUrl: 'views/popup_ajout_app.html',
 			       controller: 'PopupAjoutAppCtrl',
 			       resolve: {
@@ -105,9 +105,9 @@ angular.module( 'portailApp' )
 			   } )
 			       .result.then( function( new_app ) {
 				   var recipient = _.chain($scope.cases)
-				       .select( function( c ) { return !_(c.app).has( 'libelle' ); } )
-				       .first()
-				       .value();
+					   .select( function( c ) { return !_(c.app).has( 'libelle' ); } )
+					   .first()
+					   .value();
 				   new_app.index = recipient.index;
 
 				   new_app.dirty = true;

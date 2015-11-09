@@ -5,8 +5,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'PortailCtrl',
-		 [ '$scope', '$sce', '$state', '$modal', 'current_user', 'APP_PATH', 'news',
-		   function( $scope, $sce, $state, $modal, current_user, APP_PATH, news ) {
+		 [ '$scope', '$sce', '$state', '$uibModal', 'current_user', 'APP_PATH', 'news',
+		   function( $scope, $sce, $state, $uibModal, current_user, APP_PATH, news ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
 
@@ -34,7 +34,7 @@ angular.module( 'portailApp' )
 		       };
 
 		       $scope.config_news_fluxes = function() {
-			   $modal.open( {
+			   $uibModal.open( {
 			       templateUrl: 'views/popup_config_news_fluxes.html',
 			       controller: 'PopupConfigNewsFluxesCtrl'
 			   } )
@@ -46,7 +46,7 @@ angular.module( 'portailApp' )
 		       retrieve_news( false );
 
 		       if ( $scope.current_user.default_password ) {
-			   $modal.open( {
+			   $uibModal.open( {
 			       templateUrl: 'views/popup_change_password.html',
 			       resolve: { current_user: function() { return current_user; } },
 			       controller: [ '$scope', '$modalInstance', 'current_user',
