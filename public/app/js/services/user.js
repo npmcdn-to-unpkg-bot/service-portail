@@ -29,7 +29,7 @@ angular.module( 'portailApp' )
     .factory( 'UserRessources',
 	      [ '$resource', 'APP_PATH',
 		function( $resource, APP_PATH ) {
-		    return $resource( APP_PATH + '/api/user/ressources_numeriques' );;
+		    return $resource( APP_PATH + '/api/user/ressources_numeriques' );
 		} ] );
 
 angular.module( 'portailApp' )
