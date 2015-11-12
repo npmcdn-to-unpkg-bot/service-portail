@@ -177,7 +177,7 @@ angular.module( 'portailApp' )
 		       };
 
 		       $scope.log_external_link = function( url ) {
-			   logger.log( url, null );
+			   logger.log( 'EXTERNAL', url, null );
 		       };
 
 		       retrieve_apps( false );
