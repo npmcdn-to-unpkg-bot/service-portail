@@ -110,7 +110,13 @@ angular.module( 'portailApp', [ 'ngResource',
 	    function( $rootScope, logger ) {
 		$rootScope.$on( '$stateChangeSuccess',
 				function( event, toState, toParams, fromState, fromParams ) {
-				    logger.log( null, null );
+				    var app = 'PORTAIL';
+				    if ( _(toParams).has('app') ) {
+					app = toParams.app;
+				    } else if ( toState.name == 'app.trombinoscope' ) {
+					app = 'TROMBINOSCOPE';
+				    }
+				    logger.log( app, null, null );
 				} );
 	    }
 	  ] );

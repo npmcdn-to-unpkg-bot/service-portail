@@ -122,7 +122,7 @@ angular.module( 'portailApp' )
 		       ];
 
 		       $scope.log_external_link = function( url ) {
-			   logger.log( url, null );
+			   logger.log( 'CCN', url, null );
 		       };
 
 		       $scope.toggle_archives = function() {
