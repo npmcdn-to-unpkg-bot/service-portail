@@ -6,12 +6,9 @@ module Portail
       module Logger
         def self.registered( app )
           #
-          # renvoi la version du portail
+          # Tell Annuaire to log this
           #
           app.post "#{APP_PATH}/api/logger/?" do
-            params = JSON.parse( request.body.read )
-
-            # param :ip, String, required: true
             # param :uid, String, required: true
             # param :uai, String, required: true
             # param :timestamp, BigNum, required: true
@@ -19,9 +16,8 @@ module Portail
             # param :url, String, required: true
             # param :comment, String
 
-            LOGGER.info params
-
-            nil
+            log_entry = JSON.parse( request.body.read )
+            AnnuaireWrapper::Logger.add( log_entry )
           end
         end
       end

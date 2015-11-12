@@ -212,4 +212,12 @@ module AnnuaireWrapper
       Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_portail_entree, '/applications', {} )
     end
   end
+
+  module Logger
+    module_function
+
+    def add( entry )
+      Laclasse::CrossApp::Sender.post_request_signed( :service_annuaire_v2_logs, '', entry, {} )
+    end
+  end
 end
