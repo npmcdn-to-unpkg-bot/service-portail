@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'DamierAppsCtrl',
-		 [ '$scope', '$uibModal', '$log', '$q', '$http', 'current_user', 'apps', 'Apps', 'APP_PATH', 'CASES', 'COULEURS',
-		   function( $scope, $uibModal, $log, $q, $http, current_user, apps, Apps, APP_PATH, CASES, COULEURS ) {
+		 [ '$scope', '$uibModal', '$log', '$q', '$http', 'current_user', 'apps', 'Apps', 'APP_PATH', 'CASES', 'COULEURS', 'logger',
+		   function( $scope, $uibModal, $log, $q, $http, current_user, apps, Apps, APP_PATH, CASES, COULEURS, logger ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.current_user = current_user;
 		       $scope.modification = false;
@@ -174,6 +174,10 @@ angular.module( 'portailApp' )
 					   } );
 				   } );
 			       } );
+		       };
+
+		       $scope.log_external_link = function( url ) {
+			   logger.log( url, null );
 		       };
 
 		       retrieve_apps( false );

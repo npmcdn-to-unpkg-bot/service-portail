@@ -45,6 +45,7 @@
 				<!-- ## Lien vers site externe -->
 				<a data-ng-if="case.app.external && case.app.active && case.app.show && !modification"
 					data-ng-href="{{ case.app.url }}"
+					data-ng-click="log_external_link( case.app.url )"
 					target="_blank"
 					title="{{ case.app.description }}">
 					<div data-ng-include="'views/app-tile-content.html'"></div>

@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'CCNCtrl',
-		 [ '$scope', 'APP_PATH',
-		   function( $scope, APP_PATH ) {
+		 [ '$scope', 'APP_PATH', 'logger',
+		   function( $scope, APP_PATH, logger ) {
 		       $scope.prefix = APP_PATH;
 		       $scope.display_archives = true;
 
@@ -120,6 +120,10 @@ angular.module( 'portailApp' )
 			     titre: ''
 			   }
 		       ];
+
+		       $scope.log_external_link = function( url ) {
+			   logger.log( url, null );
+		       };
 
 		       $scope.toggle_archives = function() {
 			   $scope.display_archives = !$scope.display_archives;

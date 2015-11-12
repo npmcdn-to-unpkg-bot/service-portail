@@ -16,10 +16,13 @@
 		 class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in"
 		 data-ng-class="{'empty': !ressource.code}"
 		 data-ng-style="{'background-color': ressource.color }">
-		<a title="{{ressource.nom_court}}" href="{{ressource.url_access_get}}" data-ng-if="ressource.code != ''" target="_blank">
-			<img draggable="false" data-ng-src="{{prefix}}/app/vendor/laclasse-common-client/images/{{ ressource.icone }}">
-			<span class="app-name">{{ressource.lib}}</span>
-		</a>
+		    <a title="{{ressource.nom_court}}" href="{{ressource.url_access_get}}"
+			    data-ng-if="ressource.code != ''"
+			    data-ng-click="log_external_link( ressource.url_access_get )"
+			    target="_blank">
+			    <img draggable="false" data-ng-src="{{prefix}}/app/vendor/laclasse-common-client/images/{{ ressource.icone }}">
+			    <span class="app-name">{{ressource.lib}}</span>
+		    </a>
 	    </div>
 	</div>
     </div>
