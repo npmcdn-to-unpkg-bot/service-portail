@@ -34,5 +34,9 @@ angular.module( 'portailApp' )
 
 			return apps;
 		    };
+
+		    this.nullify = function() {
+			apps = null;
+		    };
 		}
 	      ] );
