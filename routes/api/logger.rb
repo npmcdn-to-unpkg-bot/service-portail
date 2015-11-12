@@ -17,7 +17,7 @@ module Portail
             # param :comment, String
 
             log_entry = JSON.parse( request.body.read )
-            log_entry[:ip] = request.env[ 'HTTP_X_FORWARDED_FOR' ]
+            log_entry['ip'] = request.env[ 'HTTP_X_FORWARDED_FOR' ]
             AnnuaireWrapper::Logger.add( log_entry )
           end
         end
