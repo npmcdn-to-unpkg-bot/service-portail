@@ -176,8 +176,8 @@ angular.module( 'portailApp' )
 			       } );
 		       };
 
-		       $scope.log_external_link = function( url ) {
-			   logger.log( 'EXTERNAL', url, null );
+		       $scope.log_link = function( app ) {
+			   logger.log( app.application_id == 'PRONOTE' ? 'PRONOTE' : 'EXTERNAL', app.url, null );
 		       };
 
 		       retrieve_apps( false );
