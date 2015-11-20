@@ -30,12 +30,12 @@
     "bower_components",
     "tests"
   ],
-  "version": "4.3.0",
-  "_release": "4.3.0",
+  "version": "4.3.1",
+  "_release": "4.3.1",
   "_resolution": {
     "type": "version",
-    "tag": "v4.3.0",
-    "commit": "51bde11a7d404f9b4f6d0952d54999f0f171544b"
+    "tag": "v4.3.1",
+    "commit": "9a43226a15b1c1db040fab130355d608e174f003"
   },
   "_source": "git://github.com/es-shims/es5-shim.git",
   "_target": "*",
