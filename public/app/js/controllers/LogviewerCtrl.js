@@ -1,6 +1,3 @@
-/*
- * Controleur de la page publique
- */
 'use strict';
 
 angular.module( 'portailApp' )
@@ -18,10 +15,25 @@ angular.module( 'portailApp' )
                        }
 
                        $scope.logs = [];
+                       $scope.filters = {};
 
-                       $http.get( '/api/app/v2/log' )
-                           .then( function( response ) {
-                               $scope.logs = response;
-                           } );
+                       $scope.retrieve_data = function() {
+                           $http.get( '/api/app/v2/log' )
+                               .then( function( response ) {
+                                   $scope.logs = response.data;
+
+                                   _.chain($scope.logs).first().keys()
+                                       .reject( function( key ) {
+                                           return key == 'timestamp' || key == 'id' || key == 'params';
+                                       } )
+                                       .each( function( key ) {
+                                           $scope.filters[ key ] = { id: key,
+                                                                     data: _.chain($scope.logs).pluck( key ).uniq().value(),
+                                                                     selected: null };
+                                       } );
+                               } );
+                       };
+
+                       $scope.retrieve_data();
                    }
                  ] );
