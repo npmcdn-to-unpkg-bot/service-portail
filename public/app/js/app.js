@@ -115,8 +115,8 @@ angular.module( 'portailApp', [ 'ngResource',
                    ;
                }
              ] )
-    .run( [ '$rootScope', 'logger',
-            function( $rootScope, logger ) {
+    .run( [ '$rootScope', 'log',
+            function( $rootScope, log ) {
                 $rootScope.$on( '$stateChangeSuccess',
                                 function( event, toState, toParams, fromState, fromParams ) {
                                     var app = 'PORTAIL';
@@ -125,7 +125,7 @@ angular.module( 'portailApp', [ 'ngResource',
                                     } else if ( toState.name == 'app.trombinoscope' ) {
                                         app = 'TROMBINOSCOPE';
                                     }
-                                    logger.log( app, null, null );
+                                    log.add( app, null, null );
                                 } );
             }
           ] );

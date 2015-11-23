@@ -27,7 +27,7 @@ require_relative './routes/api/user'
 require_relative './routes/api/apps'
 require_relative './routes/api/flux'
 require_relative './routes/api/news'
-require_relative './routes/api/logger'
+require_relative './routes/api/log'
 require_relative './routes/api/version'
 
 # https://gist.github.com/chastell/1196800
@@ -85,7 +85,7 @@ class SinatraApp < Sinatra::Base
   register Portail::Routes::Api::Apps
   register Portail::Routes::Api::Flux
   register Portail::Routes::Api::News
-  register Portail::Routes::Api::Logger
+  register Portail::Routes::Api::Log
   register Portail::Routes::Api::Version
 end
 

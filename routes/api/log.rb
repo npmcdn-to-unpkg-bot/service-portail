@@ -3,12 +3,16 @@
 module Portail
   module Routes
     module Api
-      module Logger
+      module Log
         def self.registered( app )
+          app.get "#{APP_PATH}/api/log/?" do
+            AnnuaireWrapper::Log.query( params )
+          end
+
           #
           # Tell Annuaire to log this
           #
-          app.post "#{APP_PATH}/api/logger/?" do
+          app.post "#{APP_PATH}/api/log/?" do
             # param :uid, String, required: true
             # param :uai, String, required: true
             # param :timestamp, BigNum, required: true
@@ -18,7 +22,7 @@ module Portail
 
             log_entry = JSON.parse( request.body.read )
             log_entry['ip'] = request.env[ 'HTTP_X_FORWARDED_FOR' ]
-            AnnuaireWrapper::Logger.add( log_entry )
+            AnnuaireWrapper::Log.add( log_entry )
           end
         end
       end

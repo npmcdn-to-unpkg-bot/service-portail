@@ -213,11 +213,15 @@ module AnnuaireWrapper
     end
   end
 
-  module Logger
+  module Log
     module_function
 
     def add( entry )
       Laclasse::CrossApp::Sender.post_request_signed( :service_annuaire_v2_logs, '', entry, {} )
+    end
+
+    def query( params = {} )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_v2_logs, '', params, {} )
     end
   end
 end
