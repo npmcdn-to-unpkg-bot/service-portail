@@ -105,7 +105,8 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/ng-color-picker/color-picker.js',
                                                           'public/app/vendor/angular-carousel/dist/angular-carousel.js',
                                                           'public/app/vendor/angular-toastr/dist/angular-toastr.tpls.js',
-                                                          'public/app/vendor/ngFitText/src/ng-FitText.js' ] )
+                                                          'public/app/vendor/ngFitText/src/ng-FitText.js',
+                                                          'public/app/vendor/ng-nvd3/dist/ng-nvd3.js' ] )
     File.open( './public/app/vendor/vendor.min.js', 'w' )
         .write( uglified )
     File.open( './public/app/vendor/vendor.min.js.map', 'w' )

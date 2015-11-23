@@ -16,7 +16,8 @@ angular.module( 'portailApp', [ 'ngResource',
                                 'ngColorPicker',
                                 'angular-carousel',
                                 'toastr',
-                                'ngFitText' ] )
+                                'ngFitText',
+                                'ng-nvd3' ] )
     .config( [ '$stateProvider', '$urlRouterProvider', 'APP_PATH',
                function ( $stateProvider, $urlRouterProvider, APP_PATH ) {
                    $urlRouterProvider.otherwise( '/' );

@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'LogviewerCtrl',
-                 [ '$scope', '$state', '$http', 'current_user', 'APP_PATH',
-                   function( $scope, $state, $http, current_user, APP_PATH ) {
+                 [ '$scope', '$state', '$http', 'current_user', 'APP_PATH', 'log',
+                   function( $scope, $state, $http, current_user, APP_PATH, log ) {
                        $scope.current_user = current_user;
 
                        $scope.go_home = function() {
@@ -17,10 +17,16 @@ angular.module( 'portailApp' )
                        $scope.logs = [];
                        $scope.filters = {};
 
+                       $scope.apply_filters = function( raw_logs ) {
+                           var filtered_logs = angular.copy( raw_logs );
+
+                           return filtered_logs;
+                       };
+
                        $scope.retrieve_data = function() {
-                           $http.get( '/api/app/v2/log' )
+                           log.query()
                                .then( function( response ) {
-                                   $scope.logs = response.data;
+                                   $scope.raw_logs = response.data;
 
                                    _.chain($scope.logs).first().keys()
                                        .reject( function( key ) {
