@@ -21,6 +21,7 @@ Laclasse::Helpers::Rack.configure_rake self
 
 use Rack::Rewrite do
   rewrite %r{^#{APP_PATH}(/app/(pages|js|css|vendor|images)/.*(html|map|css|js|ttf|woff|png|jpg|jpeg|gif|svg)[?v=0-9a-zA-Z\-.]*$)}, '$1'
+  rewrite %r{^#{APP_PATH}/stats(/app/(pages|js|css|vendor|images)/.*(html|map|css|js|ttf|woff|png|jpg|jpeg|gif|svg)[?v=0-9a-zA-Z\-.]*$)}, '$1'
 end
 
 use OmniAuth::Builder do
