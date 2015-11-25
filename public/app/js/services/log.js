@@ -15,9 +15,5 @@ angular.module( 'portailApp' )
                                               params: _(params).isNull() ? _($state.params).map( function( value, key ) { return key + '=' + value; } ).join( '&' ) : params } );
                             } );
                     };
-
-                    this.query = function( params ) {
-                        return $http.get( APP_PATH + '/api/log' );
-                    };
                 }
               ] );

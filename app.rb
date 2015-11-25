@@ -30,6 +30,8 @@ require_relative './routes/api/news'
 require_relative './routes/api/log'
 require_relative './routes/api/version'
 
+require_relative './routes/stats'
+
 # https://gist.github.com/chastell/1196800
 class Hash
   def to_html
@@ -78,6 +80,7 @@ class SinatraApp < Sinatra::Base
 
   register Portail::Routes::Index
   register Portail::Routes::Status
+  register Portail::Routes::Stats
 
   register Portail::Routes::Auth
 

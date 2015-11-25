@@ -16,8 +16,7 @@ angular.module( 'portailApp', [ 'ngResource',
                                 'ngColorPicker',
                                 'angular-carousel',
                                 'toastr',
-                                'ngFitText',
-                                'ng-nvd3' ] )
+                                'ngFitText' ] )
     .config( [ '$stateProvider', '$urlRouterProvider', 'APP_PATH',
                function ( $stateProvider, $urlRouterProvider, APP_PATH ) {
                    $urlRouterProvider.otherwise( '/' );
@@ -104,16 +103,7 @@ angular.module( 'portailApp', [ 'ngResource',
                                          controller: 'CCNCtrl'
                                      }
                                  }
-                               } )
-                       .state( 'logviewer', {
-                           url: '/logs',
-                           resolve: { current_user: [ 'currentUser',
-                                                      get_current_user ]
-                                    },
-                           templateUrl: 'views/logviewer.html',
-                           controller: 'LogviewerCtrl'
-                       } )
-                   ;
+                               } );
                }
              ] )
     .run( [ '$rootScope', 'log',

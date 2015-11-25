@@ -6,7 +6,7 @@ module Portail
       module Log
         def self.registered( app )
           app.get "#{APP_PATH}/api/log/?" do
-            AnnuaireWrapper::Log.query( params )
+            AnnuaireWrapper::Log.query( params ).to_json
           end
 
           #
