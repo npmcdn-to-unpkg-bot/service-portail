@@ -27,6 +27,12 @@ angular.module( 'statsApp',
                            log.stats()
                                .then( function ( response ) {
                                    $scope.stats = response.data;
+                                   $scope.filters = {};
+                                   _.chain($scope.stats.general).keys()
+                                       .select( function( key ) { return key == 'uai'; } )
+                                       .each ( function( key ) {
+                                           $scope.filters[ key ] = _($scope.stats.general[ key ]).pluck( key );
+                                       } );
 
                                    _.chain($scope.stats.general)
                                        .keys()
@@ -38,7 +44,9 @@ angular.module( 'statsApp',
                                                                                           } ];
                                        } );
 
-                                   _($scope.stats.uai).each( function( etablissement ) {
+                                   _($scope.stats.uai).each( function( etablissement, uai ) {
+                                       etablissement.uai = uai;
+
                                        _.chain(etablissement)
                                            .keys()
                                            .each( function( key ) {
@@ -49,6 +57,7 @@ angular.module( 'statsApp',
                                                                                        } ];
                                            } );
                                    } );
+                                   $scope.stats.uai = _($scope.stats.uai).toArray();
                                } );
                        };
 
