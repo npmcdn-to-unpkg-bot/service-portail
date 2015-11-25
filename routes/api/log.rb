@@ -9,6 +9,10 @@ module Portail
             AnnuaireWrapper::Log.query( params ).to_json
           end
 
+          app.get "#{APP_PATH}/api/log/stats/?" do
+            AnnuaireWrapper::Log.stats.to_json
+          end
+
           #
           # Tell Annuaire to log this
           #

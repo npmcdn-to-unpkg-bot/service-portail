@@ -221,8 +221,11 @@ module AnnuaireWrapper
     end
 
     def query( params )
-      p params
       Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_v2_logs, '', params )
+    end
+
+    def stats
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_v2_logs, '/stats', {} )
     end
   end
 end

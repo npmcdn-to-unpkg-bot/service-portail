@@ -49,7 +49,48 @@
 
         <div class= "container" data-ng-app="statsApp" data-ng-strict-di>
             <div class="row" data-ng-controller="StatsCtrl">
-                {{logs}}
+
+                <div class="col-md-6"
+                     data-ng-repeat="(metric, data) in stats.general"
+                     data-ng-cloak>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">{{metric}}</div>
+                        <div class="panel-body">
+                                 <nvd3-multi-bar-chart
+                                     data="data.bar_graph_data"
+                                     width="550"
+                                     height="256"
+                                     showXAxis="true"
+                                     showYAxis="true"
+                                     rotateLabels="-30">
+                                     <svg></svg>
+                                 </nvd3-multi-bar-chart>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12"
+                     data-ng-repeat="(uai, etablissement) in stats.uai"
+                     data-ng-cloak>
+                    <div class="panel panel-default">
+                        <div class="panel-heading">{{uai}}</div>
+                        <div class="panel-body">
+
+                            <div data-ng-repeat="(metric, data) in etablissement">
+                                <nvd3-multi-bar-chart
+                                    data="data.bar_graph_data"
+                                    width="550"
+                                    height="256"
+                                    showXAxis="true"
+                                    showYAxis="true"
+                                    rotateLabels="-30">
+                                    <svg></svg>
+                                </nvd3-multi-bar-chart>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -58,16 +99,10 @@
              ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="app/vendor/underscore/underscore.js?v=<%=APP_VERSION%>"></script>
-        <script src="app/vendor/moment/moment.js?v=<%=APP_VERSION%>"></script>
-        <script src="app/vendor/moment/locale/fr.js?v=<%=APP_VERSION%>"></script>
         <script src="app/vendor/d3/d3.js?v=<%=APP_VERSION%>"></script>
         <script src="app/vendor/nvd3/nv.d3.js?v=<%=APP_VERSION%>"></script>
 
         <script src="app/vendor/angular/angular.js?v=<%=APP_VERSION%>"></script>
-        <script src="app/vendor/angular-i18n/angular-locale_fr-fr.js?v=<%=APP_VERSION%>"></script>
-        <script src="app/vendor/angular-resource/angular-resource.js?v=<%=APP_VERSION%>"></script>
-        <script src="app/vendor/angular-touch/angular-touch.js?v=<%=APP_VERSION%>"></script>
-        <script src="app/vendor/angular-ui-router/release/angular-ui-router.js?v=<%=APP_VERSION%>"></script>
         <script src="app/vendor/angular-bootstrap/ui-bootstrap-tpls.js?v=<%=APP_VERSION%>"></script>
         <script src="app/vendor/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js?v=<%=APP_VERSION%>"></script>
         <script src="app/vendor/angular-animate/angular-animate.js?v=<%=APP_VERSION%>"></script>
