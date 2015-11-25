@@ -66,11 +66,13 @@
                         <div class="panel-body">
                             <nvd3-multi-bar-chart
                                 data="data.bar_graph_data"
+                                margin="{left:50,top:20,bottom:100,right:20}"
                                 width="550"
                                 height="256"
                                 showXAxis="true"
                                 showYAxis="true"
-                                rotateLabels="-30"
+                                yAxisTickFormat="yAxisFormatFunction()"
+                                rotateLabels="-45"
                                 tooltips="true">
                                 <svg></svg>
                             </nvd3-multi-bar-chart>
@@ -88,11 +90,13 @@
                             <div data-ng-repeat="(metric, data) in etablissement">
                                 <nvd3-multi-bar-chart
                                     data="data.bar_graph_data"
+                                    margin="{left:50,top:20,bottom:100,right:20}"
                                     width="450"
                                     height="200"
                                     showXAxis="true"
                                     showYAxis="true"
-                                    rotateLabels="-30"
+                                    yAxisTickFormat="yAxisFormatFunction()"
+                                    rotateLabels="-45"
                                     tooltips="true">
                                     <svg></svg>
                                 </nvd3-multi-bar-chart>

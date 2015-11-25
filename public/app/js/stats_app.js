@@ -23,6 +23,10 @@ angular.module( 'statsApp',
                            get_x: function( metric ){ return function(d) { return d[ metric ]; }; }
                        };
 
+                       $scope.yAxisFormatFunction =  function() {
+                           return function( d ) { return d3.format( '.0d' )( d ); };
+                       };
+
                        $scope.retrieve_data = function() {
                            log.stats()
                                .then( function ( response ) {
