@@ -5,7 +5,7 @@ module Portail
     module Stats
       def self.registered( app )
         app.get "#{APP_PATH}/stats/?" do
-          user_needs_to_be( %w( DIR ), true )
+          halt 401, 'Accès interdit' unless user_is_admin?
 
           erb :stats, layout: false
         end
