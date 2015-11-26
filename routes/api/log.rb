@@ -14,7 +14,7 @@ module Portail
           app.get "#{APP_PATH}/api/log/stats/?" do
             params = { uid: user[:uid] }
 
-            AnnuaireWrapper::Log( params ).stats.to_json
+            AnnuaireWrapper::Log.stats( params ).stats.to_json
           end
 
           #
