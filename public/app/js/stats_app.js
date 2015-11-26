@@ -2,7 +2,8 @@
 
 // Declare app level module which depends on filters, and services
 angular.module( 'statsApp',
-                [ 'nvd3ChartDirectives' ] )
+                [ 'ui.bootstrap',
+                  'nvd3ChartDirectives' ] )
     .service( 'log',
               [ '$http', 'APP_PATH',
                 function( $http, APP_PATH ) {
@@ -48,20 +49,24 @@ angular.module( 'statsApp',
                                                                                           } ];
                                        } );
 
-                                   _($scope.stats.uai).each( function( etablissement, uai ) {
-                                       etablissement.uai = uai;
+                                   _([ 'uai', 'user_type' ]).each( function( key ) {
+                                       var first = _.chain($scope.stats[ key ]).keys().first().value();
+                                       _($scope.stats[ key ]).each( function( stats, clef ) {
+                                           stats[ key ] = clef;
+                                           stats.active_tab = clef == first;
 
-                                       _.chain(etablissement)
-                                           .keys()
-                                           .each( function( key ) {
-                                               etablissement[ key ].bar_graph_data = [ { "key": key,
-                                                                                         "values": _($scope.stats.general[ key ])
-                                                                                         .map( function( item ) {
-                                                                                             return [ item[ key ], item.count ]; } )
-                                                                                       } ];
-                                           } );
+                                           _.chain(stats)
+                                               .keys()
+                                               .each( function( _key ) {
+                                                   stats[ _key ].bar_graph_data = [ { "_key": _key,
+                                                                                      "values": _(stats[ _key ])
+                                                                                      .map( function( item ) {
+                                                                                          return [ item[ _key ], item.count ]; } )
+                                                                                    } ];
+                                               } );
+                                       } );
+                                       $scope.stats[ key ] = _($scope.stats[ key ]).toArray();
                                    } );
-                                   $scope.stats.uai = _($scope.stats.uai).toArray();
                                } );
                        };
 
