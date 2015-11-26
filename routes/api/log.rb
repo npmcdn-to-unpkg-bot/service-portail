@@ -14,7 +14,13 @@ module Portail
           app.get "#{APP_PATH}/api/log/stats/?" do
             params = { uid: user[:uid] }
 
-            AnnuaireWrapper::Log.stats( params ).to_json
+            stats = AnnuaireWrapper::Log.stats( params )
+
+            uai_erasme = '0699990Z'
+            stats['uai'].delete( uai_erasme )
+            stats['general']['uai'].reject! { |item| item['uai'] == uai_erasme }
+
+            stats.to_json
           end
 
           #
