@@ -14,12 +14,12 @@ module Portail
           app.get "#{APP_PATH}/api/log/stats/?" do
             data = {}
 
-            if params.key?( :from )
-              data[:from] = params[:from]
-              data[:until] = params[:until]
+            if params.key?( 'from' )
+              data['from'] = params['from']
+              data['until'] = params['until']
             end
 
-            data[:uid] = user[:uid]
+            data['uid'] = user[:uid]
 
             stats = AnnuaireWrapper::Log.stats( data )
 

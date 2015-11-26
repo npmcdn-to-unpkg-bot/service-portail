@@ -83,9 +83,11 @@ angular.module( 'statsApp',
                            $scope.debut.add( 1, 'months' );
                            $scope.retrieve_data( $scope.debut );
                        };
+                       $scope.reset_period = function() {
+                           $scope.debut = moment().startOf( 'month' );
+                           $scope.retrieve_data( $scope.debut );
+                       };
 
-                       $scope.debut = moment().startOf( 'month' );
-
-                       $scope.retrieve_data( $scope.debut );
+                       $scope.reset_period();
                    }
                  ] );

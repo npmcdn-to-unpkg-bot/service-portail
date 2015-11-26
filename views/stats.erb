@@ -49,6 +49,7 @@
 
         <div class= "container" data-ng-app="statsApp" data-ng-controller="StatsCtrl" data-ng-strict-di>
             <h2>
+                <button class="btn btn-lg" data-ng-click="reset_period()"> ✕ </button>
                 <button class="btn btn-lg" data-ng-click="decr_period()"> < </button>
                 {{debut}} - {{fin}}
                 <button class="btn btn-lg" data-ng-click="incr_period()"> > </button>
