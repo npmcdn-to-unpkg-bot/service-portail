@@ -65,6 +65,7 @@
                         <div class="panel-heading">{{metric}}</div>
                         <div class="panel-body">
                             <nvd3-multi-bar-chart
+                                data-ng-if="metric == 'time_of_day'"
                                 data="data.bar_graph_data"
                                 margin="{left:50,top:20,bottom:100,right:20}"
                                 width="550"
@@ -76,30 +77,63 @@
                                 tooltips="true">
                                 <svg></svg>
                             </nvd3-multi-bar-chart>
+                            <nvd3-multi-bar-horizontal-chart
+                                data-ng-if="metric != 'time_of_day'"
+                                data="data.bar_graph_data"
+                                margin="{left:100,top:20,bottom:20,right:20}"
+                                width="550"
+                                height="256"
+                                showXAxis="true"
+                                showYAxis="true"
+                                yAxisTickFormat="yAxisFormatFunction()"
+                                rotateLabels="-45"
+                                tooltips="true">
+                                <svg></svg>
+                            </nvd3-multi-bar-horizontal-chart>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-md-12"
+                <div class="col-md-12 row"
                      data-ng-repeat="etablissement in stats.uai | filter:{ uai: filters.selected_uai }"
                      data-ng-cloak>
                     <div class="panel panel-default">
                         <div class="panel-heading">{{etablissement.uai}}</div>
                         <div class="panel-body">
 
-                            <div data-ng-repeat="(metric, data) in etablissement">
-                                <nvd3-multi-bar-chart
-                                    data="data.bar_graph_data"
-                                    margin="{left:50,top:20,bottom:100,right:20}"
-                                    width="450"
-                                    height="200"
-                                    showXAxis="true"
-                                    showYAxis="true"
-                                    yAxisTickFormat="yAxisFormatFunction()"
-                                    rotateLabels="-45"
-                                    tooltips="true">
-                                    <svg></svg>
-                                </nvd3-multi-bar-chart>
+                            <div class="col-md-6" data-ng-repeat="(metric, data) in etablissement"
+                                 data-ng-if="data.bar_graph_data">
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">{{metric}}</div>
+                                    <div class="panel-body">
+                                        <nvd3-multi-bar-chart
+                                            data-ng-if="metric == 'time_of_day'"
+                                            data="data.bar_graph_data"
+                                            margin="{left:50,top:20,bottom:100,right:20}"
+                                            width="550"
+                                            height="256"
+                                            showXAxis="true"
+                                            showYAxis="true"
+                                            yAxisTickFormat="yAxisFormatFunction()"
+                                            rotateLabels="-45"
+                                            tooltips="true">
+                                            <svg></svg>
+                                        </nvd3-multi-bar-chart>
+                                        <nvd3-multi-bar-horizontal-chart
+                                            data-ng-if="metric != 'time_of_day'"
+                                            data="data.bar_graph_data"
+                                            margin="{left:100,top:20,bottom:20,right:20}"
+                                            width="550"
+                                            height="256"
+                                            showXAxis="true"
+                                            showYAxis="true"
+                                            yAxisTickFormat="yAxisFormatFunction()"
+                                            rotateLabels="-45"
+                                            tooltips="true">
+                                            <svg></svg>
+                                        </nvd3-multi-bar-horizontal-chart>
+                                    </div>
+                                </div>
                             </div>
 
                         </div>
