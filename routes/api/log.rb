@@ -5,9 +5,11 @@ module Portail
     module Api
       module Log
         def self.registered( app )
-          # app.get "#{APP_PATH}/api/log/?" do
-          #   AnnuaireWrapper::Log.query( params ).to_json
-          # end
+          app.get "#{APP_PATH}/api/log/?" do
+            params[:uid] = user[:uid]
+
+            AnnuaireWrapper::Log.query( params ).to_json
+          end
 
           app.get "#{APP_PATH}/api/log/stats/?" do
             stats = AnnuaireWrapper::Log.stats.to_json
