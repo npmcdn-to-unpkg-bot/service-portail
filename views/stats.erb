@@ -48,6 +48,12 @@
     <body>
 
         <div class= "container" data-ng-app="statsApp" data-ng-controller="StatsCtrl" data-ng-strict-di>
+            <h2>
+                <button class="btn btn-lg" data-ng-click="decr_period()"> < </button>
+                {{debut}} - {{fin}}
+                <button class="btn btn-lg" data-ng-click="incr_period()"> > </button>
+            </h2>
+
             <div class="row">
                 <div class="col-md-6"
                      data-ng-repeat="(metric, data) in stats.general"
@@ -178,6 +184,7 @@
              ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
         <script src="<%=APP_PATH%>/app/vendor/underscore/underscore.js?v=<%=APP_VERSION%>"></script>
+        <script src="<%=APP_PATH%>/app/vendor/moment/moment.js?v=<%=APP_VERSION%>"></script>
         <script src="<%=APP_PATH%>/app/vendor/d3/d3.js?v=<%=APP_VERSION%>"></script>
         <script src="<%=APP_PATH%>/app/vendor/nvd3/nv.d3.js?v=<%=APP_VERSION%>"></script>
 

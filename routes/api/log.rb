@@ -12,9 +12,16 @@ module Portail
           end
 
           app.get "#{APP_PATH}/api/log/stats/?" do
-            params = { uid: user[:uid] }
+            data = {}
 
-            stats = AnnuaireWrapper::Log.stats( params )
+            if params.key?( :from )
+              data[:from] = params[:from]
+              data[:until] = params[:until]
+            end
+
+            data[:uid] = user[:uid]
+
+            stats = AnnuaireWrapper::Log.stats( data )
 
             uai_erasme = '0699990Z'
             stats['uai'].delete( uai_erasme )

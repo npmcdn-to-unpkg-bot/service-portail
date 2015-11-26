@@ -11,8 +11,8 @@ angular.module( 'statsApp',
                         return $http.get( APP_PATH + '/api/log' );
                     };
 
-                    this.stats = function() {
-                        return $http.get( APP_PATH + '/api/log/stats' );
+                    this.stats = function( params ) {
+                        return $http.get( APP_PATH + '/api/log/stats', { params: params } );
                     };
                 }
               ] )
@@ -28,8 +28,13 @@ angular.module( 'statsApp',
                            return function( d ) { return d3.format( '.0d' )( d ); };
                        };
 
-                       $scope.retrieve_data = function() {
-                           log.stats()
+                       $scope.retrieve_data = function( from ) {
+                           $scope.fin = $scope.debut.clone().endOf( 'month' );
+
+                           var params = { from: $scope.debut.clone().toDate(),
+                                          until: $scope.fin.clone().toDate() };
+
+                           log.stats( params )
                                .then( function ( response ) {
                                    $scope.stats = response.data;
                                    $scope.filters = {};
@@ -70,6 +75,17 @@ angular.module( 'statsApp',
                                } );
                        };
 
-                       $scope.retrieve_data();
+                       $scope.decr_period = function() {
+                           $scope.debut.subtract( 1, 'months' );
+                           $scope.retrieve_data( $scope.debut );
+                       };
+                       $scope.incr_period = function() {
+                           $scope.debut.add( 1, 'months' );
+                           $scope.retrieve_data( $scope.debut );
+                       };
+
+                       $scope.debut = moment().startOf( 'month' );
+
+                       $scope.retrieve_data( $scope.debut );
                    }
                  ] );
