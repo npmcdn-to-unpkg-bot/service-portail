@@ -12,12 +12,9 @@ module Portail
           end
 
           app.get "#{APP_PATH}/api/log/stats/?" do
-            stats = AnnuaireWrapper::Log.stats.to_json
-            # if user[:user_detailed]['profil_actif']['etablissement_code_uai']
+            params = { uid: user[:uid] }
 
-            # end
-
-            stats
+            AnnuaireWrapper::Log( params ).stats.to_json
           end
 
           #
