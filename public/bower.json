@@ -39,8 +39,7 @@
     "angular-touch": "~1.4"
   },
   "resolutions": {
-    "angular": "~1",
-    "d3": "~3.4.1",
-    "nvd3": "~v1.1.15-beta"
+      "angular": "~1.4",
+      "d3": "~3.4.1"
   }
 }
