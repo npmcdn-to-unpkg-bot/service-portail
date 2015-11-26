@@ -6,7 +6,7 @@ module Portail
       module Log
         def self.registered( app )
           app.get "#{APP_PATH}/api/log/?" do
-            params[:uid] = user[:uid]
+            params[:askeruid] = user[:uid]
 
             AnnuaireWrapper::Log.query( params ).to_json
           end
