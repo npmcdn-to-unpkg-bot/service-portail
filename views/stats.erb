@@ -49,16 +49,19 @@
 
         <div class= "container" data-ng-app="statsApp" data-ng-controller="StatsCtrl" data-ng-strict-di>
             <h2>
+                <select data-ng-options="period_type.value as period_type.label for period_type in period_types.list"
+                        data-ng-model="period_types.selected"
+                        data-ng-change="reset_period()"></select>
                 <button class="btn btn-lg" data-ng-click="reset_period()"> ✕ </button>
                 <button class="btn btn-lg" data-ng-click="decr_period()"> < </button>
-                {{debut}} - {{fin}}
                 <button class="btn btn-lg" data-ng-click="incr_period()"> > </button>
+                {{ debut | amDateFormat:'dddd Do MMMM YYYY' }} - {{ fin | amDateFormat:'dddd Do MMMM YYYY' }}
             </h2>
 
             <div class="row">
                 <div class="col-md-6"
                      data-ng-repeat="(metric, data) in stats.general"
-                     data-ng-cloak>
+                     data-ng-if="data.bar_graph_data[0].values.length > 0">
                     <div class="panel panel-default">
                         <div class="panel-heading">{{metric}}</div>
                         <div class="panel-body">
@@ -184,16 +187,15 @@
         <!-- Bootstrap core JavaScript
              ================================================== -->
         <!-- Placed at the end of the document so the pages load faster -->
-        <script src="<%=APP_PATH%>/app/vendor/underscore/underscore.js?v=<%=APP_VERSION%>"></script>
-        <script src="<%=APP_PATH%>/app/vendor/moment/moment.js?v=<%=APP_VERSION%>"></script>
-        <script src="<%=APP_PATH%>/app/vendor/d3/d3.js?v=<%=APP_VERSION%>"></script>
-        <script src="<%=APP_PATH%>/app/vendor/nvd3/nv.d3.js?v=<%=APP_VERSION%>"></script>
+        <script src="<%=APP_PATH%>/app/vendor/underscore/underscore-min.js?v=<%=APP_VERSION%>"></script>
+        <script src="<%=APP_PATH%>/app/vendor/moment/min/moment-with-locales.min.js?v=<%=APP_VERSION%>"></script>
+        <script src="<%=APP_PATH%>/app/vendor/d3/d3.min.js?v=<%=APP_VERSION%>"></script>
+        <script src="<%=APP_PATH%>/app/vendor/nvd3/nv.d3.min.js?v=<%=APP_VERSION%>"></script>
 
-        <script src="<%=APP_PATH%>/app/vendor/angular/angular.js?v=<%=APP_VERSION%>"></script>
-        <script src="<%=APP_PATH%>/app/vendor/angular-bootstrap/ui-bootstrap-tpls.js?v=<%=APP_VERSION%>"></script>
-        <script src="<%=APP_PATH%>/app/vendor/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js?v=<%=APP_VERSION%>"></script>
-        <script src="<%=APP_PATH%>/app/vendor/angular-animate/angular-animate.js?v=<%=APP_VERSION%>"></script>
+        <script src="<%=APP_PATH%>/app/vendor/angular/angular.min.js?v=<%=APP_VERSION%>"></script>
+        <script src="<%=APP_PATH%>/app/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js?v=<%=APP_VERSION%>"></script>
         <script src="<%=APP_PATH%>/app/vendor/angularjs-nvd3-directives/dist/angularjs-nvd3-directives.min.js?v=<%=APP_VERSION%>"></script>
+        <script src="<%=APP_PATH%>/app/vendor/angular-moment/angular-moment.min.js?v=<%=APP_VERSION%>"></script>
 
         <script src="<%=APP_PATH%>/app/js/stats_app.js?v=<%=APP_VERSION%>"></script>
         <script>

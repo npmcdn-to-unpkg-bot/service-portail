@@ -3,7 +3,9 @@
 // Declare app level module which depends on filters, and services
 angular.module( 'statsApp',
                 [ 'ui.bootstrap',
-                  'nvd3ChartDirectives' ] )
+                  'nvd3ChartDirectives',
+                  'angularMoment' ] )
+    .run( [ 'amMoment', function( amMoment ) { amMoment.changeLocale( 'fr' ); } ] )
     .service( 'log',
               [ '$http', 'APP_PATH',
                 function( $http, APP_PATH ) {
@@ -17,8 +19,14 @@ angular.module( 'statsApp',
                 }
               ] )
     .controller( 'StatsCtrl',
-                 [ '$scope', '$http', 'APP_PATH', 'log',
-                   function ( $scope, $http, APP_PATH, log ) {
+                 [ '$scope', '$http', 'moment', 'APP_PATH', 'log',
+                   function ( $scope, $http, moment, APP_PATH, log ) {
+                       $scope.period_types = { list: [ { label: 'jour', value: 'day' },
+                                                       { label: 'semaine', value: 'week' },
+                                                       { label: 'mois', value: 'month' },
+                                                       { label: 'année', value: 'year' } ],
+                                               selected: 'month' };
+
                        $scope.for_nvd3 = {
                            get_y: function(){ return function(d) { return d.count; }; },
                            get_x: function( metric ){ return function(d) { return d[ metric ]; }; }
@@ -29,7 +37,7 @@ angular.module( 'statsApp',
                        };
 
                        $scope.retrieve_data = function( from ) {
-                           $scope.fin = $scope.debut.clone().endOf( 'month' );
+                           $scope.fin = $scope.debut.clone().endOf( $scope.period_types.selected );
 
                            var params = { from: $scope.debut.clone().toDate(),
                                           until: $scope.fin.clone().toDate() };
@@ -76,15 +84,15 @@ angular.module( 'statsApp',
                        };
 
                        $scope.decr_period = function() {
-                           $scope.debut.subtract( 1, 'months' );
+                           $scope.debut.subtract( 1, $scope.period_types.selected + 's' );
                            $scope.retrieve_data( $scope.debut );
                        };
                        $scope.incr_period = function() {
-                           $scope.debut.add( 1, 'months' );
+                           $scope.debut.add( 1, $scope.period_types.selected + 's' );
                            $scope.retrieve_data( $scope.debut );
                        };
                        $scope.reset_period = function() {
-                           $scope.debut = moment().startOf( 'month' );
+                           $scope.debut = moment().startOf( $scope.period_types.selected );
                            $scope.retrieve_data( $scope.debut );
                        };
 
