@@ -58,26 +58,33 @@ angular.module( 'statsApp',
                                            $scope.stats.general[ key ].bar_graph_data = [ { "key": key,
                                                                                             "values": _($scope.stats.general[ key ])
                                                                                             .map( function( item ) {
-                                                                                                return [ item[ key ], item.count ]; } )
+                                                                                                return [ (key == 'uai') ? _($scope.stats.info.noms_uais).find({ uai: item[ key ] }).nom : item[ key ], item.count ]; } )
                                                                                           } ];
                                        } );
+                                   // _($scope.stats.general.uai).each( function( item ) {
+                                   //     item.uai = _($scope.stats.info.noms_uais).find({ uai: item.uai }).nom;
+                                   // } );
 
                                    _([ 'uai', 'user_type' ]).each( function( key ) {
                                        var first = _.chain($scope.stats[ key ]).keys().first().value();
                                        _($scope.stats[ key ]).each( function( stats, clef ) {
-                                           stats[ key ] = clef;
+                                           stats[ key ] = (key == 'uai') ? _($scope.stats.info.noms_uais).find({ uai: clef }).nom : clef;
                                            stats.active_tab = clef == first;
 
                                            _.chain(stats)
                                                .keys()
                                                .each( function( _key ) {
-                                                   stats[ _key ].bar_graph_data = [ { "_key": _key,
+                                                   stats[ _key ].bar_graph_data = [ { "key": _key,
                                                                                       "values": _(stats[ _key ])
                                                                                       .map( function( item ) {
                                                                                           return [ item[ _key ], item.count ]; } )
                                                                                     } ];
                                                } );
                                        } );
+                                       // _($scope.stats.uai).each( function( item ) {
+                                       //     item.uai = $scope.info.noms_uais.find({ uai: item.uai }).nom;
+                                       // } );
+
                                        $scope.stats[ key ] = _($scope.stats[ key ]).toArray();
                                    } );
                                } );
