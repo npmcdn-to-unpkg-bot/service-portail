@@ -260,16 +260,16 @@ body {
                         font-size: 0.9em;
                     }
                 }
-                .remove {
-                    padding: 2px;
-                    position: absolute;
-                    top: 0.6em;
-                    right: 2.6em;
-                    color: red;
-                }
                 .form-control {
                     height: auto;
                 }
+            }
+            .remove {
+                padding: 2px;
+                position: absolute;
+                top: 0.6em;
+                right: 2.6em;
+                color: red;
             }
             .app-name {
                 position: absolute;
@@ -346,6 +346,9 @@ body {
                 .toggle-configure {
                     left: auto;
                     right: 0.5em;
+                }
+                .back {
+                    z-index: -1;
                 }
             }
             &:nth-child( 2n ) {
