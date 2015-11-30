@@ -66,7 +66,7 @@
                         <div class="panel-heading">{{metric}}</div>
                         <div class="panel-body">
                             <nvd3-multi-bar-chart
-                                data-ng-if="metric == 'time_of_day' || metric == 'day_of_week'"
+                                data-ng-if="metric == 'time_of_day' || metric == 'week_day'"
                                 data="data.bar_graph_data"
                                 margin="{left:50,top:20,bottom:100,right:20}"
                                 width="550"
@@ -78,7 +78,7 @@
                                 <svg></svg>
                             </nvd3-multi-bar-chart>
                             <nvd3-multi-bar-horizontal-chart
-                                data-ng-if="metric != 'time_of_day' && metric != 'day_of_week'"
+                                data-ng-if="metric != 'time_of_day' && metric != 'week_day'"
                                 data="data.bar_graph_data"
                                 margin="{left:150,top:20,bottom:20,right:50}"
                                 width="550"
@@ -106,7 +106,7 @@
                                 <div class="panel-heading">{{metric}}</div>
                                 <div class="panel-body">
                                     <nvd3-multi-bar-chart
-                                        data-ng-if="metric == 'time_of_day' || metric == 'day_of_week'"
+                                        data-ng-if="metric == 'time_of_day' || metric == 'week_day'"
                                         data="data.bar_graph_data"
                                         margin="{left:50,top:20,bottom:100,right:20}"
                                         width="550"
@@ -118,7 +118,7 @@
                                         <svg></svg>
                                     </nvd3-multi-bar-chart>
                                     <nvd3-multi-bar-horizontal-chart
-                                        data-ng-if="metric != 'time_of_day' && metric != 'day_of_week'"
+                                        data-ng-if="metric != 'time_of_day' && metric != 'week_day'"
                                         data="data.bar_graph_data"
                                         margin="{left:150,top:20,bottom:20,right:50}"
                                         width="550"
