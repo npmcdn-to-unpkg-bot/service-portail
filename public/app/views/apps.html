@@ -58,7 +58,6 @@
 				</a>
 			</div>
 
-			<div class="configure back blanc">
 				<button class="btn btn-lg toggle-configure close-configure"
 					data-ng-if="modification && case.app"
 					data-ng-click="case.app.toggle_configure()">
@@ -66,6 +65,8 @@
 				</button>
 				<button class="btn btn-xs btn-link remove glyphicon glyphicon-trash"
 					data-ng-click="case.app.remove()"></button>
+                        <div class="configure back blanc"
+                             data-ng-if="modification">
 
 				<label>nom : <input type="text" class="form-control"
 						     data-ng-model="case.app.libelle"
