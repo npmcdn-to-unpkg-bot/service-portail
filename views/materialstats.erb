@@ -49,12 +49,10 @@
 
         <div data-ng-app="statsApp" data-ng-controller="StatsCtrl" data-ng-strict-di layout="row" layout-wrap>
             <md-toolbar class="md-primary" layout="row">
-                <md-select flex="10"
-                           data-ng-model="period_types.selected"
-                           data-ng-model-options="{trackBy: '$value.value'}"
-                           data-ng-change="reset_period()">
-                    <md-option data-ng-repeat="period_type in period_types.list" md-value="period_type.value">{{period_type.label}}</md-option>
-                </md-select>
+                <select flex="10"
+                        data-ng-options="period_type.value as period_type.label for period_type in period_types.list"
+                        data-ng-model="period_types.selected"
+                        data-ng-change="reset_period()"></select>
                 <md-button data-ng-click="reset_period()"> ✕ </md-button>
                 <md-button data-ng-click="decr_period()"> < </md-button>
                 <md-button data-ng-click="incr_period()"> > </md-button>
