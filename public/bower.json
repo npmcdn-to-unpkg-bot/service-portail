@@ -31,7 +31,8 @@
     "ngFitText": "~3.3.3",
     "underscore": "latest",
     "ng-nvd3": "~0.0.2",
-    "angularjs-nvd3-directives": "~0.0.7"
+    "angularjs-nvd3-directives": "~0.0.7",
+    "angular-material": "master"
   },
   "devDependencies": {
     "angular-mocks": "~1.4",
@@ -39,7 +40,7 @@
     "angular-touch": "~1.4"
   },
   "resolutions": {
-      "angular": "~1.4",
-      "d3": "~3.4.1"
+    "angular": "~1.4",
+    "d3": "~3.4.1"
   }
 }

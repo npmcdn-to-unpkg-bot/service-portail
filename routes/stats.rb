@@ -9,6 +9,12 @@ module Portail
 
           erb :stats, layout: false
         end
+
+        app.get "#{APP_PATH}/mstats/?" do
+          halt 401, 'Accès interdit' unless user_is_admin?
+
+          erb :materialstats, layout: false
+        end
       end
     end
   end

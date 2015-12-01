@@ -2,7 +2,8 @@
 
 // Declare app level module which depends on filters, and services
 angular.module( 'statsApp',
-                [ 'ui.bootstrap',
+                [ 'ngMaterial',
+                  'ui.bootstrap',
                   'nvd3ChartDirectives',
                   'angularMoment' ] )
     .run( [ 'amMoment', function( amMoment ) { amMoment.changeLocale( 'fr' ); } ] )
@@ -61,9 +62,6 @@ angular.module( 'statsApp',
                                                                                                 return [ (key == 'uai') ? _($scope.stats.info.noms_uais).find({ uai: item[ key ] }).nom : item[ key ], item.count ]; } )
                                                                                           } ];
                                        } );
-                                   // _($scope.stats.general.uai).each( function( item ) {
-                                   //     item.uai = _($scope.stats.info.noms_uais).find({ uai: item.uai }).nom;
-                                   // } );
 
                                    _([ 'uai', 'user_type' ]).each( function( key ) {
                                        var first = _.chain($scope.stats[ key ]).keys().first().value();
@@ -81,9 +79,6 @@ angular.module( 'statsApp',
                                                                                     } ];
                                                } );
                                        } );
-                                       // _($scope.stats.uai).each( function( item ) {
-                                       //     item.uai = $scope.info.noms_uais.find({ uai: item.uai }).nom;
-                                       // } );
 
                                        $scope.stats[ key ] = _($scope.stats[ key ]).toArray();
                                    } );
