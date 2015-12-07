@@ -92,7 +92,6 @@
             <script src="app/vendor/ngFitText/src/ng-FitText.js?v=<%=APP_VERSION%>"></script>
 
             <script src="app/js/app.js?v=<%=APP_VERSION%>"></script>
-            <script src="app/js/constants.js?v=<%=APP_VERSION%>"></script>
             <script src="app/js/defaults.js?v=<%=APP_VERSION%>"></script>
             <script src="app/js/services/user.js?v=<%=APP_VERSION%>"></script>
             <script src="app/js/services/apps.js?v=<%=APP_VERSION%>"></script>
@@ -127,5 +126,10 @@
             <script src="app/js/templates/iframe.html.js?v=<%=APP_VERSION%>"></script>
             <script src="app/js/templates/app-tile-content.html.js?v=<%=APP_VERSION%>"></script>
         <% end %>
+        <script>
+         angular.module( 'portailApp' )
+                .constant( 'APP_VERSION', '<%=APP_VERSION%>' )
+                .constant( 'APP_PATH', '<%=APP_PATH%>' );
+        </script>
     </body>
 </html>
