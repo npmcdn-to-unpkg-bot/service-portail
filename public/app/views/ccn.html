@@ -19,12 +19,19 @@
             dans tout le département du rhône, et parfois au delà, amenant plusieurs classes de différents établissements
             à travailler ensemble autour de l'outil numérique.<br/>
             Retrouver et revisitez les travaux des classes sur ces projets, ici.<br/><br/>
-            <button class="btn btn-default" data-ng-click="toggle_archives()"><i class="glyphicon glyphicon-arrow-left"></i> Retour</button>
         </p>
     </div>
 
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8">
         <div class="row damier ng-scope">
+
+            <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in gris1"
+                 data-ng-if="display_archives">
+                <a title="Retour aux projets en cours" href data-ng-click="toggle_archives()">
+                    <img draggable="false" class="icone" data-ng-src="{{prefix}}/app/vendor/laclasse-common-client/images/06_thematiques.svg">
+                    <span class="app-name"><i class="glyphicon glyphicon-arrow-left"></i> Retour aux projets en cours</span>
+                </a>
+            </div>
 
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in {{thematique.couleur}}"
                  data-ng-repeat="thematique in thematiques">
