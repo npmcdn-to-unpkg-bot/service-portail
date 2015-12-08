@@ -859,12 +859,16 @@ svg {
             font-size: 1.25em;
         }
         .retour {
-            background: transparent;
+            background: #e2ca77;
             border: 0 none;
             color: #fff;
+            font-size: 85%;
             font-weight: bold;
             height: 100%;
             line-height: 1;
+            &:hover {
+                background: #d8b84a;
+            }
         }
         .classe {
             font-weight: bold;
@@ -913,6 +917,9 @@ svg {
             }
             &.regroupement {
                 background-color: #d8b84a;
+                &.eleves {
+                    opacity: 1;
+                }
             }
             &.people {
                 background-color: #c4c3a7;
