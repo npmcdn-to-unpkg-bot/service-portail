@@ -74,7 +74,6 @@ angular.module( 'statsApp',
 												return { key: key,
 													 x: (key == 'uai') ? _($scope.stats.info.noms_uais).find({ uai: item[ key ] }).nom : item[ key ],
 													 y: item.count };
-
 											    } )
 											  } ];
 				       } );
