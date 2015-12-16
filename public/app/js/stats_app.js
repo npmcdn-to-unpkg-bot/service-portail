@@ -25,14 +25,6 @@ angular.module( 'statsApp',
 						       { label: 'semaine', value: 'week' },
 						       { label: 'mois', value: 'month' },
 						       { label: 'année', value: 'year' } ],
-
-		       var for_nvd3 = {
-			   get_y: function(){ return function(d) { return d.count; }; },
-			   get_x: function( metric ){ return function(d) { return d[ metric ]; }; },
-			   yAxisFormatFunction:  function() {
-			       return function( d ) { return d3.format( '.0d' )( d ); };
-			   }
-		       };
 					       selected: 'week' };
 
 		       $scope.multibarchart_options = { chart: { type: 'multiBarChart',
@@ -44,16 +36,13 @@ angular.module( 'statsApp',
 									   right: 20 },
 								 showControls: false,
 								 showValues: true,
-								 // yAxisTickFormat: for_nvd3.yAxisFormatFunction,
-								 // //x: for_nvd3.get_x,
-								 // y: for_nvd3.get_y,
 								 stacked: false,
 								 duration: 500,
 								 labelThreshold: 0.01,
 								 labelSunbeamLayout: true
 							       }
 						      };
-		       $scope.multibarhorizontalchart_options = $scope.multibarchart_options;
+		       $scope.multibarhorizontalchart_options = angular.copy( $scope.multibarchart_options );
 		       $scope.multibarhorizontalchart_options.chart.type = 'multiBarHorizontalChart';
 		       $scope.multibarhorizontalchart_options.chart.margin = { left: 150,
 									       top: 20,
