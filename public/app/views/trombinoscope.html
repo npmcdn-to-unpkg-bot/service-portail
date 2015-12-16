@@ -7,6 +7,9 @@
         </button>
 
         <div class="pull-right">
+            <label data-ng-if="!eleves"><checkbox class="checkbox" data-ng-model="filters.regroupements_types.classes"></checkbox> Classes </label>
+            <label data-ng-if="!eleves"><checkbox class="checkbox" data-ng-model="filters.regroupements_types.groupes_eleves"></checkbox> Groupes </label>
+
             <label>Filtre :
                 <input class="gris1"
                        data-ng-model="filters.text.regroupement"
@@ -15,9 +18,6 @@
                        data-ng-model="filters.text.user"
                        data-ng-if="eleves" />
             </label>
-
-            <label data-ng-if="!eleves"><checkbox class="checkbox" data-ng-model="filters.regroupements_types.classes"></checkbox> Classes </label>
-            <label data-ng-if="!eleves"><checkbox class="checkbox" data-ng-model="filters.regroupements_types.groupes_eleves"></checkbox> Groupes </label>
         </div>
     </div>
 
