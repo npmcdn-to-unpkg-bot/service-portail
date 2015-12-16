@@ -25,7 +25,6 @@ angular.module( 'statsApp',
 						       { label: 'semaine', value: 'week' },
 						       { label: 'mois', value: 'month' },
 						       { label: 'année', value: 'year' } ],
-					       selected: 'month' };
 
 		       var for_nvd3 = {
 			   get_y: function(){ return function(d) { return d.count; }; },
@@ -34,6 +33,7 @@ angular.module( 'statsApp',
 			       return function( d ) { return d3.format( '.0d' )( d ); };
 			   }
 		       };
+					       selected: 'week' };
 
 		       $scope.multibarchart_options = { chart: { type: 'multiBarChart',
 								 height: 256,
