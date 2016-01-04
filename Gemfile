@@ -27,7 +27,6 @@ group :development do
   gem 'guard'
   gem 'guard-bundler'
   gem 'guard-rspec'
-  gem 'jasmine'
   gem 'pry'
   gem 'rb-fsevent'
   gem 'rb-inotify'
