@@ -4,7 +4,9 @@
 angular.module( 'statsApp',
 		[ 'ui.bootstrap',
 		  'nvd3',
-		  'angularMoment' ] )
+		  'angularMoment',
+		  'angular-loading-bar',
+		  'ngAnimate' ] )
     .run( [ 'amMoment', function( amMoment ) { amMoment.changeLocale( 'fr' ); } ] )
     .service( 'log',
 	      [ '$http', 'APP_PATH',
