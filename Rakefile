@@ -31,6 +31,3 @@ task start: [ 'server:start' ]
 
 desc 'Stops the server'
 multitask stop: [ 'server:stop' ]
-
-require 'jasmine'
-load 'jasmine/tasks/jasmine.rake'
