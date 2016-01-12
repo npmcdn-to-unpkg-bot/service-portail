@@ -13,7 +13,7 @@ angular.module( 'portailApp' )
                        var is_it_their_birthday = function( moment_date ) {
                            var now = moment();
 
-                           return true ||  moment_date.month() == now.month() && moment_date.day() == now.day();
+                           return moment_date.month() == now.month() && moment_date.day() == now.day();
                        };
 
                        if ( is_it_their_birthday( moment( $scope.current_user.date_naissance ) ) ) {
