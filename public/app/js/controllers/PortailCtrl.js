@@ -17,7 +17,7 @@ angular.module( 'portailApp' )
                        };
 
                        if ( is_it_their_birthday( moment( $scope.current_user.date_naissance ) ) ) {
-                           toastr.info( 'Toute l\'équipe de laclasse.com voux souhaites un <em><b>Joyeux anniversaire !</b></em><br>Voici ce que nous vous souhaitons jusqu’à votre prochain anniversaire : 1 an d’Allégresse, 12 mois de Plaisir, 52 semaines de <em>Bien-être</em>, 365 jours de <em>Chance</em>, 8 760 heures de <em>Succès</em>, 525 600 minutes d’<em>Amour</em>, pour un total de 31 536 000 secondes de <em>bonheur</em> !<br>Joyeux anniversaire et… à l’année prochaine !',
+                           toastr.info( 'Toute l\'équipe de laclasse.com vous souhaites un <em><b>Joyeux anniversaire !</b></em><br>Voici ce que nous vous souhaitons jusqu’à votre prochain anniversaire : 1 an d’Allégresse, 12 mois de Plaisir, 52 semaines de <em>Bien-être</em>, 365 jours de <em>Chance</em>, 8 760 heures de <em>Succès</em>, 525 600 minutes d’<em>Amour</em>, pour un total de 31 536 000 secondes de <em>bonheur</em> !<br>Joyeux anniversaire et… à l’année prochaine !',
                                         'Bon anniversaire !',
                                         { allowHtml: true,
                                           closeButton: true,
