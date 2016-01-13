@@ -63,7 +63,8 @@ namespace :preprocess_assets do
                                'public/app/vendor/laclasse-common-client/css/floating-buttons.css',
                                'public/app/vendor/laclasse-common-client/css/flippable.css',
                                'public/app/vendor/laclasse-common-client/css/bootstrap-theme.css',
-                               'public/app/vendor/ng-color-picker/color-picker.css' ]
+                               'public/app/vendor/ng-color-picker/color-picker.css',
+                               'public/app/vendor/angular-loading-bar/build/loading-bar.css' ]
                              .map { |fichier| File.read( fichier ) }.join,
                              syntax: :scss,
                              style: :compressed )
@@ -105,7 +106,8 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/ng-color-picker/color-picker.js',
                                                           'public/app/vendor/angular-carousel/dist/angular-carousel.js',
                                                           'public/app/vendor/angular-toastr/dist/angular-toastr.tpls.js',
-                                                          'public/app/vendor/ngFitText/src/ng-FitText.js' ] )
+                                                          'public/app/vendor/ngFitText/src/ng-FitText.js',
+                                                          'public/app/vendor/angular-loading-bar/build/loading-bar.js' ] )
     File.open( './public/app/vendor/vendor.min.js', 'w' )
         .write( uglified )
     File.open( './public/app/vendor/vendor.min.js.map', 'w' )
