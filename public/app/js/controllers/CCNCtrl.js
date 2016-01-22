@@ -121,8 +121,9 @@ angular.module( 'portailApp' )
                            }
                        ];
 
-                       $scope.log_external_link = function( url ) {
+                       $scope.log_and_open_link = function( url ) {
                            log.add( 'CCN', url, null );
+                           window.open( url, 'laclasseexterne' );
                        };
 
                        $scope.toggle_archives = function() {

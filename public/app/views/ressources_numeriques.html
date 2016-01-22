@@ -19,7 +19,7 @@
                 <a title="{{ressource.nom_court}}"
                    href="{{ressource.url_access_get}}"
                    data-ng-if="ressource.url_access_get"
-                   data-ng-click="log_external_link( ressource.url_access_get )"
+                   data-ng-click="log_and_open_link( ressource.url_access_get )"
                    target="_blank">
                     <img draggable="false" data-ng-src="{{prefix}}/app/vendor/laclasse-common-client/images/{{ ressource.icone }}">
                     <span class="app-name">{{ressource.lib}}</span>

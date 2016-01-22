@@ -37,7 +37,7 @@
                  data-ng-repeat="thematique in thematiques">
                 <a title="{{thematique.description}}"
                    data-ng-href="{{thematique.url}}"
-                   data-ng-click="log_external_link( thematique.url )"
+                   data-ng-click="log_and_open_link( thematique.url )"
                    target="_blank">
                     <img draggable="false" class="icone" data-ng-src="{{prefix}}{{thematique.icon}}">
                     <span class="app-name ">{{thematique.nom}}</span>

@@ -6,8 +6,9 @@ angular.module( 'portailApp' )
                    function( $scope, currentUser, APP_PATH, log ) {
                        $scope.prefix = APP_PATH;
 
-                       $scope.log_external_link = function( url ) {
+                       $scope.log_and_open_link = function( url ) {
                            log.add( 'GAR', url, null );
+                           window.open( url, 'laclasseexterne' );
                        };
 
                        currentUser.ressources().then( function ( response ) {
