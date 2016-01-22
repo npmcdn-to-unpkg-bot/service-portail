@@ -11,7 +11,7 @@
     "angular-cookies": "~1.4",
     "angular-delay": "latest",
     "angular-i18n": "~1.4",
-    "angular-moment": "latest",
+      "angular-moment": "~1",
     "angular-resource": "~1.4",
     "angular-sanitize": "~1.4",
     "angular-toastr": "latest",
@@ -28,7 +28,7 @@
     "ng-flow": "latest",
     "ng-switcher": "*",
     "ngAnimate": "latest",
-    "ngFitText": "~3.3.3",
+      "ngFitText": "~3",
     "underscore": "latest",
     "angular-nvd3": "~1.0.5",
     "angular-loading-bar": "~0.8.0"
