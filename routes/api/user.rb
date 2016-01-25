@@ -108,8 +108,9 @@ module Portail
               regroupement[ 'type' ] = regroupement.key?( 'classe_id' ) ? 'classe' : 'groupe_eleve'
             end
                             .uniq { |regroupement| regroupement['id'] }
-                            .sort_by { |regroupement| regroupement['libelle'].to_s }.reverse
-                                                                                    .map do |regroupement|
+                            .sort_by { |regroupement| regroupement['libelle'].to_s }
+                            .reverse
+                            .map do |regroupement|
               { libelle: regroupement['libelle'],
                 id: regroupement['id'],
                 etablissement_nom: regroupement['etablissement_nom'],
@@ -126,8 +127,9 @@ module Portail
           app.get "#{APP_PATH}/api/user/regroupements/:id/eleves" do
             content_type :json
 
-            eleves = AnnuaireWrapper::Etablissement.regroupement_detail( params[:id] )['eleves']
-                                                   .map do |eleve|
+            eleves = AnnuaireWrapper::Etablissement
+                     .regroupement_detail( params[:id] )['eleves']
+                     .map do |eleve|
               eleve[ 'avatar' ] = ANNUAIRE[:url].gsub( %r{/api}, '/' ) + eleve[ 'avatar' ]
               eleve
             end

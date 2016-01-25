@@ -20,14 +20,16 @@ module AnnuaireWrapper
 
     # Service Utilisateur : init de la session et de son environnement
     def get( uid )
-      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, "#{uid}", 'expand' => 'true' )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_user, uid.to_s, 'expand' => 'true' )
     end
 
     def check_password( login, password )
       correct = false
       begin
-        Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_sso, '', login: login,
-                                                                                   password: password )
+        Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_sso,
+                                                        '',
+                                                        login: login,
+                                                        password: password )
 
         correct = true
       rescue RuntimeError
@@ -40,7 +42,7 @@ module AnnuaireWrapper
     # Modification des données de l'utilisateur connecté
     def put( uid, params )
       params = normalize( params )
-      Laclasse::CrossApp::Sender.put_request_signed(:service_annuaire_user, "#{uid}", params )
+      Laclasse::CrossApp::Sender.put_request_signed(:service_annuaire_user, uid.to_s, params )
     end
 
     # Modification du profil actif de l'utilisateur connecté
@@ -133,7 +135,7 @@ module AnnuaireWrapper
 
     # Liste des personnels d'un etablissement
     def get( uai )
-      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_personnel, "#{uai}", 'expand' => 'true' )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_personnel, uai.to_s, 'expand' => 'true' )
     end
 
     # Liste des regroupements d'un établissement
@@ -143,7 +145,7 @@ module AnnuaireWrapper
 
     # detail d'un regroupement
     def regroupement_detail( uid )
-      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_regroupement, "#{uid}", 'expand' => 'true' )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_regroupement, uid.to_s, 'expand' => 'true' )
     end
 
     # Module d'interfaçage Annuaire relatif aux flux RSS affichés sur le portail

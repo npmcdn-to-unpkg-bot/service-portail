@@ -32,12 +32,9 @@ module Portail
                                  .first( feed[:nb] )
                                  .map do |article|
                   article.each do |k, _|
-                    if article[ k ].is_a? String
-                      article[ k ] = URI.unescape( article[ k ] ).to_s.force_encoding( 'UTF-8' ).encode!
-                      article[ k ] = HTMLEntities.new.decode( article[ k ] )
-                    else
-                      next
-                    end
+                    next unless article[ k ].is_a?( String )
+                    article[ k ] = URI.unescape( article[ k ] ).to_s.force_encoding( 'UTF-8' ).encode!
+                    article[ k ] = HTMLEntities.new.decode( article[ k ] )
                   end
 
                   article[:description] = article[:content_encoded] if article.has? :content_encoded
@@ -57,9 +54,8 @@ module Portail
               end
             end
 
-            json news
-                  .flatten
-                  .uniq { |article| article[:description] }
+            json news.flatten
+                     .uniq { |article| article[:description] }
           end
         end
       end

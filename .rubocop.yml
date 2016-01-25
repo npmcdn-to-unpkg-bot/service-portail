@@ -1,5 +1,6 @@
 AllCops:
   Exclude:
+    - config/**/*
     - vendor/**/*
     - public/**/*
     - spec/javascripts/**/*
@@ -19,6 +20,9 @@ Style/SpaceInsideRangeLiteral:
   Enabled: false
 
 Style/AsciiComments:
+  Enabled: false
+
+Style/MultilineMethodCallIndentation:
   Enabled: false
 
 Metrics/ModuleLength:
