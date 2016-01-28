@@ -64,6 +64,21 @@ body {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     z-index: 999;
     overflow-y: auto;
+    .help-icon {
+        position: absolute;
+        border-radius: 1.25em;
+        border: 2px solid;
+        display: block;
+        font-weight: bold;
+        height: 2.5em;
+        width: 2.5em;
+        top: 1em;
+        left: 1em;
+        line-height: 2;
+        opacity: 0.8;
+        text-align: center;
+        z-index: 1;
+    }
     .bouton-config-news {
         background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-gris.svg');
     }
