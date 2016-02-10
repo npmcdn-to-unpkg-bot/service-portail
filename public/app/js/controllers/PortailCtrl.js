@@ -65,8 +65,8 @@ angular.module( 'portailApp' )
                            $uibModal.open( {
                                templateUrl: 'views/popup_change_password.html',
                                resolve: { current_user: function() { return current_user; } },
-                               controller: [ '$scope', '$modalInstance', 'current_user',
-                                             function( $scope, $modalInstance, current_user ) {
+                               controller: [ '$scope', '$uibModalInstance', 'current_user',
+                                             function( $scope, $uibModalInstance, current_user ) {
                                                  $scope.current_user = current_user;
 
                                                  $scope.fermer = function( sauvegarder ) {
@@ -86,7 +86,7 @@ angular.module( 'portailApp' )
                                                      if ( password_confirmed ) {
                                                          $scope.current_user.$update()
                                                              .then( function() {
-                                                                 $modalInstance.close( $scope );
+                                                                 $uibModalInstance.close( $scope );
                                                              } );
                                                      }
                                                  };
