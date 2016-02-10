@@ -35,7 +35,7 @@ module Portail
               feed = Hash[ feed.map { |k, v| [k.to_sym, v] } ]
 
               begin
-                news << RSS::Parser.parse( open( feed[:flux] ) )
+                news << RSS::Parser.parse( open( feed[:flux] ), false )
                                    .items
                                    .first( feed[:nb] )
                                    .map do |article|
