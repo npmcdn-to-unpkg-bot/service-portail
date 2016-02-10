@@ -18,7 +18,7 @@ module Portail
             all_images_url_regexp = /(https?:\/\/[a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i
             only_image_url_regexp = /^https?:\/\/[a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif)$/i
             # rubocop:enable Style/RegexpLiteral
-            
+
             # THINK : Comment mettre des priorités sur les différents flux ?
             news = []
 
@@ -47,11 +47,8 @@ module Portail
                   elsif image.nil? && article.instance_variable_defined?( :@content ) && !article.content.nil? && article.content.match( only_image_url_regexp )
                     image = article.content
                   else
-                    images = if article.instance_variable_defined?( :@content_encoded ) && !article.content_encoded.nil?
-                      article.content_encoded.match( all_images_url_regexp )
-                    else
-                      article.description.match( all_images_url_regexp )
-                    end
+                    images = ( article.instance_variable_defined?( :@content_encoded ) && !article.content_encoded.nil? ? article.content_encoded : article.description ).match( all_images_url_regexp )
+
                     if images.nil?
                       image = nil
                     else
