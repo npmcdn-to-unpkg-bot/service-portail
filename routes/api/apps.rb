@@ -36,16 +36,6 @@ module Portail
 
             is_it_summer_yet = !config.key?( :closed_for_summer ) || config[:closed_for_summer] ? 6 < Time.now.month && Time.now.month < 9 : false
 
-            STDERR.puts '/!\ FIXME WITH THE FORCE OF A THOUSAND SUNS!!!!'
-            STDERR.puts '/!\ OH HAI!'
-            STDERR.puts '/!\ U CAN HAZ APPS!'
-            STDERR.puts '/!\ SO AWESOME!'
-            STDERR.puts '/!\ Trève de plaisanterie ce pourrissage de log n\'a pour but'
-            STDERR.puts '/!\ que de donner le temps aux bits d\'arriver à destination.'
-            STDERR.puts '/!\ Dijkstra, pardonnez-leurs, ils ne savent pas ce qu\'ils font.'
-            STDERR.puts '/!\ (désolé)'
-            STDERR.puts '/!\ KTHXBYE.'
-
             return [] unless logged?
 
             apps = AnnuaireWrapper::Etablissement::Apps

@@ -181,5 +181,5 @@ angular.module( 'portailApp' )
                            window.open( app.url, 'laclasseexterne' );
                        };
 
-                       retrieve_apps( false );
+                       current_user.$promise.then( function() { retrieve_apps( false ); } );
                    } ] );
