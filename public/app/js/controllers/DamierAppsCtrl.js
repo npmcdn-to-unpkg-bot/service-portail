@@ -8,18 +8,27 @@ angular.module( 'portailApp' )
                        $scope.current_user = current_user;
                        $scope.modification = false;
                        var apps_indexes_changed = false;
-                       $scope.sortable_options = {
-                           disabled: !$scope.modification,
-                           containment: '.damier',
-                           'ui-floating': true,
-                           stop: function( e, ui ) {
-                               apps_indexes_changed = true;
 
-                               _($scope.cases).each( function( c, i ) {
-                                   c.index = i;
-                               } );
-                           }
+                       var sortable_callback = function( event ) {
+                           apps_indexes_changed = true;
+                           _($scope.cases).each( function( c, i ) {
+                               c.index = i;
+                           } );
                        };
+
+                       $scope.sortable_options = {
+                           accept: function( sourceItemHandleScope, destSortableScope ) {
+                               return true;
+                           },//override to determine drag is allowed or not. default is true.
+                           itemMoved: sortable_callback,
+                           orderChanged: sortable_callback,
+                           containment: '.damier',
+                           containerPositioning: 'relative',
+                           additionalPlaceholderClass: 'col-xs-6 col-sm-4 col-md-3 col-lg-3 petite case',
+                           clone: false,
+                           allowDuplicates: false
+                       };
+
                        $scope.couleurs = COULEURS;
 
                        var tool_app = function( app ) {

@@ -1,13 +1,17 @@
 <div class="row damier gris4"
      data-ng-class="{'modification': modification}">
 
-    <ul ui-sortable="sortable_options" data-ng-model="cases">
+    <ul data-as-sortable="sortable_options"
+        data-is-disabled="!modification"
+        data-ng-model="cases">
         <li data-ng-repeat="case in cases | orderBy:'index'"
+            data-as-sortable-item
             class="col-xs-6 col-sm-4 col-md-3 col-lg-3 petite case flippable"
             data-ng-class="{'show-back': case.app.configure, 'unavailable': case.app && !case.app.portail && !case.app.external && case.app.status.status == 'KO', 'empty hidden-xs hidden-sm': !case.app || !case.app.id || !case.app.active}"
             data-ng-if="current_user.is_logged">
 
             <div class="front"
+                 data-as-sortable-item-handle
                  data-ng-class="{ {{case.couleur}}: !case.app.id || ( !case.app.color && !case.app.new_color ) }"
                  data-ng-style="case.app.colorize()">
                 <button class="btn btn-lg toggle-configure open-configure"
