@@ -3,14 +3,6 @@
 require 'rss'
 require 'open-uri'
 
-class RSS::Rss::Channel::Item
-  def to_hash
-    hash = {}
-    instance_variables.each { |var| hash[ var.to_s.delete('@') ] = instance_variable_get( var ) }
-    hash
-  end
-end
-
 module Portail
   module Routes
     module Api
@@ -21,6 +13,9 @@ module Portail
           #
           app.get "#{APP_PATH}/api/news/?" do
             content_type :json, charset: 'utf-8'
+
+            all_images_url_regexp = /(https?:\/\/[a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i
+            only_image_url_regexp = /^https?:\/\/[a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif)$/i
 
             # THINK : Comment mettre des priorités sur les différents flux ?
             news = []
@@ -38,30 +33,41 @@ module Portail
               feed = Hash[ feed.map { |k, v| [k.to_sym, v] } ]
 
               begin
-                news << SimpleRSS.parse( open( feed[:flux] ) )
-                                 .items
-                                 .first( feed[:nb] )
-                                 .map do |article|
-                  article.each do |k, _|
-                    next unless article[ k ].is_a?( String )
-                    article[ k ] = URI.unescape( article[ k ] ).to_s.force_encoding( 'UTF-8' ).encode!
-                    article[ k ] = HTMLEntities.new.decode( article[ k ] )
+                news << RSS::Parser.parse( open( feed[:flux] ) )
+                                   .items
+                                   .first( feed[:nb] )
+                                   .map do |article|
+                  # description = article.instance_variable_defined?( :@content_encoded ) && !article.content_encoded.nil? ? article.content_encoded : article.description
+                  description = article.description
+
+                  if article.instance_variable_defined?( :@image )
+                    image = article.image
+                  elsif image.nil? && article.instance_variable_defined?( :@content ) && !article.content.nil? && article.content.match( only_image_url_regexp )
+                    image = article.content
+                  else
+                    if article.instance_variable_defined?( :@content_encoded ) && !article.content_encoded.nil?
+                      images = article.content_encoded.match( all_images_url_regexp )
+                    else
+                      images = article.description.match( all_images_url_regexp )
+                    end
+                    if images.nil?
+                      image = nil
+                    else
+                      image = images[0]
+                      article.description.sub!( all_images_url_regexp, '' )
+                    end
                   end
 
-                  article[:description] = article[:content_encoded] if article.has? :content_encoded
-                  article[:image] = article[:content] if !article[:content].nil? && article[:content].match( /^https?:\/\/.*\.(?:png|jpg|jpeg|gif)$/i ) # rubocop:disable Style/RegexpLiteral
-
-                  if article[:image].nil?
-                    images = article[:description].match( /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i ) # rubocop:disable Style/RegexpLiteral
-                    article[:image] = images[0] unless images.nil?
-                    article[:description].sub!( /(https?:\/\/.*\.(?:png|jpg|jpeg|gif))/i, '' ) # rubocop:disable Style/RegexpLiteral
-                  end
-
-                  article
+                  { image: image,
+                    link: URI.unescape( article.link ).to_s.force_encoding( 'UTF-8' ).encode!,
+                    pubDate: article.pubDate,
+                    title: URI.unescape( article.title ).to_s.force_encoding( 'UTF-8' ).encode!,
+                    description: URI.unescape( description ).to_s.force_encoding( 'UTF-8' ).encode! }
                 end
-              rescue
-                # LOGGER.info "impossible d'ouvrir #{feed[:flux]}"
-                STDERR.puts "impossible d'ouvrir #{feed[:flux]}"
+              rescue => e
+                LOGGER.debug e.message
+                LOGGER.error e.backtrace
+                LOGGER.warn "impossible d'ouvrir #{feed[:flux]}"
               end
             end
 
