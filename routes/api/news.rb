@@ -1,5 +1,16 @@
 # -*- coding: utf-8 -*-
 
+require 'rss'
+require 'open-uri'
+
+class RSS::Rss::Channel::Item
+  def to_hash
+    hash = {}
+    instance_variables.each { |var| hash[ var.to_s.delete('@') ] = instance_variable_get( var ) }
+    hash
+  end
+end
+
 module Portail
   module Routes
     module Api
