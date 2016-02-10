@@ -243,6 +243,9 @@ body {
             height: 100%;
         }
     }
+    .as-sortable-item-handle {
+        cursor: auto;
+    }
     .case {
         float: left;
         position: relative;
@@ -327,6 +330,11 @@ body {
     }
 
     &.modification {
+        .as-sortable-item-handle {
+            cursor: move;
+            cursor: -webkit-grab;
+            cursor: -moz-grab;
+        }
         .floating-button {
             &.on {
                 background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-blancs.svg');
