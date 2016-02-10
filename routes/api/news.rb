@@ -14,9 +14,11 @@ module Portail
           app.get "#{APP_PATH}/api/news/?" do
             content_type :json, charset: 'utf-8'
 
+            # rubocop:disable Style/RegexpLiteral
             all_images_url_regexp = /(https?:\/\/[a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif))/i
             only_image_url_regexp = /^https?:\/\/[a-z\-_0-9\/\:\.]*\.(jpg|jpeg|png|gif)$/i
-
+            # rubocop:enable Style/RegexpLiteral
+            
             # THINK : Comment mettre des priorités sur les différents flux ?
             news = []
 
@@ -45,10 +47,10 @@ module Portail
                   elsif image.nil? && article.instance_variable_defined?( :@content ) && !article.content.nil? && article.content.match( only_image_url_regexp )
                     image = article.content
                   else
-                    if article.instance_variable_defined?( :@content_encoded ) && !article.content_encoded.nil?
-                      images = article.content_encoded.match( all_images_url_regexp )
+                    images = if article.instance_variable_defined?( :@content_encoded ) && !article.content_encoded.nil?
+                      article.content_encoded.match( all_images_url_regexp )
                     else
-                      images = article.description.match( all_images_url_regexp )
+                      article.description.match( all_images_url_regexp )
                     end
                     if images.nil?
                       image = nil
