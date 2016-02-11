@@ -19,7 +19,7 @@ angular.module( 'portailApp' )
                        $scope.sortable_options = {
                            accept: function( sourceItemHandleScope, destSortableScope ) {
                                return true;
-                           },//override to determine drag is allowed or not. default is true.
+                           },
                            itemMoved: sortable_callback,
                            orderChanged: sortable_callback,
                            containment: '.damier',
