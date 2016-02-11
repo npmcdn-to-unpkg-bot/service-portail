@@ -84,8 +84,7 @@ namespace :preprocess_assets do
   desc 'Minify JS using Uglifier'
   task js: :load_config do
     STDERR.puts 'Uglification of vendor Javascript'
-    uglified, source_map = Uglify.those_files_with_map( [ 'public/app/vendor/jquery/dist/jquery.js',
-                                                          'public/app/vendor/underscore/underscore.js',
+    uglified, source_map = Uglify.those_files_with_map( [ 'public/app/vendor/underscore/underscore.js',
                                                           'public/app/vendor/moment/moment.js',
                                                           'public/app/vendor/moment/locale/fr.js',
                                                           'public/app/vendor/ng-file-upload/ng-file-upload-shim.js',
