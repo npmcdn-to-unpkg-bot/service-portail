@@ -24,7 +24,7 @@ namespace :preprocess_assets do
   task templates: :load_config do
     STDERR.puts 'Compilation of angular templates into javascript files'
     Dir.glob( 'public/app/views/*.html' )
-      .each do |fichier|
+       .each do |fichier|
       target = "#{fichier.gsub( /views/, 'js/templates' )}.js"
       template_name = fichier.gsub( %r{public/app/}, '' )
       template = File.read( fichier )
@@ -56,7 +56,6 @@ namespace :preprocess_assets do
     STDERR.puts 'Sassification of vendor CSS'
     uglified = Sass.compile( [ 'public/app/vendor/bootstrap/dist/css/bootstrap-theme.min.css',
                                'public/app/vendor/ngAnimate/css/ng-animation.css',
-                               'public/app/vendor/ng-switcher/dist/ng-switcher.css',
                                'public/app/vendor/angular-toastr/dist/angular-toastr.css',
                                'public/app/vendor/laclasse-common-client/css/main.css',
                                'public/app/vendor/laclasse-common-client/css/damier.css',
@@ -70,7 +69,7 @@ namespace :preprocess_assets do
                              syntax: :scss,
                              style: :compressed )
     File.open( './public/app/vendor/vendor.min.css', 'w' )
-      .write( uglified )
+        .write( uglified )
 
     STDERR.puts 'Sassification of application CSS'
     uglified = Sass.compile( [ 'public/app/css/main.scss' ]
@@ -78,7 +77,7 @@ namespace :preprocess_assets do
                              syntax: :scss,
                              style: :compressed )
     File.open( './public/app/css/portail.min.css', 'w' )
-      .write( uglified )
+        .write( uglified )
   end
 
   desc 'Minify JS using Uglifier'
@@ -100,7 +99,6 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/angular-animate/angular-animate.js',
                                                           'public/app/vendor/angular-delay/build/angular-delay.js',
                                                           'public/app/vendor/ng-file-upload/ng-file-upload.js',
-                                                          'public/app/vendor/ng-switcher/dist/ng-switcher.js',
                                                           'public/app/vendor/ng-flow/dist/ng-flow-standalone.js',
                                                           'public/app/vendor/ng-color-picker/color-picker.js',
                                                           'public/app/vendor/angular-carousel/dist/angular-carousel.js',

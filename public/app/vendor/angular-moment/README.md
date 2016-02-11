@@ -8,19 +8,23 @@ Copyright (C) 2013, 2014, 2015, Uri Shaked <uri@urish.org>
 [![Build Status](https://travis-ci.org/urish/angular-moment.png?branch=master)](https://travis-ci.org/urish/angular-moment)
 [![Coverage Status](https://coveralls.io/repos/urish/angular-moment/badge.png)](https://coveralls.io/r/urish/angular-moment)
 
+### Angular 2 version is now available: [angular2-moment](https://github.com/urish/angular2-moment)
+
+---
+
 Installation
 ------------
 
 You can choose your preferred method of installation:
-* Through bower: `bower install angular-moment --save`
-* Through npm: `npm install angular-moment --save`
-* Through NuGet: `Install-Package angular-moment`
-* From a CDN: [jsDelivr](https://cdn.jsdelivr.net/angular.moment/1.0.0-beta.3/angular-moment.min.js) or [CDNJS](https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.0-beta.3/angular-moment.min.js)
+* Through bower: `bower install angular-moment moment --save`
+* Through npm: `npm install angular-moment moment --save`
+* Through NuGet: `Install-Package angular-moment Moment.js`
+* From a CDN: [jsDelivr](https://cdn.jsdelivr.net/angular.moment/1.0.0-beta.4/angular-moment.min.js) or [CDNJS](https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.0-beta.4/angular-moment.min.js)
 * Download from github: [angular-moment.min.js](https://raw.github.com/urish/angular-moment/master/angular-moment.min.js)
 
 Usage
 -----
-Include both moment.js and angular-moment.js in your application.
+Include both **moment.js** and **angular-moment.js** in your application.
 
 ```html
 <script src="components/moment/moment.js"></script>
@@ -47,8 +51,8 @@ myapp.run(function(amMoment) {
 });
 ```
 
-### Timeago directive
-Use am-time-ago directive to format your relative timestamps. For example:
+### am-time-ago directive
+Use the `am-time-ago` directive to format your relative timestamps. For example:
 
 ```html
 <span am-time-ago="message.time"></span>
@@ -209,6 +213,32 @@ Example:
 
 ```html
 <span>Start time: {{day.start | amAdd : '1' : 'hours' | amDateFormat : 'hh'}} : {{day.start | amAdd : '30' : 'minutes' | amDateFormat : 'mm'}}</span>
+
+```
+
+### amStartOf filter
+
+Mutates the original moment by setting it to the start of a unit(minute, hour, day..) of time.
+
+See [Moment.JS documentation](http://momentjs.com/docs/#/manipulating/start-of/) for a list of supported duration formats.
+
+Example:
+
+```html
+<span>{{ date | amStartOf:'month' | amLocal }}</span>
+
+```
+
+### amEndOf filter
+
+Mutates the original moment by setting it to the end of a unit(minute, hour, day..) of time.
+
+See [Moment.JS documentation](http://momentjs.com/docs/#/manipulating/end-of/) for a list of supported duration formats.
+
+Example:
+
+```html
+<span>{{ date | amEndOf:'month' | amLocal }}</span>
 
 ```
 
