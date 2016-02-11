@@ -35,10 +35,9 @@
 
             <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 petite case animate scale-fade-in {{thematique.couleur}}"
                  data-ng-repeat="thematique in thematiques">
-                <a title="{{thematique.description}}"
-                   data-ng-href="{{thematique.url}}"
+                <a href title="{{thematique.description}}"
                    data-ng-click="log_and_open_link( thematique.url )"
-                   target="_blank">
+                    target="_blank">
                     <img draggable="false" class="icone" data-ng-src="{{prefix}}{{thematique.icon}}">
                     <span class="app-name ">{{thematique.nom}}</span>
                 </a>

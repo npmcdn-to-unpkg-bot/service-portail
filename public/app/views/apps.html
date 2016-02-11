@@ -47,11 +47,10 @@
                 </a>
 
                 <!-- ## Lien vers site externe -->
-                <a data-ng-if="case.app.external && case.app.active && case.app.show && !modification"
-                   data-ng-href="{{ case.app.url }}"
+                <a href data-ng-if="case.app.external && case.app.active && case.app.show && !modification"
                    data-ng-click="log_and_open_link( case.app )"
-                   target="_blank"
-                   title="{{ case.app.description }}">
+                    target="_blank"
+                    title="{{ case.app.description }}">
                     <div data-ng-include="'views/app-tile-content.html'"></div>
                 </a>
 
