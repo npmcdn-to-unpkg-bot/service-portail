@@ -13,6 +13,8 @@ require 'date'
 
 Bundler.require( :default, ENV['RACK_ENV'].to_sym ) # require tout les gems définis dans Gemfile
 
+require 'tilt/erb'
+
 require 'laclasse/helpers/authentication'
 require 'laclasse/helpers/user'
 require 'laclasse/helpers/app_infos'
