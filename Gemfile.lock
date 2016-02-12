@@ -1,8 +1,8 @@
 GIT
   remote: https://github.com/laclasse-com/laclasse-common
-  revision: 96621cee839fc993e8fd2fae8e95716dbea63a86
+  revision: 956452f41f4be783f1b283bc4d7458e2a9128ffc
   specs:
-    laclasse-common (0.2.20)
+    laclasse-common (0.2.21)
       logstash-logger
       redis-rack (~> 1.5.0)
       rest-client
