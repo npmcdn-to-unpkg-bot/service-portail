@@ -36,7 +36,7 @@ module Portail
 
             is_it_summer_yet = !config.key?( :closed_for_summer ) || config[:closed_for_summer] ? 6 < Time.now.month && Time.now.month < 9 : false
 
-            sleep 0.1               # FIXME, race condition
+            sleep 0.1 # FIXME, race condition
 
             return [] unless logged?
 
