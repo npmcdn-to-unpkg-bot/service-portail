@@ -70,8 +70,9 @@ module Portail
               end
             end
 
-            json news.flatten
-                     .uniq { |article| article[:description] }
+            json news
+                  .flatten
+                  .uniq { |article| article[:description] }
           end
         end
       end
