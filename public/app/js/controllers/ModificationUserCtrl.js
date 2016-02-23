@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'ModificationUserCtrl',
-                 [ '$scope', '$state', 'toastr', 'current_user', 'currentUser', 'apps', 'APP_PATH',
-                   function( $scope, $state, toastr, current_user, currentUser, apps, APP_PATH ) {
+                 [ '$scope', '$state', 'toastr', 'fileReader', 'current_user', 'currentUser', 'apps', 'APP_PATH',
+                   function( $scope, $state, toastr, fileReader, current_user, currentUser, apps, APP_PATH ) {
                        var dirty = false;
 
                        $scope.prefix = APP_PATH;
@@ -48,11 +48,15 @@ angular.module( 'portailApp' )
                        $scope.current_user.date_naissance = new Date( $scope.current_user.date_naissance );
                        $scope.progress_percentage = 0;
 
-                       $scope.new_avatar = function( flowFile ) {
-                           $scope.apply_reset_avatar = false;
-                           $scope.current_user.new_avatar = flowFile.file;
-                           $scope.uploaded_avatar = flowFile.file;
-                           $scope.mark_as_dirty();
+                       $scope.getFile = function( file ) {
+                           fileReader.readAsDataUrl( file, $scope )
+                               .then( function( result ) {
+                                   $scope.imageSrc = result;
+                                   $scope.apply_reset_avatar = false;
+                                   $scope.current_user.new_avatar = file;
+                                   $scope.uploaded_avatar = file;
+                                   $scope.mark_as_dirty();
+                               } );
                        };
 
                        $scope.reset_avatar = function() {

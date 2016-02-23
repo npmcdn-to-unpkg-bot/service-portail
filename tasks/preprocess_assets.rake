@@ -96,7 +96,6 @@ namespace :preprocess_assets do
                                                           'public/app/vendor/angular-bootstrap/ui-bootstrap-tpls.js',
                                                           'public/app/vendor/angular-bootstrap-checkbox/angular-bootstrap-checkbox.js',
                                                           'public/app/vendor/angular-animate/angular-animate.js',
-                                                          'public/app/vendor/ng-flow/dist/ng-flow-standalone.js',
                                                           'public/app/vendor/ng-color-picker/color-picker.js',
                                                           'public/app/vendor/angular-carousel/dist/angular-carousel.js',
                                                           'public/app/vendor/angular-toastr/dist/angular-toastr.tpls.js',

@@ -19,7 +19,6 @@
     "es5-shim": "latest",
     "laclasse-common-client": "https://github.com/laclasse-com/laclasse-common-client.git#latest",
     "ng-color-picker": "https://github.com/cycojesus/ng-color-picker.git#latest",
-    "ng-flow": "latest",
     "ngAnimate": "latest",
     "ngFitText": "~3",
     "underscore": "latest",
