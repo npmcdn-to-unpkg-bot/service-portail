@@ -38,3 +38,5 @@ vagrant/
 /config/options.rb.dynamic
 /config/puma.rb
 /config/thin.yaml
+
+/public/app/vendor/jquery/
