@@ -47,13 +47,13 @@ module Portail
                   elsif image.nil? && article.instance_variable_defined?( :@content ) && !article.content.nil? && article.content.match( only_image_url_regexp )
                     image = article.content
                   else
-                    images = ( article.instance_variable_defined?( :@content_encoded ) && !article.content_encoded.nil? ? article.content_encoded : article.description ).match( all_images_url_regexp )
+                    images = ( article.instance_variable_defined?( :@content_encoded ) && !article.content_encoded.nil? ? article.content_encoded : description ).match( all_images_url_regexp )
 
                     if images.nil?
                       image = nil
                     else
                       image = images[0]
-                      article.description.sub!( all_images_url_regexp, '' )
+                      description.sub!( all_images_url_regexp, '' )
                     end
                   end
 
