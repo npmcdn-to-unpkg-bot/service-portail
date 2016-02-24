@@ -16,11 +16,7 @@
 
                     <div class="avatar form-group">
                         <img draggable="false" class="svg"
-                             data-ng-src="{{current_user.avatar}}"
-                             data-ng-if="!imageSrc" />
-                        <img draggable="false" class="svg"
-                             data-ng-src="{{imageSrc}}"
-                             data-ng-if="imageSrc" />
+                             data-ng-src="{{avatar.image ? avatar.image : current_user.avatar}}" />
                         <input type="file" ng-file-select="onFileSelect($files)" >
                     </div>
 

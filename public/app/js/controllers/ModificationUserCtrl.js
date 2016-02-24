@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'ModificationUserCtrl',
-                 [ '$scope', '$state', 'toastr', 'fileReader', 'current_user', 'currentUser', 'apps', 'APP_PATH',
-                   function( $scope, $state, toastr, fileReader, current_user, currentUser, apps, APP_PATH ) {
+                 [ '$scope', '$state', 'toastr', 'current_user', 'currentUser', 'apps', 'APP_PATH',
+                   function( $scope, $state, toastr, current_user, currentUser, apps, APP_PATH ) {
                        var dirty = false;
 
                        $scope.prefix = APP_PATH;
@@ -48,15 +48,60 @@ angular.module( 'portailApp' )
                        $scope.current_user.date_naissance = new Date( $scope.current_user.date_naissance );
                        $scope.progress_percentage = 0;
 
+                       var blobToDataURL = function( blob, callback ) {
+                           var a = new FileReader();
+                           a.onload = function( e ) { callback( e.target.result ); };
+                           a.readAsDataURL(blob);
+                       };
+
                        $scope.getFile = function( file ) {
-                           fileReader.readAsDataUrl( file, $scope )
-                               .then( function( result ) {
-                                   $scope.imageSrc = result;
-                                   $scope.apply_reset_avatar = false;
-                                   $scope.current_user.new_avatar = file;
-                                   $scope.uploaded_avatar = file;
-                                   $scope.mark_as_dirty();
-                               } );
+                           var max_height = 256;
+                           var max_width = 256;
+
+                           $scope.avatar = { image: null,
+                                             width: 0,
+                                             height: 0 };
+
+                           blobToDataURL( file,
+                                          function( dataURL ) {
+                                              $scope.avatar.image = dataURL;
+                                              $scope.apply_reset_avatar = false;
+                                              $scope.current_user.new_avatar = file;
+                                              $scope.uploaded_avatar = file;
+                                              $scope.mark_as_dirty();
+
+                                              var img = new Image();
+                                              img.src = $scope.avatar.image;
+                                              var factor = 1;
+                                              $scope.avatar.height = img.height;
+                                              $scope.avatar.width = img.width;
+                                              if ( img.width > max_width ) {
+                                                  factor = max_width / img.width;
+                                                  $scope.avatar.width = max_width;
+                                                  $scope.avatar.height = img.height * factor;
+                                              }
+                                              if ( $scope.avatar.height > max_height ) {
+                                                  factor = max_height / img.height;
+                                                  $scope.avatar.height = max_height;
+                                                  $scope.avatar.width = img.width * factor;
+                                              }
+
+                                              var canvas = document.createElement( 'canvas' );
+                                              canvas.width = $scope.avatar.width;
+                                              canvas.height = $scope.avatar.height;
+
+                                              var ctx = canvas.getContext( '2d' );
+                                              ctx.drawImage( img, 0, 0, $scope.avatar.width, $scope.avatar.height );
+
+                                              canvas.toBlob( function( blob ) {
+                                                  blob.name = file.name;
+                                                  $scope.current_user.new_avatar = blob;
+                                                  $scope.uploaded_avatar = blob;
+                                              },
+                                                             'image/png' );
+
+                                              $scope.avatar.image = canvas.toDataURL();
+                                          } );
                        };
 
                        $scope.reset_avatar = function() {
