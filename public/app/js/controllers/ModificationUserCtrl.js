@@ -72,20 +72,25 @@ angular.module( 'portailApp' )
 
                                               var img = new Image();
                                               img.src = $scope.avatar.image;
+
+                                              // Compute new dimensions if necessary
                                               var factor = 1;
                                               $scope.avatar.height = img.height;
                                               $scope.avatar.width = img.width;
-                                              if ( img.width > max_width ) {
+
+                                              if ( $scope.avatar.width > max_width ) {
                                                   factor = max_width / img.width;
                                                   $scope.avatar.width = max_width;
                                                   $scope.avatar.height = img.height * factor;
                                               }
+
                                               if ( $scope.avatar.height > max_height ) {
                                                   factor = max_height / img.height;
                                                   $scope.avatar.height = max_height;
                                                   $scope.avatar.width = img.width * factor;
                                               }
 
+                                              // create new, resized image blob using canvas
                                               var canvas = document.createElement( 'canvas' );
                                               canvas.width = $scope.avatar.width;
                                               canvas.height = $scope.avatar.height;
