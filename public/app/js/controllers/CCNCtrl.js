@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'CCNCtrl',
-                 [ '$scope', 'APP_PATH', 'log',
-                   function( $scope, APP_PATH, log ) {
+                 [ '$scope', '$window', 'APP_PATH', 'log',
+                   function( $scope, $window, APP_PATH, log ) {
                        $scope.prefix = APP_PATH;
                        $scope.display_archives = true;
 
@@ -123,7 +123,7 @@ angular.module( 'portailApp' )
 
                        $scope.log_and_open_link = function( url ) {
                            log.add( 'CCN', url, null );
-                           window.open( url, 'laclasseexterne' );
+                           $window.open( url, 'laclasseexterne' );
                        };
 
                        $scope.toggle_archives = function() {

@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'DamierAppsCtrl',
-                 [ '$scope', '$uibModal', '$log', '$q', '$http', 'current_user', 'apps', 'Apps', 'APP_PATH', 'CASES', 'COULEURS', 'log',
-                   function( $scope, $uibModal, $log, $q, $http, current_user, apps, Apps, APP_PATH, CASES, COULEURS, log ) {
+                 [ '$scope', '$uibModal', '$log', '$q', '$http', '$window', 'current_user', 'apps', 'Apps', 'APP_PATH', 'CASES', 'COULEURS', 'log',
+                   function( $scope, $uibModal, $log, $q, $http, $window, current_user, apps, Apps, APP_PATH, CASES, COULEURS, log ) {
                        $scope.prefix = APP_PATH;
                        $scope.current_user = current_user;
                        $scope.modification = false;
@@ -187,7 +187,7 @@ angular.module( 'portailApp' )
 
                        $scope.log_and_open_link = function( app ) {
                            log.add( app.application_id == 'PRONOTE' ? 'PRONOTE' : 'EXTERNAL', app.url, null );
-                           window.open( app.url, 'laclasseexterne' );
+                           $window.open( app.url, 'laclasseexterne' );
                        };
 
                        current_user.$promise.then( function() { retrieve_apps( false ); } );
