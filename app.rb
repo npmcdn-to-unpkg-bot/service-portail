@@ -2,7 +2,6 @@
 
 require 'rubygems'
 require 'bundler'
-require 'sinatra/reloader'
 require 'sinatra/json'
 require 'open-uri'
 require 'htmlentities'
@@ -58,7 +57,6 @@ class SinatraApp < Sinatra::Base
   end
 
   configure :development do
-    register Sinatra::Reloader
     # also_reload '/path/to/some/file'
     # dont_reload '/path/to/other/file'
   end

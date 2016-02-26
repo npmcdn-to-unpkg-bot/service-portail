@@ -5,7 +5,6 @@ namespace :pry do
   task :load_config do
     require 'rubygems'
     require 'bundler'
-    require 'sinatra/reloader'
     require 'open-uri'
     require 'uri'
     require 'json'
