@@ -16,8 +16,6 @@ angular.module( 'portailApp' )
                                          { ouvert: false,
                                            enabled: false } ];
 
-                       $scope.operation_on_avatar = false;
-
                        $scope.open_datepicker = function( $event ) {
                            $event.preventDefault();
                            $event.stopPropagation();
