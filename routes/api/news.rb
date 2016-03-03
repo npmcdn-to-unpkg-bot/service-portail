@@ -58,10 +58,10 @@ module Portail
                   end
 
                   { image: image,
-                    link: URI.unescape( article.link ).to_s.force_encoding( 'UTF-8' ).encode!,
+                    link: URI.unescape( article.link.force_encoding( 'UTF-8' ).encode! ),
                     pubDate: article.pubDate,
-                    title: URI.unescape( article.title ).to_s.force_encoding( 'UTF-8' ).encode!,
-                    description: URI.unescape( description ).to_s.force_encoding( 'UTF-8' ).encode! }
+                    title: URI.unescape( article.title.force_encoding( 'UTF-8' ).encode! ),
+                    description: URI.unescape( description.force_encoding( 'UTF-8' ).encode! ) }
                 end
               rescue => e
                 LOGGER.debug e.message
