@@ -14,7 +14,12 @@ module Portail
             return [] unless logged?
 
             fluxes = AnnuaireWrapper::Etablissement::Flux.query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] )
-            fluxes = config[:news_feed] if fluxes.empty? || fluxes.nil?
+            if fluxes.empty? || fluxes.nil?
+              fluxes = config[:news_feed]
+              fluxes.each do |flux|
+                flux[:default] = true
+              end
+            end
 
             json fluxes
           end

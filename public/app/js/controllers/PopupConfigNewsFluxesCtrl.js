@@ -8,6 +8,10 @@ angular.module( 'portailApp' )
                            $scope.current_flux = _(response).map( function( flux ) {
                                flux.dirty = false;
 
+                               if ( flux.default ) {
+                                   $scope.save( flux );
+                               }
+
                                return flux;
                            } );
                        } );
