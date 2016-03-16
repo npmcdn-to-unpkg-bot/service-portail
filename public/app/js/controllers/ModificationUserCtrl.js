@@ -69,41 +69,45 @@ angular.module( 'portailApp' )
                                               $scope.mark_as_dirty();
 
                                               var img = new Image();
+
+                                              img.onload = function() {
+                                                  $scope.avatar.height = img.height;
+                                                  $scope.avatar.width = img.width;
+                                                  console.log ('The image size is '+$scope.avatar.width+'*'+$scope.avatar.height);
+
+                                                  // Compute new dimensions if necessary
+                                                  var factor = 1;
+
+                                                  if ( $scope.avatar.width > max_width ) {
+                                                      factor = max_width / img.width;
+                                                      $scope.avatar.width = max_width;
+                                                      $scope.avatar.height = img.height * factor;
+                                                  }
+
+                                                  if ( $scope.avatar.height > max_height ) {
+                                                      factor = max_height / img.height;
+                                                      $scope.avatar.height = max_height;
+                                                      $scope.avatar.width = img.width * factor;
+                                                  }
+
+                                                  // create new, resized image blob using canvas
+                                                  var canvas = document.createElement( 'canvas' );
+                                                  canvas.width = $scope.avatar.width;
+                                                  canvas.height = $scope.avatar.height;
+
+                                                  var ctx = canvas.getContext( '2d' );
+                                                  ctx.drawImage( img, 0, 0, $scope.avatar.width, $scope.avatar.height );
+
+                                                  canvas.toBlob( function( blob ) {
+                                                      blob.name = file.name;
+                                                      $scope.current_user.new_avatar = blob;
+                                                      $scope.uploaded_avatar = blob;
+                                                  },
+                                                                 'image/png' );
+
+                                                  $scope.avatar.image = canvas.toDataURL();
+                                              };
                                               img.src = $scope.avatar.image;
-
-                                              // Compute new dimensions if necessary
-                                              var factor = 1;
-                                              $scope.avatar.height = img.height;
-                                              $scope.avatar.width = img.width;
-
-                                              if ( $scope.avatar.width > max_width ) {
-                                                  factor = max_width / img.width;
-                                                  $scope.avatar.width = max_width;
-                                                  $scope.avatar.height = img.height * factor;
-                                              }
-
-                                              if ( $scope.avatar.height > max_height ) {
-                                                  factor = max_height / img.height;
-                                                  $scope.avatar.height = max_height;
-                                                  $scope.avatar.width = img.width * factor;
-                                              }
-
-                                              // create new, resized image blob using canvas
-                                              var canvas = document.createElement( 'canvas' );
-                                              canvas.width = $scope.avatar.width;
-                                              canvas.height = $scope.avatar.height;
-
-                                              var ctx = canvas.getContext( '2d' );
-                                              ctx.drawImage( img, 0, 0, $scope.avatar.width, $scope.avatar.height );
-
-                                              canvas.toBlob( function( blob ) {
-                                                  blob.name = file.name;
-                                                  $scope.current_user.new_avatar = blob;
-                                                  $scope.uploaded_avatar = blob;
-                                              },
-                                                             'image/png' );
-
-                                              $scope.avatar.image = canvas.toDataURL();
                                           } );
                        };
 
