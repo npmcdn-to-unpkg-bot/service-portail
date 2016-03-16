@@ -1,4 +1,4 @@
-\language: ruby
+language: ruby
 
 sudo: false
 
@@ -9,6 +9,10 @@ before_install:
   - gem update --system
   - gem --version
   - gem install rspec
+  - "gem install -v 1.10.6 bundler --no-rdoc --no-ri"
+
+install:
+  - "bundle _1.10.6_ install"
 
 before_script:
   - cp config/options.rb.sample config/options.rb
