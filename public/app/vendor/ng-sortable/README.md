@@ -8,15 +8,13 @@ If you use this module you can give it a thumbs up at [http://ngmodules.org/modu
 
 #### Release:
 
-Latest release version 1.3.2 
-[Module name is modified from 'ui.sortable' to 'as.sortable' from versions 1.3.x,
-considering the conflict with the sortable module from bootstrap-ui.]
+Latest release version 1.3.6
 
 #### Demo Page:
 
-[Simple] (http://a5hik.github.io/ng-sortable/plunker.html)
+[Simple] (http://a5hik.github.io/ng-sortable/#/kanban)
 
-[Advanced] (http://a5hik.github.io/ng-sortable/)
+[Advanced] (http://a5hik.github.io/ng-sortable/#/sprint)
 
 Demo Includes:
 
@@ -63,6 +61,7 @@ The directives are structured like below.
 - Added a Jquery like 'containment' option to the sortable to prevent the drag outside specified bounds.
 - 'containerPositioning' option may be set to 'relative' to accommodate relative positioning on the container or its ancestry. Use this if the draggable item is offset from the mouse cursor while dragging. A common scenario for this is when using bootstrap columns.
 - The 'is-disabled' attribute can be added optionally to as-sortable disable the Drag at runTime.
+- Added a `longTouch` option to the sortable, setting to `true` will cause the drag and drop functionality to get activated upon `long-touch` aka `touch-and-hold` on touch devices. This maintains the native scroll by dragging functionality on touch devices. Default is set to `false`.
 
 #### Placeholder:
 - By default a placeholder element is created using the same tag as the as-sortable-item element
@@ -187,7 +186,7 @@ Define your callbacks in the invoking controller.
             allowDuplicates: true //optional param allows duplicates to be dropped.
     };
     
-That's what all you have to do.
+That's all you have to do.
 
 ##### Restrict Moving between Columns:
 
@@ -236,7 +235,7 @@ The move failure Impl here just reverts the moved item to its original location.
 
 Horizontal Drag and Drop can be achieved using the same Library. The Column display can be tweaked to have horizontal items and the same can be achieved via some CSS tweaks (like making the column display style to "inline-block"). Added a sample in the demo source (refer plunker.css/js/html).
 
-Plunkr example link: http://plnkr.co/edit/OcaMzBV3c0K3CL1nw9L4?p=preview
+Plunkr example link: http://a5hik.github.io/ng-sortable/#/horizontal
 
 ##### Scroll page after reaching end of visible area.
 
@@ -286,8 +285,6 @@ To access the local server, enter the following URL into your web browser:
 ##### NG Modules Link:
 
 If you use this module you can give it a thumbs up at [http://ngmodules.org/modules/ng-sortable](http://ngmodules.org/modules/ng-sortable).
-
-Let [me](https://github.com/a5hik) know if you have any questions.
 
 For Bug report, and feature request File an Issue here: [issue](https://github.com/a5hik/ng-sortable/issues).
 
