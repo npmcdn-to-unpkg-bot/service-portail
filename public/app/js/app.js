@@ -105,6 +105,7 @@ angular.module( 'portailApp', [ 'ngResource',
              ] )
     .run( [ '$rootScope', 'log',
             function( $rootScope, log ) {
+                $rootScope.modification = false;
                 $rootScope.$on( '$stateChangeSuccess',
                                 function( event, toState, toParams, fromState, fromParams ) {
                                     var app = 'PORTAIL';

@@ -5,8 +5,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'PortailCtrl',
-                 [ '$scope', '$sce', '$state', '$uibModal', 'moment', 'toastr', 'current_user', 'APP_PATH', 'news',
-                   function( $scope, $sce, $state, $uibModal, moment, toastr, current_user, APP_PATH, news ) {
+                 [ '$scope', '$rootScope', '$sce', '$state', '$uibModal', 'moment', 'toastr', 'current_user', 'APP_PATH', 'news',
+                   function( $scope, $rootScope, $sce, $state, $uibModal, moment, toastr, current_user, APP_PATH, news ) {
                        $scope.prefix = APP_PATH;
                        $scope.current_user = current_user;
 

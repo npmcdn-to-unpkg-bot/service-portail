@@ -2,11 +2,11 @@
 
 angular.module( 'portailApp' )
     .controller( 'DamierAppsCtrl',
-                 [ '$scope', '$uibModal', '$log', '$q', '$http', '$window', 'current_user', 'apps', 'Apps', 'APP_PATH', 'CASES', 'COULEURS', 'log',
-                   function( $scope, $uibModal, $log, $q, $http, $window, current_user, apps, Apps, APP_PATH, CASES, COULEURS, log ) {
+                 [ '$scope', '$rootScope', '$uibModal', '$log', '$q', '$http', '$window', 'current_user', 'apps', 'Apps', 'APP_PATH', 'CASES', 'COULEURS', 'log',
+                   function( $scope, $rootScope, $uibModal, $log, $q, $http, $window, current_user, apps, Apps, APP_PATH, CASES, COULEURS, log ) {
                        $scope.prefix = APP_PATH;
                        $scope.current_user = current_user;
-                       $scope.modification = false;
+                       //$scope.modification = false;
                        var apps_indexes_changed = false;
 
                        var sortable_callback = function( event ) {
@@ -131,7 +131,7 @@ angular.module( 'portailApp' )
                        };
 
                        $scope.toggle_modification = function( save ) {
-                           $scope.modification = !$scope.modification;
+                           $rootScope.modification = !$rootScope.modification;
                            $scope.sortable_options.disabled = !$scope.sortable_options.disabled;
                            if ( !$scope.modification ) {
                                var promesses = [];
