@@ -85,8 +85,14 @@
                 "summer": true,
                 "color": "#eb5454",
                 "icon": "app/vendor/laclasse-common-client/images/13_admin.svg",
-                "index": 13 }
-        }
+                "index": 13 },
+            "QUIZ": {
+                "hidden": [],
+                "summer": false,
+                "color": "#1aa1cc",
+                "icon": "app/vendor/laclasse-common-client/images/05_validationcompetences.svg",
+                "index": 14 }
+            }
     },
     "news_feed": [
         {
