@@ -41,9 +41,9 @@
             rn-carousel-auto-slide="6"
             rn-carousel-index="carouselIndex">
             <li ng-repeat="slide in newsfeed | orderBy:'pubDate':true" active="slide.active"
-                data-ng-class="{'publipostage': slide.title =='Publipostage'}">
+                data-ng-class="{'publipostage': slide.title == 'Publipostage', 'no-image': !slide.image}">
                 <div class="carousel-image"
-                     data-ng-style="slide.image ? {'background-image': 'url(' + slide.image + ')'} : {'background-image': 'url(' + prefix + '/app/vendor/laclasse-common-client/images/logolaclasse.svg)'; 'opacity': '0.025' }"></div>
+                     data-ng-style="slide.image ? {'background-image': 'url(' + slide.image + ')'} : {'background-image': 'url(' + prefix + '/app/vendor/laclasse-common-client/images/logolaclasse.svg)'}"></div>
                 <div class="carousel-caption">
                     <span class="pub-date" data-ng-cloak>{{ slide.pubDate | date:'medium' }}</span>
                     <a href="{{ slide.link }}" target="_blank" data-ng-if="slide.link != 'notYetImplemented'">
