@@ -871,6 +871,11 @@ svg {
     }
     .damier {
         height: calc( 100% - 3em );
+
+        .case.petite.inscritpion .app-name {
+            font-size: 110%;
+            font-weight: bold;
+        }
     }
 }
 
