@@ -67,6 +67,7 @@
                 <span class="icone visualiser"></span>
             </button>
             <button class="btn btn-xs btn-link remove glyphicon glyphicon-trash"
+                    data-ng-if="modification && case.app"
                     data-ng-click="case.app.remove()"></button>
 
             <div class="configure back blanc"
