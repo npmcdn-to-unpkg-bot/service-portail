@@ -5,8 +5,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'PortailCtrl',
-                 [ '$scope', '$rootScope', '$sce', '$state', '$uibModal', 'moment', 'toastr', 'current_user', 'APP_PATH', 'news',
-                   function( $scope, $rootScope, $sce, $state, $uibModal, moment, toastr, current_user, APP_PATH, news ) {
+                 [ '$scope', '$rootScope', '$sce', '$state', '$uibModal', 'moment', 'toastr', 'current_user', 'APP_PATH', 'RANDOM_IMAGES', 'news',
+                   function( $scope, $rootScope, $sce, $state, $uibModal, moment, toastr, current_user, APP_PATH, RANDOM_IMAGES, news ) {
                        $scope.prefix = APP_PATH;
                        $scope.current_user = current_user;
 
@@ -41,6 +41,10 @@ angular.module( 'portailApp' )
                                    $scope.newsfeed = _(response.data).map( function( item, index ) {
                                        item.id = index;
                                        item.trusted_description = $sce.trustAsHtml( item.description );
+                                       item.no_image = _(item.image).isNull();
+                                       if ( item.no_image ) {
+                                           item.image = item.title == 'Publipostage' ? APP_PATH + '/app/vendor/laclasse-common-client/images/11_publipostage.svg' : _(RANDOM_IMAGES).sample();
+                                       }
 
                                        return item;
                                    });
