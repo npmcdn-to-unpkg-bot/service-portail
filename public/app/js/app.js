@@ -63,7 +63,7 @@ angular.module( 'portailApp', [ 'ngResource',
                                } )
                        .state( 'app.external',
                                { parent: 'app',
-                                 url: '/external?app',
+                                 url: '/external/:app',
                                  views: {
                                      'app': {
                                          templateUrl: 'views/iframe.html',
