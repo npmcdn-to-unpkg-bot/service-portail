@@ -1,6 +1,6 @@
 @media screen and (max-height: 660px) {
     .damier .petite.case a .app-name {
-	bottom: 5px;
+        bottom: 5px;
     }
 }
 
@@ -10,25 +10,25 @@
     .aside { height: 3em; }
     .classes-culturelles-numeriques .aside { height: 100%; }
     .aside .logolaclasse, .aside .user { height: 100%;
-					 min-height: 100%; }
+                                         min-height: 100%; }
     .aside .logolaclasse { width: 3em; }
     .aside .logolaclasse a h3 { font-size: 1.7em; }
     .aside .logolaclasse a img { height: 100%;
-				 width: auto;
-				 margin-top: 0; }
+                                 width: auto;
+                                 margin-top: 0; }
     .aside .user { width: calc( 100% - 3em );
-		   background-position: left; }
+                   background-position: left; }
     .aside .user .user-info-bg .user-info { width: 100%;
-					    height: 100%; }
+                                            height: 100%; }
     .aside .user .user-info-bg .user-info * { width: auto;
-					      height: 100%;
-					      float: left;
-					      margin-top: 0; }
+                                              height: 100%;
+                                              float: left;
+                                              margin-top: 0; }
     .aside .user .user-info-bg .user-info a .initiales { line-height: 1.6; }
     .aside .user .user-info-bg .user-info select { width: auto;
-						   max-width: 90%;
-						   height: 100%;
-						   float: right; }
+                                                   max-width: 90%;
+                                                   height: 100%;
+                                                   float: right; }
     .damier { height: calc( 100% - 3em ); }
 
     /* Page profil utilisateur */
@@ -36,6 +36,7 @@
 
     /* Page app wrapper */
     .en-tete .profil-select-wrapper { width: calc( 100% - 3em ); }
+    .help-icon { display: none; }
 }
 
 /* -xs */
