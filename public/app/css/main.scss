@@ -67,28 +67,20 @@ body {
     overflow-y: auto;
     .help-icon {
         position: absolute;
-        border-color: green transparent transparent transparent;
+        border-color: #80ba66 transparent transparent transparent;
         border-style: solid;
         border-width: 3.5em 3.5em 0 0;
         top: 0;
         left: 0;
         height: 0;
         width: 0;
-        // border-radius: 1.25em;
-        // border: 2px solid;
-        // display: block;
-        // font-weight: bold;
-        // height: 2.5em;
-        // width: 2.5em;
-        // top: 1em;
-        // left: 1em;
-        // line-height: 2;
-        opacity: 0.8;
-        // text-align: center;
         z-index: 1;
         h2 {
-            margin-top: -1.65em;
-            margin-left: 0.1em;
+            margin-top: -1.5em;
+            margin-left: 0.3em;
+            font-weight: bold;
+            color: #fff;
+            transform: rotate( -45deg );
         }
     }
     .bouton-config-news {
