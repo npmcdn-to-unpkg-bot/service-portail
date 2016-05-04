@@ -103,10 +103,6 @@ angular.module( 'portailApp', [ 'ngResource',
                                } );
                }
              ] )
-    .config( [ '$compileProvider',
-               function( $compileProvider ) {
-                   $compileProvider.debugInfoEnabled( false );
-               } ] )
     .run( [ '$rootScope', 'log',
             function( $rootScope, log ) {
                 $rootScope.modification = false;

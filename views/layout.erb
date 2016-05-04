@@ -126,7 +126,11 @@
         <script>
          angular.module( 'portailApp' )
                 .constant( 'APP_VERSION', '<%=APP_VERSION%>' )
-                .constant( 'APP_PATH', '<%=APP_PATH%>' );
+                .constant( 'APP_PATH', '<%=APP_PATH%>' )
+                .config( [ '$compileProvider',
+                           function( $compileProvider ) {
+                               $compileProvider.debugInfoEnabled( <%= ENV['RACK_ENV'] == 'development' %> );
+                           } ] );
         </script>
     </body>
 </html>
