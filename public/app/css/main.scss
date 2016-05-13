@@ -261,12 +261,17 @@ body {
     .case {
         float: left;
         position: relative;
-        &.unavailable span, &.unavailable img {
-            opacity: 0.2;
+        &.unavailable {
+            span, img {
+                opacity: 0.2;
+            }
+            .toggle-configure, .toggle-configure .icone {
+                z-index: 1;
+                opacity: 1;
+            }
         }
         &.petite {
             min-height: 200px;
-
             .toggle-configure {
                 background: transparent;
                 position: absolute;
