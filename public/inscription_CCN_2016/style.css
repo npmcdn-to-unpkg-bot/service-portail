@@ -30,10 +30,9 @@ html, body {
 
 .ccn main {
     overflow-y: auto;
-    height: 100%;
 }
 
-.ccn .item {
+.ccn .case {
     margin:0;
     font-size:0;
     background-position:50% 10px;
@@ -45,7 +44,7 @@ html, body {
     height: 100%;
 }
 
-.ccn .item h3 {
+.ccn .case h3 {
     font-size: 24px;
     margin: 0 0 10px 0;
     font-weight: bold;
@@ -126,9 +125,6 @@ html, body {
 
 
 /* Gwenhael */
-div, html, body {
+div {
     height: auto;
-}
-.ccn .petite.case.item {
-    height: 100%;
 }
