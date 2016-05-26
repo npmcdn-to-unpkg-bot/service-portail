@@ -28,10 +28,6 @@ html, body {
     padding:20px 0;
 }
 
-.ccn main {
-    overflow-y: auto;
-}
-
 .ccn .case {
     margin:0;
     font-size:0;
