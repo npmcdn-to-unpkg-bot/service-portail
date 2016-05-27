@@ -3,17 +3,14 @@ html, body {
     padding:0;
 }
 
-div {
+.ccn header div, .ccn .content-columns div {
     height: auto;
-}
-
-.damier {
-    height: 96.1%;
 }
 
 .container.ccn {
     font-size:0;
     font-family:'Open Sans',Verdana;
+    height: 100%;
 }
 
 .container header {
@@ -23,63 +20,20 @@ div {
     height: 100%;
 }
 
-.ccn .intro {
+.ccn header .headline {
+    font-size:18px;
+    text-align:center;
+    padding:20px 0;
+}
+
+.ccn header .intro {
     font-size:14px;
     padding-bottom:20px;
     text-align:justify;
     line-height:1.5
 }
 
-.ccn .headline {
-    font-size:18px;
-    text-align:center;
-    padding:20px 0;
-}
-
-.ccn .case {
-    margin:0;
-    font-size:0;
-    background-position:50% 10px;
-    background-size:auto 160px;
-    background-repeat:no-repeat;
-    padding:30px;
-    box-sizing:border-box;
-    color:#FFF;
-    height: 133%;
-}
-
-.ccn .case h3 {
-    font-size: 24px;
-    margin: 0 0 10px 0;
-    font-weight: bold;
-    padding-bottom: 8px;
-}
-
-.ccn .col1 {
-    font-size: 13px;
-    color: #FFF;
-    text-align:center;
-    margin-top:120px;
-}
-
-.ccn .col2 {
-    font-size:12px;
-    line-height:1.4;
-    text-align:justify;
-}
-
-.ccn .subtitle {
-    font-size:16px;
-    line-height:1.4;
-    margin:0px 0 20px 0;
-}
-
-.ccn .more {
-    color:rgba(255,255,255,.7);
-    margin-top:12px;
-}
-
-.ccn .forms {
+.ccn header .forms {
     font-size:13px;
     text-align:center;
     background:#F9F9F9;
@@ -87,7 +41,7 @@ div {
     margin:0 -40px
 }
 
-.ccn .form {
+.ccn header .form {
     display:inline-block;
     padding:20px 30px 17px 30px;
     margin-top:10px;
@@ -97,6 +51,62 @@ div {
     border-radius:3px;
     color:#333;
     text-decoration:none;
+}
+
+.ccn main {
+    position: relative;
+    height: 96.1%;
+    height: calc(100%-3em);
+}
+.ccn main .bg-columns, .ccn main .content-columns {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.ccn main .content-columns {
+    overflow-y: auto;
+}
+.ccn main .content-columns .column {
+    margin:0;
+    font-size:0;
+    background-position:50% 10px;
+    background-size:auto 160px;
+    background-repeat:no-repeat;
+    padding:30px;
+    box-sizing:border-box;
+    color:#FFF;
+    display: table-cell;
+}
+
+.ccn main .content-columns .column h3 {
+    font-size: 24px;
+    margin: 0 0 10px 0;
+    font-weight: bold;
+    padding-bottom: 8px;
+}
+
+.ccn main .content-columns .column .col1 {
+    font-size: 13px;
+    color: #FFF;
+    text-align:center;
+    margin-top:120px;
+}
+
+.ccn main .content-columns .column .col2 {
+    font-size:12px;
+    line-height:1.4;
+    text-align:justify;
+}
+
+.ccn main .content-columns .column .subtitle {
+    font-size:16px;
+    line-height:1.4;
+    margin:0px 0 20px 0;
+}
+
+.ccn main .content-columns .column .more {
+    color:rgba(255,255,255,.7);
+    margin-top:12px;
 }
 
 .ccn .info {
