@@ -12,7 +12,7 @@
 
             <div class="front"
                  data-as-sortable-item-handle
-                 data-ng-class="{ {{case.couleur}}: !case.app.id || ( !case.app.color && !case.app.new_color ) }"
+                 data-ng-class="{ {{case.couleur}}: !case.app.id || ( !case.app.color && !case.app.new_color ), 'highlight-ccn': case.app.highlight }"
                  data-ng-style="case.app.colorize()">
                 <button class="btn btn-lg toggle-configure open-configure"
                         data-ng-if="modification && case.app && case.app.active"
@@ -49,8 +49,8 @@
                 <!-- ## Lien vers site externe -->
                 <a href data-ng-if="case.app.external && case.app.active && case.app.show && !modification"
                    data-ng-click="log_and_open_link( case.app )"
-                    target="_blank"
-                    title="{{ case.app.description }}">
+                   target="_blank"
+                   title="{{ case.app.description }}">
                     <div data-ng-include="'views/app-tile-content.html'"></div>
                 </a>
 
