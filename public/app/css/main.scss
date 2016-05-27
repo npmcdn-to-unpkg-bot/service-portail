@@ -264,13 +264,13 @@ body {
         .highlight-ccn::before {
             content: "Inscriptions 2016-2017 ouvertes.";
             color: white;
-            border: 2px orange dotted;
             position: absolute;
             left: 0;
             bottom: 0;
             width: 98%;
             margin: 4px 1%;
             font-weight: bold;
+            background-color: #ff9343;
         }
         &.unavailable {
             span, img {
