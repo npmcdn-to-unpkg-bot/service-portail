@@ -38,7 +38,7 @@ angular.module( 'portailApp' )
                            app.portail = app.url.match( /^app\..*/ ) !== null;
                            app.external = ( app.type == 'EXTERNAL' ) || app.url.match( /^http.*/ ) !== null;
                            app.show = !_(app.hidden).includes( $scope.current_user.profil_actif.profil_id );
-                           app.highlight = app.application_id == 'CCNUM';
+                           app.highlight = app.application_id == 'CCNUM' && $scope.current_user.profil_actif.profil_id != 'TUT' && $scope.current_user.profil_actif.profil_id != 'ELV';
 
                            app.status = { app_id: app.application_id,
                                           app_version: '',
