@@ -23,9 +23,9 @@ gem 'laclasse-common', git: 'https://github.com/laclasse-com/laclasse-common'
 
 group :development do
   gem 'css2less'
-  gem 'guard'
-  gem 'guard-bundler'
-  gem 'guard-rspec'
+  # gem 'guard'
+  # gem 'guard-bundler'
+  # gem 'guard-rspec'
   gem 'pry'
   gem 'rb-fsevent'
   gem 'rb-inotify'
