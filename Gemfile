@@ -22,6 +22,7 @@ gem 'sinatra-contrib'
 gem 'laclasse-common', git: 'https://github.com/laclasse-com/laclasse-common'
 
 group :development do
+  gem 'rspec'
   gem 'css2less'
   # gem 'guard'
   # gem 'guard-bundler'
