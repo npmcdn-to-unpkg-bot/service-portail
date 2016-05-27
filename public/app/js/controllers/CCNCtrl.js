@@ -27,12 +27,12 @@ angular.module( 'portailApp' )
                              description: 'Assises du Roman',
                              url: 'http://air.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
                              icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_air-2014.svg',
-                             couleur: 'vert' },
+                             couleur: 'jaune' },
                            { nom: 'Habiter',
                              description: 'Représentations cartographiques de l\'espace vécu',
                              url: 'http://habiter.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
                              icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_habiter.svg',
-                             couleur: 'jaune' }
+                             couleur: 'vert' }
                        ];
 
                        $scope.thematiques_archivees = [
