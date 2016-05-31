@@ -24,6 +24,7 @@ gem 'laclasse-common', git: 'https://github.com/laclasse-com/laclasse-common'
 group :development do
   gem 'rspec'
   gem 'css2less'
+  gem 'watir-webdriver'
   # gem 'guard'
   # gem 'guard-bundler'
   # gem 'guard-rspec'

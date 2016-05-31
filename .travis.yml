@@ -22,6 +22,9 @@ script:
   - "bundle exec rspec spec/api/ spec/lib/"
   - "bundle exec rubocop -D"
   - "bundle exec rake preprocess_assets:production"
+  - "bundle exec rackup"
+  - "bundle exec rspec spec/web/"
+
 
 gemfile:
   - Gemfile

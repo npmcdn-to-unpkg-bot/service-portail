@@ -13,6 +13,8 @@ GEM
     addressable (2.4.0)
     ast (2.2.0)
     backports (3.6.8)
+    childprocess (0.5.9)
+      ffi (~> 1.0, >= 1.0.11)
     clamp (0.2.3)
     coderay (1.1.1)
     css2less (0.0.2)
@@ -102,7 +104,12 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (~> 1.0, >= 1.0.1)
     ruby-progressbar (1.8.0)
+    rubyzip (1.2.0)
     sass (3.4.22)
+    selenium-webdriver (2.53.0)
+      childprocess (~> 0.5)
+      rubyzip (~> 1.0)
+      websocket (~> 1.0)
     shotgun (0.9.1)
       rack (>= 1.0)
     simplecov (0.11.2)
@@ -135,6 +142,9 @@ GEM
       unf_ext
     unf_ext (0.0.7.2)
     unicode-display_width (1.0.5)
+    watir-webdriver (0.9.1)
+      selenium-webdriver (>= 2.46.2)
+    websocket (1.2.3)
 
 PLATFORMS
   ruby
@@ -167,6 +177,7 @@ DEPENDENCIES
   sinatra-param
   therubyracer
   uglifier
+  watir-webdriver
 
 BUNDLED WITH
    1.12.1
