@@ -19,7 +19,7 @@ before_script:
   - "cp config/portail.json.sample config/portail.json"
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
-  - "bundle exec rackup"
+  - "bundle exec rackup --daemonize --pid ./rackup.pid"
   - "sleep 3"
 
 script:
@@ -27,7 +27,7 @@ script:
   - "bundle exec rubocop -D"
   - "bundle exec rake preprocess_assets:production"
   - "bundle exec rspec spec/web/"
-
+  - "kill $(cat rackup.pid)"
 
 gemfile:
   - Gemfile
