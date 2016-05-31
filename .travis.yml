@@ -15,14 +15,17 @@ install:
   - "bundle _1.10.6_ install"
 
 before_script:
-  - cp config/options.rb.sample config/options.rb
-  - cp config/portail.json.sample config/portail.json
+  - "cp config/options.rb.sample config/options.rb"
+  - "cp config/portail.json.sample config/portail.json"
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - "bundle exec rackup"
+  - "sleep 3"
 
 script:
   - "bundle exec rspec spec/api/ spec/lib/"
   - "bundle exec rubocop -D"
   - "bundle exec rake preprocess_assets:production"
-  - "bundle exec rackup"
   - "bundle exec rspec spec/web/"
 
 
