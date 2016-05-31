@@ -25,6 +25,7 @@ group :development do
   gem 'rspec'
   gem 'css2less'
   gem 'watir-webdriver'
+  gem 'watir'
   # gem 'guard'
   # gem 'guard-bundler'
   # gem 'guard-rspec'

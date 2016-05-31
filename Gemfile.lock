@@ -17,6 +17,7 @@ GEM
       ffi (~> 1.0, >= 1.0.11)
     clamp (0.2.3)
     coderay (1.1.1)
+    commonwatir (4.0.0)
     css2less (0.0.2)
     daemon_controller (0.2.6)
     diff-lcs (1.2.5)
@@ -142,6 +143,9 @@ GEM
       unf_ext
     unf_ext (0.0.7.2)
     unicode-display_width (1.0.5)
+    watir (5.0.0)
+      commonwatir (~> 4)
+      watir-webdriver
     watir-webdriver (0.9.1)
       selenium-webdriver (>= 2.46.2)
     websocket (1.2.3)
@@ -177,6 +181,7 @@ DEPENDENCIES
   sinatra-param
   therubyracer
   uglifier
+  watir
   watir-webdriver
 
 BUNDLED WITH
