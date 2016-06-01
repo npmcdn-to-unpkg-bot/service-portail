@@ -3,6 +3,7 @@ require 'simplecov'
 require 'rspec'
 require 'rack/test'
 require 'capybara/rspec'
+require 'capybara/poltergeist'
 
 ENV['RACK_ENV'] = 'development'
 
@@ -13,11 +14,10 @@ require_relative '../app'
 # from spec/support/ and its subdirectories.
 Dir[File.expand_path('spec/support/**/*.rb')].each { |f| require f }
 
-Capybara.default_driver = :webkit
-Capybara.javascript_driver = :webkit
-Capybara.app = SinatraApp
-
 RSpec.configure do |config|
   config.include Capybara::DSL
   config.include Capybara::RSpecMatchers
 end
+
+Capybara.app = SinatraApp
+Capybara.javascript_driver = :poltergeist

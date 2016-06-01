@@ -35,5 +35,5 @@ group :development do
   gem 'rubocop'
 
   gem 'capybara'
-  gem 'capybara-webkit'
+  gem 'poltergeist'
 end
