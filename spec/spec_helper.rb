@@ -19,5 +19,5 @@ RSpec.configure do |config|
   config.include Capybara::RSpecMatchers
 end
 
-Capybara.app = SinatraApp
+Capybara.app = Rack::Builder.new do eval File.read( 'config.ru' ) end # rubocop:disable Lint/Eval
 Capybara.javascript_driver = :poltergeist
