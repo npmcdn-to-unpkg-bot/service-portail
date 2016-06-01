@@ -21,13 +21,13 @@ before_script:
   # - "sh -e /etc/init.d/xvfb -screen 0 1280x800x24 start"
   # - "sleep 3"
   - "bundle exec rake server & "
-  - "sleep 1"
+  - "sleep 3"
 
 script:
   - "bundle exec rspec spec/api/ spec/lib/"
-  - xvfb-run --server-args="-screen 0 1024x768x24" bundle exec rspec spec/web/
   - "bundle exec rubocop -D"
   - "bundle exec rake preprocess_assets:production"
+  - xvfb-run --server-args="-screen 0 1024x768x24" bundle exec rspec spec/web/
 
 gemfile:
   - Gemfile
