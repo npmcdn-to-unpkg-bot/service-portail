@@ -6,9 +6,9 @@ rvm:
   - "2.2.2"
 
 before_install:
-  - gem update --system
-  - gem --version
-  - gem install rspec
+  - "gem update --system"
+  - "gem --version"
+  - "gem install rspec"
   - "gem install -v 1.10.6 bundler --no-rdoc --no-ri"
 
 install:
@@ -36,7 +36,6 @@ branches:
   only:
     - master
     - develop
-    - develop-prime
 
 notifications:
   email:

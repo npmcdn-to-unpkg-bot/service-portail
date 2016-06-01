@@ -7,6 +7,9 @@ AllCops:
     - tasks/**/*
     - Guardfile
 
+Style/CommandLiteral:
+  Enabled: false
+
 Style/SpaceInsideBrackets:
   Enabled: false
 
