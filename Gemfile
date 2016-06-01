@@ -24,11 +24,6 @@ gem 'laclasse-common', git: 'https://github.com/laclasse-com/laclasse-common'
 group :development do
   gem 'rspec'
   gem 'css2less'
-  gem 'watir-webdriver'
-  gem 'watir'
-  # gem 'guard'
-  # gem 'guard-bundler'
-  # gem 'guard-rspec'
   gem 'pry'
   gem 'rb-fsevent'
   gem 'rb-inotify'
@@ -38,4 +33,6 @@ group :development do
   gem 'therubyracer' # used when no node.js is install on computer
   gem 'uglifier'
   gem 'rubocop'
+
+  gem 'capybara'
 end

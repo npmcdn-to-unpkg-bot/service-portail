@@ -17,17 +17,11 @@ install:
 before_script:
   - "cp config/options.rb.sample config/options.rb"
   - "cp config/portail.json.sample config/portail.json"
-  - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
-  - "bundle exec rackup --daemonize --pid ./rackup.pid"
-  - "sleep 3"
 
 script:
-  - "bundle exec rspec spec/api/ spec/lib/"
+  - "bundle exec rspec spec/api/ spec/lib/ spec/web/"
   - "bundle exec rubocop -D"
   - "bundle exec rake preprocess_assets:production"
-  - "bundle exec rspec spec/web/"
-  - "kill $(cat rackup.pid)"
 
 gemfile:
   - Gemfile
