@@ -91,7 +91,13 @@
                 "summer": false,
                 "color": "#1aa1cc",
                 "icon": "app/vendor/laclasse-common-client/images/05_validationcompetences.svg",
-                "index": 14 }
+                "index": 14 },
+            "TABLETS": {
+                "hidden": [],
+                "summer": false,
+                "color": "#e8c254",
+                "icon": "app/vendor/laclasse-common-client/images/14_classeultramobile.svg",
+                "index": 15 }
             }
     },
     "news_feed": [
