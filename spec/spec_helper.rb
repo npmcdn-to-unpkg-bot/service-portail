@@ -12,7 +12,7 @@ require_relative '../app'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
 # from spec/support/ and its subdirectories.
-Dir[File.expand_path('spec/support/**/*.rb')].each { |f| require f }
+# Dir[ File.expand_path( 'spec/support/**/*.rb' ) ].each { |f| require f }
 
 RSpec.configure do |config|
   config.include Capybara::DSL

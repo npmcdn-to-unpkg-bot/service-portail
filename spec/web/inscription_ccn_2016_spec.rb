@@ -1,4 +1,5 @@
 # coding: utf-8
+
 require_relative '../spec_helper'
 
 feature SinatraApp do
@@ -6,7 +7,6 @@ feature SinatraApp do
 
   it 'loads the page Inscription CCNs 2016-2017' do
     visit 'http://localhost:9292/portail/inscription_CCN_2016/index.html'
-    p page.html
     expect(page).to have_content 'PRÉ-INSCRIPTIONS POUR LA RENTRÉE 2016-2017 !'
   end
 end
