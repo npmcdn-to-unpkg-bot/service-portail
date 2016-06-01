@@ -17,9 +17,6 @@ install:
 before_script:
   - "cp config/options.rb.sample config/options.rb"
   - "cp config/portail.json.sample config/portail.json"
-  # - "export DISPLAY=:99.0"
-  # - "sh -e /etc/init.d/xvfb -screen 0 1280x800x24 start"
-  # - "sleep 3"
   - "bundle exec rake server & "
   - "sleep 3"
 
@@ -27,7 +24,7 @@ script:
   - "bundle exec rspec spec/api/ spec/lib/"
   - "bundle exec rubocop -D"
   - "bundle exec rake preprocess_assets:production"
-  - xvfb-run --server-args="-screen 0 1024x768x24" bundle exec rspec spec/web/
+  - "bundle exec rspec spec/web/"
 
 gemfile:
   - Gemfile
