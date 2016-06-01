@@ -25,11 +25,7 @@ group :development do
   gem 'rspec'
   gem 'css2less'
   gem 'pry'
-  gem 'rb-fsevent'
-  gem 'rb-inotify'
   gem 'sass'
-  gem 'shotgun'
-  gem 'simplecov'
   gem 'therubyracer' # used when no node.js is install on computer
   gem 'uglifier'
   gem 'rubocop'
