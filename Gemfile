@@ -34,5 +34,6 @@ group :development do
   gem 'uglifier'
   gem 'rubocop'
 
+  gem 'selenium-webdriver'
   gem 'capybara'
 end
