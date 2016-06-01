@@ -18,7 +18,7 @@ before_script:
   - "cp config/options.rb.sample config/options.rb"
   - "cp config/portail.json.sample config/portail.json"
   - "export DISPLAY=:99.0"
-  - "sh -e /etc/init.d/xvfb start"
+  - "sh -e /etc/init.d/xvfb -screen 0 1280x800x24 start"
   - "sleep 3"
   - "bundle exec rake server & "
   - "sleep 1"
