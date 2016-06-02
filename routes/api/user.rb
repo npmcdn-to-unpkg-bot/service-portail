@@ -58,7 +58,7 @@ module Portail
             content_type :json
 
             AnnuaireWrapper::User::Avatar.update( user[:uid],
-                                                  params[:image] ) if params[:image]
+                                                  params[:file] ) if params[:file]
 
             init_current_user( user[:uid] )
 
@@ -98,19 +98,19 @@ module Portail
             regroupements = AnnuaireWrapper::User::Regroupements.query( user[:uid] )
             regroupements = [ regroupements[ 'classes' ],
                               regroupements[ 'groupes_eleves' ] ]
-                            .flatten
-                            .reject do |regroupement|
+                              .flatten
+                              .reject do |regroupement|
               regroupement[ 'etablissement_code' ] != user[:user_detailed]['profil_actif']['etablissement_code_uai']
             end
-                            .each do |regroupement|
+                              .each do |regroupement|
               regroupement[ 'id' ] =  regroupement.key?( 'classe_id' ) ? regroupement['classe_id'] : regroupement['groupe_id']
               regroupement[ 'libelle' ] = regroupement.key?( 'classe_libelle' ) ? regroupement['classe_libelle'] : regroupement['groupe_libelle']
               regroupement[ 'type' ] = regroupement.key?( 'classe_id' ) ? 'classe' : 'groupe_eleve'
             end
-                            .uniq { |regroupement| regroupement['id'] }
-                            .sort_by { |regroupement| regroupement['libelle'].to_s }
-                            .reverse
-                            .map do |regroupement|
+                              .uniq { |regroupement| regroupement['id'] }
+                              .sort_by { |regroupement| regroupement['libelle'].to_s }
+                              .reverse
+                              .map do |regroupement|
               { libelle: regroupement['libelle'],
                 id: regroupement['id'],
                 etablissement_nom: regroupement['etablissement_nom'],
@@ -128,8 +128,8 @@ module Portail
             content_type :json
 
             eleves = AnnuaireWrapper::Etablissement
-                     .regroupement_detail( params[:id] )['eleves']
-                     .map do |eleve|
+                       .regroupement_detail( params[:id] )['eleves']
+                       .map do |eleve|
               eleve[ 'avatar' ] = ANNUAIRE[:url].gsub( %r{/api}, '/' ) + eleve[ 'avatar' ]
               eleve
             end
