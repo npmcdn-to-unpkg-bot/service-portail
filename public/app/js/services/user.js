@@ -65,8 +65,8 @@ angular.module( 'portailApp' )
 
                     this.avatar = { upload: function( file ) {
                         var fd = new FormData();
-                        fd.append( 'file', file );
-                        fd.append( 'fileFormDataName', 'file' );
+                        fd.append( 'image', file );
+                        fd.append( 'fileFormDataName', 'image' );
 
                         return $http.post( APP_PATH + '/api/user/avatar', fd, {
                             transformRequest: angular.identity,
