@@ -114,20 +114,24 @@ angular.module( 'portailApp' )
                                }
                            } )
                                .result.then( function( new_apps ) {
-                                   _(new_apps).each( function( new_app ) {
-                                       var recipient = _($scope.cases).findWhere( function( c ) { return !_(c.app).has( 'libelle' ); } );
-                                       recipient.app = { libelle: 'dummy placeholder' };
-                                       new_app.index = recipient.index;
+                                   var empty_tiles = _($scope.cases).select( function( c ) { return !_(c.app).has( 'libelle' ); } );
 
-                                       new_app.dirty = true;
-                                       new_app.configure = true;
-                                       new_app.active = true;
-                                       new_app.to_delete = false;
-                                       console.log(new_app)
-                                       new_app.$save().then( function() {
-                                           _($scope.cases).findWhere( function( c ) { return c.index == new_app.index; } ).app = tool_app( new_app );
-                                           console.log($scope.cases)
-                                       } );
+                                   _(new_apps).each( function( new_app ) {
+                                       if ( !_(empty_tiles).isEmpty() ) {
+                                           var recipient = empty_tiles.shift();
+
+                                           new_app.index = recipient.index;
+                                           new_app.dirty = true;
+                                           new_app.configure = true;
+                                           new_app.active = true;
+                                           new_app.to_delete = false;
+
+                                           // recipient.app = tool_app( new_app );
+
+                                           new_app.$save().then( function() {
+                                               recipient.app = tool_app( new_app );
+                                           } );
+                                       }
                                    } );
                                } );
 
