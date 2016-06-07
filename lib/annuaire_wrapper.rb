@@ -76,7 +76,7 @@ module AnnuaireWrapper
 
       # Modification avatar
       def update( uid, image )
-        return [] if image.empty?
+        # return [] if image.empty?
 
         new_filename = "#{image[:tempfile].path}_#{image[:filename]}"
         File.rename image[:tempfile], new_filename
@@ -85,7 +85,7 @@ module AnnuaireWrapper
                                                                        {},
                                                                        image: File.open( new_filename ) )
 
-        File.delete new_filename
+        File.delete( new_filename )
 
         response
       end
