@@ -71,10 +71,10 @@ module Portail
             duplicates.each do |i|
               next if free_indexes.empty?
 
-              app = apps.reverse.find { |a| a['index'] == i }
-              app['index'] = free_indexes.pop
+              dup_app = apps.reverse.find { |a| a['index'] == i }
+              dup_app['index'] = free_indexes.pop
 
-              AnnuaireWrapper::Etablissement::Apps.update( app['id'], app )
+              AnnuaireWrapper::Etablissement::Apps.update( dup_app['id'], dup_app )
             end
 
             json apps
