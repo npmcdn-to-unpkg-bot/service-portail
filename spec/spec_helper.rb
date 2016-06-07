@@ -34,5 +34,4 @@ MOCKED_LOGGED_RACK_SESSION = { authenticated: true,
                                                roles_max_priority_etab_actif: 'ADM_ETB',
                                                user_detailed: { 'profil_actif' => { 'etablissement_code_uai' => '012345Z' } } },
                                extra: {},
-                               info: {}
-                             }.freeze
+                               info: {} }.freeze
