@@ -30,9 +30,9 @@
 </div>
 <div class="modal-footer">
         <button class="btn btn-default" data-ng-click="cancel()">
-                <span class="glyphicon glyphicon-remove-sign"></span> Annuler
+            <span class="glyphicon glyphicon-remove-sign"></span> <span data-ng-if="apps_selected">Annuler</span><span data-ng-if="!apps_selected">Fermer</span>
         </button>
-        <button class="btn btn-success" data-ng-click="ok()">
-                <span class="glyphicon glyphicon-ok-sign"></span> Valider
+        <button class="btn btn-success" data-ng-click="ok()" data-ng-if="apps_selected">
+            <span class="glyphicon glyphicon-ok-sign"></span> Valider
         </button>
 </div>
