@@ -29,17 +29,16 @@ angular.module( 'portailApp' )
                                                              color: '',
                                                              active: true } ) );
                            } );
-                       $scope.selected = { apps: null };
+
+                       $scope.apps_selected = false;
 
                        $scope.selected = function( app ) {
-                           _($scope.apps).each( function( app ) {
-                               app.selected = false;
-                           } );
-                           app.selected = true;
+                           app.selected = !app.selected;
+                           $scope.apps_selected = _($scope.apps).select( { selected: true } ).length > 0;
                        };
 
                        $scope.ok = function () {
-                           $uibModalInstance.close( _($scope.apps).findWhere( { selected: true } ) );
+                           $uibModalInstance.close( _($scope.apps).select( { selected: true } ) );
                        };
 
                        $scope.cancel = function () {
