@@ -126,8 +126,6 @@ angular.module( 'portailApp' )
                                            new_app.active = true;
                                            new_app.to_delete = false;
 
-                                           // recipient.app = tool_app( new_app );
-
                                            new_app.$save().then( function() {
                                                recipient.app = tool_app( new_app );
                                            } );
