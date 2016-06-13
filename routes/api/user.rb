@@ -32,16 +32,15 @@ module Portail
             param :new_password, String, required: false
             # param :bloque,         TrueClass, required: false
 
-            wrong_password = false
+            good_password = false
             if params[:previous_password]
               if AnnuaireWrapper::User.check_password( user[:login], params[:previous_password] )
+                good_password = true
                 params['password'] = params[:new_password]
-              else
-                wrong_password = true
               end
             end
 
-            unless wrong_password
+            if good_password
               AnnuaireWrapper::User.put( user[:uid], params )
 
               init_current_user( user[:uid] )
