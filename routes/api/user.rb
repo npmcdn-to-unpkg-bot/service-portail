@@ -4,6 +4,8 @@ module Portail
   module Routes
     module Api
       module User
+        # rubocop:disable Metrics/CyclomaticComplexity
+        # rubocop:disable Metrics/PerceivedComplexity
         def self.registered( app )
           #
           # Gestion de session côtế client
@@ -165,6 +167,8 @@ module Portail
             json colorize( ressources )
           end
         end
+        # rubocop:enable Metrics/PerceivedComplexity
+        # rubocop:enable Metrics/CyclomaticComplexity
       end
     end
   end
