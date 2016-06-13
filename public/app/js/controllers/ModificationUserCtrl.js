@@ -121,6 +121,28 @@ angular.module( 'portailApp' )
                            } );
                        };
 
+                       $scope.upload_avatar = function() {
+                           $scope.operation_on_avatar = true;
+                           toastr.info( 'Mise à jour de l\'avatar.');
+
+                           currentUser.avatar.upload( $scope.uploaded_avatar )
+                               .then( function( data, status, headers, config ) {
+                                   $scope.operation_on_avatar = false;
+                                   currentUser.reset_cache();
+                               });
+                       };
+
+                       $scope.delete_avatar = function() {
+                           $scope.operation_on_avatar = true;
+                           toastr.info( 'Suppression de l\'avatar.');
+
+                           currentUser.avatar.delete()
+                               .then( function( response ) {
+                                   $scope.operation_on_avatar = false;
+                                   currentUser.reset_cache();
+                               } );
+                       };
+
                        $scope.fermer = function( sauvegarder ) {
                            if ( sauvegarder && dirty ) {
                                var password_confirmed = true;
@@ -141,33 +163,35 @@ angular.module( 'portailApp' )
                                    $scope.current_user.$update().then( function() {
                                        currentUser.reset_cache();
 
-                                       if ( !_($scope.uploaded_avatar).isNull() &&
-                                            $scope.uploaded_avatar.type != "" &&
-                                            !_($scope.uploaded_avatar.type.match( "image/.*" )).isNull() ) {
-                                           toastr.info( 'Mise à jour de l\'avatar.');
+                                       // if ( !_($scope.uploaded_avatar).isNull() &&
+                                       //      $scope.uploaded_avatar.type != "" &&
+                                       //      !_($scope.uploaded_avatar.type.match( "image/.*" )).isNull() ) {
+                                       //     // toastr.info( 'Mise à jour de l\'avatar.');
 
-                                           $scope.operation_on_avatar = true;
-                                           currentUser.avatar.upload( $scope.uploaded_avatar )
-                                               .success( function( data, status, headers, config ) {
-                                                   $scope.operation_on_avatar = false;
-                                                   currentUser.reset_cache();
-                                                   $state.go( 'portail.logged', {}, { reload: true } );
-                                               }).error( function( data, status, headers, config ) {
-                                                   console.log('error status: ' + status);
-                                               });
-                                       } else if ( $scope.apply_reset_avatar ) {
-                                           $scope.operation_on_avatar = true;
-                                           toastr.info( 'Suppression de l\'avatar.');
-                                           currentUser.avatar.delete()
-                                               .then( function( response ) {
-                                                   $scope.operation_on_avatar = false;
-                                                   currentUser.reset_cache();
-                                                   $state.go( 'portail.logged', {}, { reload: true } );
-                                               } );
-                                       } else {
-                                           currentUser.reset_cache();
-                                           $state.go( 'portail.logged', {}, { reload: true } );
-                                       }
+                                       //     // $scope.operation_on_avatar = true;
+                                       //     // currentUser.avatar.upload( $scope.uploaded_avatar )
+                                       //     //     .success( function( data, status, headers, config ) {
+                                       //     //         $scope.operation_on_avatar = false;
+                                       //     //         currentUser.reset_cache();
+                                       //     //         $state.go( 'portail.logged', {}, { reload: true } );
+                                       //     //     }).error( function( data, status, headers, config ) {
+                                       //     //         console.log('error status: ' + status);
+                                       //     //     });
+                                       //     $scope.upload_avatar();
+                                       // } else if ( $scope.apply_reset_avatar ) {
+                                       //     // $scope.operation_on_avatar = true;
+                                       //     // toastr.info( 'Suppression de l\'avatar.');
+                                       //     // currentUser.avatar.delete()
+                                       //     //     .then( function( response ) {
+                                       //     //         $scope.operation_on_avatar = false;
+                                       //     //         currentUser.reset_cache();
+                                       //     //         $state.go( 'portail.logged', {}, { reload: true } );
+                                       //     //     } );
+                                       //     $scope.delete_avatar();
+                                       // } else {
+                                       currentUser.reset_cache();
+                                       $state.go( 'portail.logged', {}, { reload: true } );
+                                       // }
                                    } );
                                }
                            } else {

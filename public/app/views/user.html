@@ -15,9 +15,16 @@
                 <div class="row">
 
                     <div class="avatar form-group">
+                        <button class="delete-avatar" data-ng-click="delete_avatar()">x</button>
+
                         <img draggable="false" class="svg"
                              data-ng-src="{{avatar.image ? avatar.image : current_user.avatar}}" />
                         <input type="file" ng-file-select="onFileSelect($files)" >
+
+                        <footer>
+                            <button data-ng-if="avatar.image"
+                                    data-ng-click="upload_avatar()">Valider l'avatar</button>
+                        </footer>
                     </div>
 
                     <div class="form-group">

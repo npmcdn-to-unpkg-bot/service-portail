@@ -710,6 +710,13 @@ body {
     }
     .avatar {
         float: right;
+        text-align: center;
+        background-color: #f1f1f1;
+        padding-top: 6px;
+        .delete-avatar {
+            font-weight: bold;
+            position: absolute;
+        }
         svg {
             background: blue;
             fill: #FF0;
