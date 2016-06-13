@@ -58,7 +58,7 @@ module Portail
             content_type :json
 
             AnnuaireWrapper::User::Avatar.update( user[:uid],
-                                                  params[:file] ) if params[:file]
+                                                  params[:image] ) if params[:image]
 
             init_current_user( user[:uid] )
 

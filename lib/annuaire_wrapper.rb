@@ -78,8 +78,8 @@ module AnnuaireWrapper
       def update( uid, image )
         # return [] if image.empty?
 
-        new_filename = "#{image[:tempfile].path}_#{image[:filename]}"
-        File.rename image[:tempfile], new_filename
+        new_filename = "#{uid}.#{image[:type].split('/').last}"
+        FileUtils.mv( image[:tempfile], new_filename )
 
         response = Laclasse::CrossApp::Sender.post_raw_request_signed( :service_annuaire_user, "#{uid}/upload/avatar",
                                                                        {},
