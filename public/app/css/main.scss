@@ -708,34 +708,37 @@ body {
             width: 100%;
         }
     }
-    .avatar {
+    .avatar-container {
         float: right;
-        text-align: center;
-        background-color: #f1f1f1;
-        padding-top: 6px;
-        .delete-avatar {
-            font-weight: bold;
-            position: absolute;
-        }
-        svg {
-            background: blue;
-            fill: #FF0;
-        }
-        img {
-            background-color: #1aa1cc;
-            margin-bottom: 10px;
-            min-width: 256px;
-            max-width: 256px;
-            width: 256px;
-        }
-        .reset img {
-            opacity: 0.25;
-        }
-        button {
-            background: none repeat scroll 0 0 #fff;
-            border: 1px solid;
-            border-radius: 0;
-            padding: 6px 12px;
+        .avatar {
+            text-align: center;
+            background-color: #f1f1f1;
+            border: 1px solid #ccc;
+            padding-top: 6px;
+            .delete-avatar {
+                font-weight: bold;
+                position: absolute;
+            }
+            svg {
+                background: blue;
+                fill: #FF0;
+            }
+            img {
+                background-color: #1aa1cc;
+                margin-bottom: 10px;
+                min-width: 256px;
+                max-width: 256px;
+                width: 256px;
+            }
+            .reset img {
+                opacity: 0.25;
+            }
+            button {
+                background: none repeat scroll 0 0 #fff;
+                border: 1px solid;
+                border-radius: 0;
+                padding: 6px 12px;
+            }
         }
     }
     footer {
