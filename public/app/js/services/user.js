@@ -45,18 +45,21 @@ angular.module( 'portailApp' )
 
 angular.module( 'portailApp' )
     .service( 'currentUser',
-              [ '$http', '$resource', 'APP_PATH', 'User', 'UserRessources', 'UserRegroupements',
-                function( $http, $resource, APP_PATH, User, UserRessources, UserRegroupements ) {
+              [ '$rootScope', '$http', '$resource', 'APP_PATH', 'User', 'UserRessources', 'UserRegroupements',
+                function( $rootScope, $http, $resource, APP_PATH, User, UserRessources, UserRegroupements ) {
                     var user = null;
 
+                    this.force_refresh = function( force_reload ) {
+                        user = User.get( { force_refresh: force_reload } ).$promise;
+                        user.then( function( response ) {
+                            $rootScope.current_user = response;
+                        } );
+                    };
                     this.get = function( force_reload ) {
                         if ( _(user).isNull() || force_reload ) {
-                            user = User.get( { force_refresh: force_reload } ).$promise;
+                            this.force_refresh( force_reload );
                         }
                         return user;
-                    };
-                    this.reset_cache = function() {
-                        user = null;
                     };
 
                     this.ressources = function() { return UserRessources.query().$promise; };

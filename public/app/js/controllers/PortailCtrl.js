@@ -8,7 +8,6 @@ angular.module( 'portailApp' )
                  [ '$scope', '$rootScope', '$sce', '$state', '$uibModal', 'moment', 'toastr', 'current_user', 'APP_PATH', 'RANDOM_IMAGES', 'news',
                    function( $scope, $rootScope, $sce, $state, $uibModal, moment, toastr, current_user, APP_PATH, RANDOM_IMAGES, news ) {
                        $scope.prefix = APP_PATH;
-                       $scope.current_user = current_user;
 
                        $scope.go_home = function() {
                            $state.go( 'portail.logged' );
@@ -49,20 +48,20 @@ angular.module( 'portailApp' )
 
                        retrieve_news( false );
 
-                       if ( $scope.current_user.default_password ) {
+                       if ( $rootScope.current_user.default_password ) {
                            $uibModal.open( {
                                templateUrl: 'views/popup_change_password.html',
                                resolve: { current_user: function() { return current_user; } },
                                controller: [ '$scope', '$uibModalInstance', 'current_user',
                                              function( $scope, $uibModalInstance, current_user ) {
-                                                 $scope.current_user = current_user;
+                                                 $rootScope.current_user = current_user;
 
                                                  $scope.fermer = function( sauvegarder ) {
                                                      var password_confirmed = true;
                                                      if ( !_($scope.password.old).isEmpty() && !_($scope.password.new1).isEmpty() ) {
                                                          if ( $scope.password.new1 == $scope.password.new2 ) {
-                                                             $scope.current_user.previous_password = $scope.password.old;
-                                                             $scope.current_user.new_password = $scope.password.new1;
+                                                             $rootScope.current_user.previous_password = $scope.password.old;
+                                                             $rootScope.current_user.new_password = $scope.password.new1;
                                                          } else {
                                                              password_confirmed = false;
                                                              toastr.error( 'Confirmation de mot de passe incorrecte.',
@@ -72,7 +71,7 @@ angular.module( 'portailApp' )
                                                      }
 
                                                      if ( password_confirmed ) {
-                                                         $scope.current_user.$update()
+                                                         $rootScope.current_user.$update()
                                                              .then( function() {
                                                                  $uibModalInstance.close( $scope );
                                                              } );
@@ -83,7 +82,7 @@ angular.module( 'portailApp' )
                                keyboard: false
                            } )
                                .result.then( function( scope_popup ) {
-                                   $scope.current_user = scope_popup.current_user;
+                                   $rootScope.current_user = scope_popup.current_user;
                                } );
                        }
                    }

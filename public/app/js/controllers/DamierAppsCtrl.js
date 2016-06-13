@@ -5,8 +5,7 @@ angular.module( 'portailApp' )
                  [ '$scope', '$rootScope', '$uibModal', '$log', '$q', '$http', '$window', 'current_user', 'apps', 'Apps', 'APP_PATH', 'CASES', 'COULEURS', 'log',
                    function( $scope, $rootScope, $uibModal, $log, $q, $http, $window, current_user, apps, Apps, APP_PATH, CASES, COULEURS, log ) {
                        $scope.prefix = APP_PATH;
-                       $scope.current_user = current_user;
-                       //$scope.modification = false;
+
                        var apps_indexes_changed = false;
 
                        var sortable_callback = function( event ) {
@@ -37,8 +36,8 @@ angular.module( 'portailApp' )
                            app.to_delete = false;
                            app.portail = app.url.match( /^app\..*/ ) !== null;
                            app.external = ( app.type == 'EXTERNAL' ) || app.url.match( /^http.*/ ) !== null;
-                           app.show = !_(app.hidden).includes( $scope.current_user.profil_actif.profil_id );
-                           app.highlight = app.application_id == 'CCNUM' && $scope.current_user.profil_actif.profil_id != 'TUT' && $scope.current_user.profil_actif.profil_id != 'ELV';
+                           app.show = !_(app.hidden).includes( $rootScope.current_user.profil_actif.profil_id );
+                           app.highlight = app.application_id == 'CCNUM' && $rootScope.current_user.profil_actif.profil_id != 'TUT' && $rootScope.current_user.profil_actif.profil_id != 'ELV';
 
                            app.status = { app_id: app.application_id,
                                           app_version: '',

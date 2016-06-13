@@ -2,8 +2,8 @@
 
 angular.module( 'portailApp' )
     .controller( 'ModificationUserCtrl',
-                 [ '$scope', '$state', 'toastr', 'current_user', 'currentUser', 'apps', 'APP_PATH',
-                   function( $scope, $state, toastr, current_user, currentUser, apps, APP_PATH ) {
+                 [ '$scope', '$rootScope', '$state', 'toastr', 'current_user', 'currentUser', 'apps', 'APP_PATH',
+                   function( $scope, $rootScope, $state, toastr, current_user, currentUser, apps, APP_PATH ) {
                        var dirty = false;
 
                        $scope.prefix = APP_PATH;
@@ -38,12 +38,11 @@ angular.module( 'portailApp' )
                            } );
                        $scope.uploaded_avatar = null;
 
-                       $scope.current_user = current_user;
-                       $scope.current_user.hide_email = $scope.current_user.profil_actif.profil_id === 'TUT' && !_( $scope.current_user.info.MailAdressePrincipal.match( /laclasse.com$/ ) ).isNull();
+                       $rootScope.current_user.hide_email = $rootScope.current_user.profil_actif.profil_id === 'TUT' && !_( $rootScope.current_user.info.MailAdressePrincipal.match( /laclasse.com$/ ) ).isNull();
                        $scope.apply_reset_avatar = false;
-                       $scope.current_user.editable = _($scope.current_user.id_jointure_aaf).isNull();
+                       $rootScope.current_user.editable = _($rootScope.current_user.id_jointure_aaf).isNull();
 
-                       $scope.current_user.date_naissance = new Date( $scope.current_user.date_naissance );
+                       $rootScope.current_user.date_naissance = new Date( $rootScope.current_user.date_naissance );
                        $scope.progress_percentage = 0;
 
                        var blobToDataURL = function( blob, callback ) {
@@ -64,7 +63,7 @@ angular.module( 'portailApp' )
                                           function( dataURL ) {
                                               $scope.avatar.image = dataURL;
                                               $scope.apply_reset_avatar = false;
-                                              $scope.current_user.new_avatar = file;
+                                              $rootScope.current_user.new_avatar = file;
                                               $scope.uploaded_avatar = file;
                                               $scope.mark_as_dirty();
 
@@ -100,7 +99,7 @@ angular.module( 'portailApp' )
 
                                                   canvas.toBlob( function( blob ) {
                                                       blob.name = file.name;
-                                                      $scope.current_user.new_avatar = blob;
+                                                      $rootScope.current_user.new_avatar = blob;
                                                       $scope.uploaded_avatar = blob;
                                                   },
                                                                  'image/png' );
@@ -128,7 +127,8 @@ angular.module( 'portailApp' )
                            currentUser.avatar.upload( $scope.uploaded_avatar )
                                .then( function( data, status, headers, config ) {
                                    $scope.operation_on_avatar = false;
-                                   currentUser.reset_cache();
+                                   $scope.uploaded_avatar = null;
+                                   currentUser.force_refresh();
                                });
                        };
 
@@ -139,7 +139,8 @@ angular.module( 'portailApp' )
                            currentUser.avatar.delete()
                                .then( function( response ) {
                                    $scope.operation_on_avatar = false;
-                                   currentUser.reset_cache();
+                                   $scope.uploaded_avatar = null;
+                                   currentUser.force_refresh();
                                } );
                        };
 
@@ -148,8 +149,8 @@ angular.module( 'portailApp' )
                                var password_confirmed = true;
                                if ( !_($scope.password.old).isEmpty() && !_($scope.password.new1).isEmpty() ) {
                                    if ( $scope.password.new1 == $scope.password.new2 ) {
-                                       $scope.current_user.previous_password = $scope.password.old;
-                                       $scope.current_user.new_password = $scope.password.new1;
+                                       $rootScope.current_user.previous_password = $scope.password.old;
+                                       $rootScope.current_user.new_password = $scope.password.new1;
                                    } else {
                                        password_confirmed = false;
                                        toastr.error( 'Confirmation de mot de passe incorrecte.',
@@ -160,38 +161,19 @@ angular.module( 'portailApp' )
 
                                if ( password_confirmed ) {
                                    toastr.info( 'Mise à jour du profil.');
-                                   $scope.current_user.$update().then( function() {
-                                       currentUser.reset_cache();
+                                   $rootScope.current_user.$update().then( function() {
+                                       currentUser.force_refresh();
 
-                                       // if ( !_($scope.uploaded_avatar).isNull() &&
-                                       //      $scope.uploaded_avatar.type != "" &&
-                                       //      !_($scope.uploaded_avatar.type.match( "image/.*" )).isNull() ) {
-                                       //     // toastr.info( 'Mise à jour de l\'avatar.');
-
-                                       //     // $scope.operation_on_avatar = true;
-                                       //     // currentUser.avatar.upload( $scope.uploaded_avatar )
-                                       //     //     .success( function( data, status, headers, config ) {
-                                       //     //         $scope.operation_on_avatar = false;
-                                       //     //         currentUser.reset_cache();
-                                       //     //         $state.go( 'portail.logged', {}, { reload: true } );
-                                       //     //     }).error( function( data, status, headers, config ) {
-                                       //     //         console.log('error status: ' + status);
-                                       //     //     });
-                                       //     $scope.upload_avatar();
-                                       // } else if ( $scope.apply_reset_avatar ) {
-                                       //     // $scope.operation_on_avatar = true;
-                                       //     // toastr.info( 'Suppression de l\'avatar.');
-                                       //     // currentUser.avatar.delete()
-                                       //     //     .then( function( response ) {
-                                       //     //         $scope.operation_on_avatar = false;
-                                       //     //         currentUser.reset_cache();
-                                       //     //         $state.go( 'portail.logged', {}, { reload: true } );
-                                       //     //     } );
-                                       //     $scope.delete_avatar();
-                                       // } else {
-                                       currentUser.reset_cache();
-                                       $state.go( 'portail.logged', {}, { reload: true } );
-                                       // }
+                                       if ( !_($scope.uploaded_avatar).isNull() &&
+                                            $scope.uploaded_avatar.type != "" &&
+                                            !_($scope.uploaded_avatar.type.match( "image/.*" )).isNull() ) {
+                                           $scope.upload_avatar();
+                                       } else if ( $scope.apply_reset_avatar ) {
+                                           $scope.delete_avatar();
+                                       } else {
+                                           currentUser.force_refresh();
+                                           $state.go( 'portail.logged', {}, { reload: true } );
+                                       }
                                    } );
                                }
                            } else {
