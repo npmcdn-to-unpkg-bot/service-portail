@@ -5,7 +5,7 @@ angular.module( 'portailApp' )
               [ '$resource', 'APP_PATH',
                 function( $resource, APP_PATH ) {
                     return $resource( APP_PATH + '/api/user',
-                                      {  },
+                                      { force_refresh: '@force_refresh' },
                                       { update: { method: 'PUT',
                                                   params: { nom: '@nom',
                                                             prenom: '@prenom',
@@ -51,7 +51,7 @@ angular.module( 'portailApp' )
 
                     this.get = function( force_reload ) {
                         if ( _(user).isNull() || force_reload ) {
-                            user = User.get().$promise;
+                            user = User.get( { force_refresh: force_reload } ).$promise;
                         }
                         return user;
                     };

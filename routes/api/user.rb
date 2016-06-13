@@ -10,10 +10,13 @@ module Portail
           #
           app.get "#{APP_PATH}/api/user" do
             content_type :json
+            param :force_refresh, Sinatra::Param::Boolean, required: false
 
             return { user: '',
                      info: {},
                      is_logged: false }.to_json unless logged?
+
+            init_current_user( user[:uid] ) if params.key?( :force_refresh ) && params[:force_refresh]
 
             user_verbose.to_json
           end
