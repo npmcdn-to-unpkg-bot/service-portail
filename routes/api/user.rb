@@ -134,7 +134,8 @@ module Portail
             eleves = AnnuaireWrapper::Etablissement
                        .regroupement_detail( params[:id] )['eleves']
                        .map do |eleve|
-              eleve[ 'avatar' ] = ANNUAIRE[:url].gsub( %r{/api}, '/' ) + eleve[ 'avatar' ]
+              eleve[ 'avatar' ] = "#{ANNUAIRE[:url]}/avatar/#{eleve[ 'avatar' ]}"
+
               eleve
             end
 
