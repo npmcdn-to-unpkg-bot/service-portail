@@ -21,7 +21,7 @@
         </div>
     </div>
 
-    <div class="damier">
+    <div class="damier gris4">
         <div data-ng-repeat="regroupement in regroupements | filter:{ libelle: filters.text.regroupement } | orderBy:'type' | orderBy:'libelle'"
              class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in regroupement"
              data-ng-if="!eleves && ( ( regroupement.type == 'classe' && filters.regroupements_types.classes ) || ( regroupement.type == 'groupe_eleve' && filters.regroupements_types.groupes_eleves ) )">
@@ -56,8 +56,8 @@
                  class="avatar"
                  data-ng-src="{{eleve.avatar}}"
                  data-ng-if="eleve.avatar != ''"/>
-            <h1 class="trombi-last-name">{{eleve.nom}}</h1>
-            <h3 class="trombi-first-name">{{eleve.prenom}}</h3>
+            <h1 class="trombi-last-name gris4">{{eleve.nom}}</h1>
+            <h3 class="trombi-first-name gris4">{{eleve.prenom}}</h3>
 
             <div class="actions" data-ng-if="eleve.nom && actions.people.length > 0">
                 <button class="btn btn-default"
