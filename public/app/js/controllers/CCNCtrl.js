@@ -48,7 +48,7 @@ angular.module( 'portailApp' )
                              couleur: 'gris1' } ];
                        $scope.thematiques_actuelles.push( additional_tile );
                        $scope.thematiques_actuelles = $scope.thematiques_actuelles.concat( [ { couleur: 'vert-moins' },
-                                                                                             { couleur: 'rouge-moins' },
+                                                                                             { couleur: 'bleu-moins' },
                                                                                              { couleur: 'jaune-moins' },
                                                                                              { couleur: 'violet-moins' },
                                                                                              { couleur: 'bleu-moins' },
