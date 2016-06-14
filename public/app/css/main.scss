@@ -261,6 +261,7 @@ body {
     .case {
         float: left;
         position: relative;
+        &.highlight-ccn::before,
         .highlight-ccn::before {
             content: "Inscriptions 2016-2017";
             color: white;

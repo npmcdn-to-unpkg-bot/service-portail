@@ -2,10 +2,18 @@
 
 angular.module( 'portailApp' )
     .controller( 'CCNCtrl',
-                 [ '$scope', '$window', 'APP_PATH', 'log',
-                   function( $scope, $window, APP_PATH, log ) {
+                 [ '$rootScope', '$scope', '$window', 'APP_PATH', 'log',
+                   function( $rootScope, $scope, $window, APP_PATH, log ) {
                        $scope.prefix = APP_PATH;
                        $scope.display_archives = true;
+
+                       var additional_tile = { couleur: 'bleu-moins' };
+                       if ( $rootScope.current_user.profil_actif.profil_id != 'TUT' && $rootScope.current_user.profil_actif.profil_id != 'ELV' ) {
+                           additional_tile = { couleur: 'bleu inscription highlight-ccn',
+                                               url: $scope.prefix + '/inscription_CCN_2016/index.html',
+                                               icon: '/app/vendor/laclasse-common-client/images/06_thematiques.svg',
+                                               nom: 'Inscription aux projets'};
+                       }
 
                        $scope.thematiques_actuelles = [
                            { nom: '14-18',
@@ -32,10 +40,29 @@ angular.module( 'portailApp' )
                              description: 'Représentations cartographiques de l\'espace vécu',
                              url: 'http://habiter.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
                              icon: '/app/vendor/laclasse-common-client/images/thematiques/icon_habiter.svg',
-                             couleur: 'vert' }
-                       ];
+                             couleur: 'vert' },
+                           { nom: 'Projets archivés',
+                             description: 'Projets archivés',
+                             url: 'toggle_archives',
+                             icon: '/app/vendor/laclasse-common-client/images/06_thematiques.svg',
+                             couleur: 'gris1' } ];
+                       $scope.thematiques_actuelles.push( additional_tile );
+                       $scope.thematiques_actuelles = $scope.thematiques_actuelles.concat( [ { couleur: 'vert-moins' },
+                                                                                             { couleur: 'rouge-moins' },
+                                                                                             { couleur: 'jaune-moins' },
+                                                                                             { couleur: 'violet-moins' },
+                                                                                             { couleur: 'bleu-moins' },
+                                                                                             { couleur: 'vert-moins' },
+                                                                                             { couleur: 'rouge-moins' },
+                                                                                             { couleur: 'bleu-moins' },
+                                                                                             { couleur: 'vert-moins' } ] );
 
                        $scope.thematiques_archivees = [
+                           { nom: '← Retour aux projets en cours',
+                             description: '← Retour aux projets en cours',
+                             url: 'toggle_archives',
+                             icon: '/app/vendor/laclasse-common-client/images/06_thematiques.svg',
+                             couleur: 'gris1' },
                            { nom: 'Philo',
                              description: 'Philo',
                              url: 'http://philo.laclasse.com/?url=spip.php%3Fpage%3Dsommaire&cicas=oui&domaine=v3.laclasse.com',
@@ -120,10 +147,15 @@ angular.module( 'portailApp' )
                              titre: ''
                            }
                        ];
+                       $scope.thematiques_archivees.push( additional_tile );
 
                        $scope.log_and_open_link = function( url ) {
-                           log.add( 'CCN', url, null );
-                           $window.open( url, 'laclasseexterne' );
+                           if ( url === 'toggle_archives' ) {
+                               $scope.toggle_archives();
+                           } else {
+                               log.add( 'CCN', url, null );
+                               $window.open( url, 'laclasseexterne' );
+                           }
                        };
 
                        $scope.toggle_archives = function() {
