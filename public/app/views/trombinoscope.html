@@ -6,10 +6,11 @@
             <i class="glyphicon glyphicon-arrow-left"></i> Retour à la liste des classes
         </button>
 
-        <div class="pull-right">
+        <div class="pull-left">
             <label data-ng-if="!eleves"><checkbox class="checkbox" data-ng-model="filters.regroupements_types.classes"></checkbox> Classes </label>
             <label data-ng-if="!eleves"><checkbox class="checkbox" data-ng-model="filters.regroupements_types.groupes_eleves"></checkbox> Groupes </label>
-
+        </div>
+        <div class="pull-right">
             <label>Filtre :
                 <input class="gris1"
                        data-ng-model="filters.text.regroupement"
@@ -24,6 +25,8 @@
     <div class="damier gris4">
         <div data-ng-repeat="regroupement in regroupements | filter:{ libelle: filters.text.regroupement } | orderBy:'type' | orderBy:'libelle'"
              class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in regroupement"
+             data-ng-class-odd="{'vert': regroupement.type == 'classe', 'bleu': regroupement.type == 'groupe_eleve'}"
+             data-ng-class-even="{'vert-moins': regroupement.type == 'classe', 'bleu-moins': regroupement.type == 'groupe_eleve'}"
              data-ng-if="!eleves && ( ( regroupement.type == 'classe' && filters.regroupements_types.classes ) || ( regroupement.type == 'groupe_eleve' && filters.regroupements_types.groupes_eleves ) )">
             <a title="Voir le trombinoscope du regroupement {{regroupement.libelle}}"
                data-ng-click="showElevesRegroupement( regroupement )"
@@ -44,6 +47,7 @@
         </div>
 
         <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in regroupement eleves"
+             data-ng-class="{'vert': regroupement.type == 'classe', 'bleu': regroupement.type == 'groupe_eleve'}"
              data-ng-if="eleves">
             <h1 class="classe-name">{{regroupement.libelle}}</h1>
             <h3 class="college-name">{{regroupement.etablissement_nom}}</h3>
@@ -51,13 +55,15 @@
 
         <div data-ng-repeat="eleve in eleves | filter:filters.text.user | orderBy:'nom'"
              class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in people"
+             data-ng-class-odd="'jaune'"
+             data-ng-class-even="'jaune-moins'"
              data-ng-if="eleves">
             <img draggable="false"
                  class="avatar"
                  data-ng-src="{{eleve.avatar}}"
                  data-ng-if="eleve.avatar != ''"/>
-            <h1 class="trombi-last-name gris4">{{eleve.nom}}</h1>
-            <h3 class="trombi-first-name gris4">{{eleve.prenom}}</h3>
+            <h1 class="trombi-last-name">{{eleve.nom}}</h1>
+            <h3 class="trombi-first-name">{{eleve.prenom}}</h3>
 
             <div class="actions" data-ng-if="eleve.nom && actions.people.length > 0">
                 <button class="btn btn-default"

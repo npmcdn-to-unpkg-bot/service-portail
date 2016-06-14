@@ -953,7 +953,7 @@ svg {
     .damier {
         height: calc( 100% - 6em );
         .petite.case {
-            opacity: 0.75;
+            opacity: 0.95;
             .avatar {
                 position: absolute;
                 top: 0;
@@ -979,24 +979,22 @@ svg {
             .trombi-first-name {
                 height: 60%;
             }
-            .college-name,
-            .trombi-last-name {
-                /* height: 40%; */
-            }
+            // .college-name,
+            // .trombi-last-name {
+            // }
             &.classe{
                 span {
                     height: auto;
                 }
             }
             &.regroupement {
-                background-color: #d8b84a;
                 &.eleves {
                     opacity: 1;
                 }
             }
-            &.people {
-                background-color: #c4c3a7;
-            }
+            // &.people {
+            //     background-color: #c4c3a7;
+            // }
             .actions {
                 display: none;
                 background-color: rgba(64, 64, 64, 0.5);
