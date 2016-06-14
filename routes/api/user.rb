@@ -121,8 +121,7 @@ module Portail
                 type: regroupement['type'] }
             end
 
-            # Associer les couleurs des carrés
-            json colorize( regroupements )
+            json regroupements
           end
 
           #
@@ -139,7 +138,7 @@ module Portail
               eleve
             end
 
-            json colorize( eleves )
+            json eleves
           end
 
           #
