@@ -227,7 +227,7 @@ module AnnuaireWrapper
     end
 
     def stats( params )
-      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_v2_logs, '/stats', params )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_v2_logs, 'stats', params )
     end
   end
 end
