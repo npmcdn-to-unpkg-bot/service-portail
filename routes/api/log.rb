@@ -15,17 +15,17 @@ module Portail
             data = {}
 
             if params.key?( 'from' )
-              data[:from] = params['from']
-              data[:until] = params['until']
+              data['from'] = params['from']
+              data['until'] = params['until']
             end
 
-            data[:uid] = user[:uid]
+            data['uid'] = user[:uid]
 
             stats = AnnuaireWrapper::Log.stats( data )
 
             uai_erasme = '0699990Z'
-            stats[:uai].delete( uai_erasme )
-            stats[:general][:uai].reject! { |item| item[:uai] == uai_erasme }
+            stats['uai'].delete( uai_erasme )
+            stats['general']['uai'].reject! { |item| item['uai'] == uai_erasme }
 
             stats.to_json
           end
