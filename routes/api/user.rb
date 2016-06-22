@@ -53,7 +53,7 @@ module Portail
 
             utilisateur = user_verbose
 
-            utilisateur[:wrong_password] = true if wrong_password
+            utilisateur[:wrong_password] = !good_password
 
             json utilisateur
           end
