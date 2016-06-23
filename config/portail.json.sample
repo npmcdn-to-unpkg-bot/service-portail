@@ -1,117 +1,132 @@
-{
-    "closed_for_summer": false,
-    "apps": {
-        "default": {
-            "MAIL": {
-                "hidden": [ "TUT" ],
-                "summer": true,
-                "color": "#1aa1cc",
-                "icon": "app/vendor/laclasse-common-client/images/01_messagerie.svg",
-                "index": 0 },
-            "DOC": {
-                "hidden": [],
-                "summer": false,
-                "color": "#e8c254",
-                "icon": "app/vendor/laclasse-common-client/images/02_documents.svg",
-                "index": 1 },
-            "CTXT": {
-                "hidden": [ "ETA", "COL" ],
-                "summer": false,
-                "color": "#9c75ab",
-                "icon": "app/vendor/laclasse-common-client/images/03_cahierdetextes.svg",
-                "index": 2 },
-            "TELESRV": {
-                "hidden": [],
-                "summer": false,
-                "color": "#80ba66",
-                "icon": "app/vendor/laclasse-common-client/images/04_notesabsences.svg",
-                "index": 3 },
-            "PRONOTE": {
-                "hidden": [],
-                "summer": false,
-                "color": "#eb5454",
-                "icon": "app/vendor/laclasse-common-client/images/04_notesabsences.svg",
-                "index": 4 },
-            "LPC": {
-                "hidden": [],
-                "summer": false,
-                "color": "#80ba66",
-                "icon": "app/vendor/laclasse-common-client/images/05_validationcompetences.svg",
-                "index": 5 },
-            "CCNUM": {
-                "hidden": [],
-                "summer": false,
-                "color": "#1aa1cc",
-                "icon": "app/vendor/laclasse-common-client/images/06_thematiques.svg",
-                "index": 6 },
-            "BLOGS": {
-                "hidden": [],
-                "summer": true,
-                "color": "#e8c254",
-                "icon": "app/vendor/laclasse-common-client/images/07_blogs.svg",
-                "index": 7 },
-            "GAR": {
-                "hidden": [],
-                "summer": false,
-                "color": "#9c75ab",
-                "icon": "app/vendor/laclasse-common-client/images/08_ressources.svg",
-                "index": 8 },
-            "TROMBI": {
-                "hidden": [],
-                "summer": false,
-                "color": "#1aa1cc",
-                "icon": "app/vendor/laclasse-common-client/images/09_trombi.svg",
-                "index": 9 },
-            "SUIVIELV": {
-                "hidden": [],
-                "summer": false,
-                "color": "#e8c254",
-                "icon": "app/vendor/laclasse-common-client/images/10_suivi.svg",
-                "index": 10 },
-            "PUBLI": {
-                "hidden": [ "ELV", "TUT" ],
-                "summer": true,
-                "color": "#eb5454",
-                "icon": "app/vendor/laclasse-common-client/images/11_publipostage.svg",
-                "index": 11 },
-            "AIDE": {
-                "hidden": [],
-                "summer": true,
-                "color": "#e8c254",
-                "icon": "app/vendor/laclasse-common-client/images/12_aide.svg",
-                "index": 12 },
-            "ADMIN": {
-                "hidden": [ "ELV", "TUT" ],
-                "summer": true,
-                "color": "#eb5454",
-                "icon": "app/vendor/laclasse-common-client/images/13_admin.svg",
-                "index": 13 },
-            "QUIZ": {
-                "hidden": [],
-                "summer": false,
-                "color": "#1aa1cc",
-                "icon": "app/vendor/laclasse-common-client/images/05_validationcompetences.svg",
-                "index": 14 },
-            "TABLETS": {
-                "hidden": [],
-                "summer": false,
-                "color": "#e8c254",
-                "icon": "app/vendor/laclasse-common-client/images/14_classeultramobile.svg",
-                "index": 15 }
-            }
-    },
-    "news_feed": [
-        {
-            "nb": 1,
-            "icon": "",
-            "flux": "http://ent-laclasse.blogs.laclasse.com/category/editos/feed/",
-            "title": "Editoriaux d'Erasme"
-        },
-        {
-            "nb": 3,
-            "icon": "",
-            "flux": "http://ent-laclasse.blogs.laclasse.com/feed/",
-            "title": "blog du projet ENT"
-        }
-    ]
+{ "closed_for_summer": false,
+  "apps": {
+      "default": {
+          "CTXT": {
+              "hidden": [],
+              "default": true,
+              "summer": true,
+              "color": "#1aa1cc",
+              "icon": "app/vendor/laclasse-common-client/images/01_messagerie.svg",
+              "index": 0 },
+          "MAIL": {
+              "hidden": [ "TUT" ],
+              "default": true,
+              "summer": false,
+              "color": "#e8c254",
+              "icon": "app/vendor/laclasse-common-client/images/02_documents.svg",
+              "index": 1 },
+          "DOC": {
+              "hidden": [ "ETA", "COL" ],
+              "default": true,
+              "summer": false,
+              "color": "#9c75ab",
+              "icon": "app/vendor/laclasse-common-client/images/03_cahierdetextes.svg",
+              "index": 2 },
+          "BLOGS": {
+              "hidden": [],
+              "default": true,
+              "summer": false,
+              "color": "#80ba66",
+              "icon": "app/vendor/laclasse-common-client/images/04_notesabsences.svg",
+              "index": 3 },
+          "GAR": {
+              "hidden": [],
+              "default": true,
+              "summer": false,
+              "color": "#eb5454",
+              "icon": "app/vendor/laclasse-common-client/images/04_notesabsences.svg",
+              "index": 4 },
+          "CCNUM": {
+              "hidden": [],
+              "default": true,
+              "summer": false,
+              "color": "#80ba66",
+              "icon": "app/vendor/laclasse-common-client/images/05_validationcompetences.svg",
+              "index": 5 },
+          "PUBLI": {
+              "hidden": [ "ELV", "TUT" ],
+              "default": true,
+              "summer": false,
+              "color": "#1aa1cc",
+              "icon": "app/vendor/laclasse-common-client/images/06_thematiques.svg",
+              "index": 6 },
+          "ADMIN": {
+              "hidden": [ "ELV", "TUT" ],
+              "default": true,
+              "summer": true,
+              "color": "#e8c254",
+              "icon": "app/vendor/laclasse-common-client/images/07_blogs.svg",
+              "index": 7 },
+          "PRONOTE": {
+              "hidden": [],
+              "default": false,
+              "summer": false,
+              "color": "#9c75ab",
+              "icon": "app/vendor/laclasse-common-client/images/08_ressources.svg",
+              "index": 8 },
+          "TROMBI": {
+              "hidden": [],
+              "default": false,
+              "summer": false,
+              "color": "#1aa1cc",
+              "icon": "app/vendor/laclasse-common-client/images/09_trombi.svg",
+              "index": 9 },
+          "SUIVIELV": {
+              "hidden": [],
+              "default": false,
+              "summer": false,
+              "color": "#e8c254",
+              "icon": "app/vendor/laclasse-common-client/images/10_suivi.svg",
+              "index": 10 },
+          "LPC": {
+              "hidden": [  ],
+              "default": false,
+              "summer": true,
+              "color": "#eb5454",
+              "icon": "app/vendor/laclasse-common-client/images/11_publipostage.svg",
+              "index": 11 },
+          "AIDE": {
+              "hidden": [],
+              "default": false,
+              "summer": true,
+              "color": "#e8c254",
+              "icon": "app/vendor/laclasse-common-client/images/12_aide.svg",
+              "index": 12 },
+          "TELESRV": {
+              "hidden": [  ],
+              "default": false,
+              "summer": true,
+              "color": "#eb5454",
+              "icon": "app/vendor/laclasse-common-client/images/13_admin.svg",
+              "index": 13 },
+          "QUIZ": {
+              "hidden": [],
+              "default": false,
+              "summer": false,
+              "color": "#1aa1cc",
+              "icon": "app/vendor/laclasse-common-client/images/05_validationcompetences.svg",
+              "index": 14 },
+          "TABLETS": {
+              "hidden": [],
+              "default": false,
+              "summer": false,
+              "color": "#e8c254",
+              "icon": "app/vendor/laclasse-common-client/images/14_classeultramobile.svg",
+              "index": 15 }
+      }
+  },
+  "news_feed": [
+      {
+          "nb": 1,
+          "icon": "",
+          "flux": "http://ent-laclasse.blogs.laclasse.com/category/editos/feed/",
+          "title": "Editoriaux d'Erasme"
+      },
+      {
+          "nb": 3,
+          "icon": "",
+          "flux": "http://ent-laclasse.blogs.laclasse.com/feed/",
+          "title": "blog du projet ENT"
+      }
+  ]
 }

@@ -41,8 +41,27 @@ module Portail
             return [] unless logged?
 
             apps = AnnuaireWrapper::Etablissement::Apps
-                   .query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] )
-                   .map do |application|
+                     .query_etablissement( user[:user_detailed]['profil_actif']['etablissement_code_uai'] )
+            if apps.empty?
+              apps = AnnuaireWrapper::Apps.query_defaults
+                                          .map do |appli|
+                default = config[:apps][:default][ appli['id'].to_sym ]
+                next if default.nil?
+                next unless default[:default]
+
+                appli.merge!( default ) unless default.nil?
+
+                appli[ 'application_id' ] = appli[ 'id' ]
+                appli.delete( 'id' )
+                appli[ 'type' ] = 'INTERNAL'
+
+                Hash[ appli.map { |k, v| [k.to_sym, v] } ] # all keys to symbols
+              end.compact
+
+              apps.each { |appli| AnnuaireWrapper::Etablissement::Apps.create( user[:user_detailed]['profil_actif']['etablissement_code_uai'], appli ) }
+            end
+
+            apps.map do |application|
               default = config[:apps][:default][ application['application_id'].to_sym ] unless application['application_id'].nil?
 
               application[ 'hidden' ] = []
