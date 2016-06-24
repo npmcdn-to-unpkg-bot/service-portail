@@ -93,7 +93,9 @@ module Portail
               dup_app = apps.reverse.find { |a| a['index'] == i }
               dup_app['index'] = free_indexes.pop
 
-              AnnuaireWrapper::Etablissement::Apps.update( dup_app['id'], dup_app )
+              dup_app = Hash[ dup_app.map { |k, v| [k.to_sym, v] } ] # all keys to symbols
+
+              AnnuaireWrapper::Etablissement::Apps.update( dup_app[:id], dup_app )
             end
 
             json apps
