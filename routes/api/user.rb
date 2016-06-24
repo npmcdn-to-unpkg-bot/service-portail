@@ -171,7 +171,7 @@ module Portail
           app.get "#{APP_PATH}/api/user/help-links/?" do
             content_type :json
 
-            links = config[:help].select do |link|
+            links = config[:help_links].select do |link|
               link[:profils].include?( user[:user_detailed]['profil_actif']['profil_id'] )
             end
 
