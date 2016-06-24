@@ -164,6 +164,19 @@ module Portail
             # Associer les couleurs des carrés
             json colorize( ressources )
           end
+
+          #
+          # Lien d'aide contextuels
+          #
+          app.get "#{APP_PATH}/api/user/help-links/?" do
+            content_type :json
+
+            links = config[:help].select do |link|
+              link[:profils].include?( user[:user_detailed]['profil_actif']['profil_id'] )
+            end
+
+            json links
+          end
         end
       end
     end

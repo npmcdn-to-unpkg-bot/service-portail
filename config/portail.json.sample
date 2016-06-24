@@ -128,5 +128,12 @@
           "flux": "http://ent-laclasse.blogs.laclasse.com/feed/",
           "title": "blog du projet ENT"
       }
+  ],
+  "help_links": [
+      {
+          "title": "Formation de la DANE",
+          "url": "https://dane.ac-lyon.fr/spip/IMG/scenari/v3_la_classe/co/000_formation_utilisateur_ent.html",
+          "profils": [ "DIR", "ENS" ]
+      }
   ]
 }

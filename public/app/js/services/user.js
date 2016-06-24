@@ -33,6 +33,13 @@ angular.module( 'portailApp' )
                 } ] );
 
 angular.module( 'portailApp' )
+    .factory( 'UserHelpLinks',
+              [ '$resource', 'APP_PATH',
+                function( $resource, APP_PATH ) {
+                    return $resource( APP_PATH + '/api/user/help-links' );
+                } ] );
+
+angular.module( 'portailApp' )
     .factory( 'UserRegroupements',
               [ '$resource', 'APP_PATH',
                 function( $resource, APP_PATH ) {
@@ -45,8 +52,8 @@ angular.module( 'portailApp' )
 
 angular.module( 'portailApp' )
     .service( 'currentUser',
-              [ '$rootScope', '$http', '$resource', 'APP_PATH', 'User', 'UserRessources', 'UserRegroupements',
-                function( $rootScope, $http, $resource, APP_PATH, User, UserRessources, UserRegroupements ) {
+              [ '$rootScope', '$http', '$resource', 'APP_PATH', 'User', 'UserRessources', 'UserRegroupements', 'UserHelpLinks',
+                function( $rootScope, $http, $resource, APP_PATH, User, UserRessources, UserRegroupements, UserHelpLinks ) {
                     var user = null;
 
                     this.force_refresh = function( force_reload ) {
@@ -62,6 +69,7 @@ angular.module( 'portailApp' )
                         return user;
                     };
 
+                    this.help_links = function() { return UserHelpLinks.query().$promise; };
                     this.ressources = function() { return UserRessources.query().$promise; };
                     this.regroupements = function() { return UserRegroupements.query().$promise; };
                     this.eleves_regroupement = function( id ) { return UserRegroupements.eleves( { id: id } ).$promise; };

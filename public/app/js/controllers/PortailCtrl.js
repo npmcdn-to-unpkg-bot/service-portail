@@ -5,13 +5,17 @@
 
 angular.module( 'portailApp' )
     .controller( 'PortailCtrl',
-                 [ '$scope', '$rootScope', '$sce', '$state', '$uibModal', 'moment', 'toastr', 'current_user', 'APP_PATH', 'RANDOM_IMAGES', 'news',
-                   function( $scope, $rootScope, $sce, $state, $uibModal, moment, toastr, current_user, APP_PATH, RANDOM_IMAGES, news ) {
+                 [ '$scope', '$rootScope', '$sce', '$state', '$uibModal', 'moment', 'toastr', 'currentUser', 'current_user', 'APP_PATH', 'RANDOM_IMAGES', 'news',
+                   function( $scope, $rootScope, $sce, $state, $uibModal, moment, toastr, currentUser, current_user, APP_PATH, RANDOM_IMAGES, news ) {
                        $scope.prefix = APP_PATH;
 
                        $scope.go_home = function() {
                            $state.go( 'portail.logged' );
                        };
+
+                       currentUser.help_links().then( function( response ) {
+                           $scope.help_links = response;
+                       } );
 
                        // TODO : faire une factory et un service pour les annonces.
                        // L'idée est d'aller lire le flux twitter @laclasse avec le hash #sys
