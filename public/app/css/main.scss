@@ -909,6 +909,14 @@ svg {
             font-size: 110%;
             font-weight: bold;
         }
+        .empty {
+            opacity: 0.75;
+        }
+    }
+}
+.ressources-numeriques {
+    .empty {
+        opacity: 0.75;
     }
 }
 
