@@ -72,7 +72,6 @@ angular.module( 'portailApp' )
                                               img.onload = function() {
                                                   $scope.avatar.height = img.height;
                                                   $scope.avatar.width = img.width;
-                                                  console.log ('The image size is '+$scope.avatar.width+'*'+$scope.avatar.height);
 
                                                   // Compute new dimensions if necessary
                                                   var factor = 1;
