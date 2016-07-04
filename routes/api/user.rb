@@ -18,7 +18,11 @@ module Portail
 
             init_current_user( user[:uid] ) if params.key?( :force_refresh ) && params[:force_refresh]
 
-            user_verbose.to_json
+            uv = user_verbose
+            uv['profil_actif']['etablissement_logo'] = AnnuaireWrapper::Etablissement.get( uv['profil_actif']['etablissement_code_uai'] )['logo']
+            uv['profil_actif']['etablissement_logo'] = "#{URL_ENT}#{URL_ENT.split('').last == '/' ? '' : '/'}api/logos/#{uv['profil_actif']['etablissement_logo']}" unless uv['profil_actif']['etablissement_logo'].nil?
+
+            uv.to_json
           end
 
           app.put "#{APP_PATH}/api/user" do

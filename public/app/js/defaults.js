@@ -27,5 +27,5 @@ angular.module( 'portailApp' )
                                  function( APP_PATH ) {
                                      return [ APP_PATH + '/app/vendor/laclasse-common-client/images/logolaclasse.svg',
                                               APP_PATH + '/app/vendor/laclasse-common-client/images/random/20150116_102448.jpg',
-                                              APP_PATH + '/app/vendor/laclasse-common-client/images/random/20150204_152946.jpg'];
+                                              APP_PATH + '/app/vendor/laclasse-common-client/images/random/20150204_152946.jpg' ];
                                  } ] );

@@ -30,7 +30,13 @@ angular.module( 'portailApp' )
                                        item.trusted_description = $sce.trustAsHtml( item.description );
                                        item.no_image = _(item.image).isNull();
                                        if ( item.no_image ) {
-                                           item.image = item.title == 'Publipostage' ? APP_PATH + '/app/vendor/laclasse-common-client/images/11_publipostage.svg' : _(RANDOM_IMAGES).sample();
+                                           if ( item.title == 'Publipostage' ) {
+                                               item.image =  APP_PATH + '/app/vendor/laclasse-common-client/images/11_publipostage.svg';
+                                           } else if ( !_($rootScope.current_user.profil_actif.etablissement_logo).isNull() ) {
+                                               item.image = $rootScope.current_user.profil_actif.etablissement_logo;
+                                           } else {
+                                               item.image = _(RANDOM_IMAGES).sample();
+                                           }
                                        }
 
                                        return item;
