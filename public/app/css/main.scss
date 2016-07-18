@@ -711,6 +711,7 @@ body {
     .avatar-container {
         float: right;
         .avatar {
+            position: relative;
             text-align: center;
             background-color: #f1f1f1;
             border: 1px solid #ccc;
