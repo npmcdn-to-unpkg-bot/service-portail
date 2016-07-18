@@ -962,6 +962,7 @@ svg {
         height: calc( 100% - 6em );
         .petite.case {
             opacity: 0.95;
+            min-width: 160px;
             .avatar {
                 position: absolute;
                 top: 0;
