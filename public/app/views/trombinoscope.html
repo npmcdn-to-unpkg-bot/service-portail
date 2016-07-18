@@ -1,6 +1,6 @@
 <div class="row trombinoscope">
     <div class="filters gris3">
-        <button class="col-xs-12 col-sm-6 col-md-3 col-lg-2 btn btn-default retour pull-left regroupement"
+        <button class="col-xs-6 col-sm-4 col-md-3 col-lg-2 btn btn-default retour pull-left regroupement"
                 data-ng-if="eleves"
                 data-ng-click="retour()">
             <i class="glyphicon glyphicon-arrow-left"></i> Retour à la liste des classes
@@ -10,7 +10,7 @@
             <label data-ng-if="!eleves"><checkbox class="checkbox" data-ng-model="filters.regroupements_types.classes"></checkbox> Classes </label>
             <label data-ng-if="!eleves"><checkbox class="checkbox" data-ng-model="filters.regroupements_types.groupes_eleves"></checkbox> Groupes </label>
         </div>
-        <div class="pull-right">
+        <div class="pull-right hidden-xs">
             <label>Filtre :
                 <input class="gris1"
                        data-ng-model="filters.text.regroupement"
@@ -24,7 +24,7 @@
 
     <div class="damier gris4">
         <div data-ng-repeat="regroupement in regroupements | filter:{ libelle: filters.text.regroupement } | orderBy:'type' | orderBy:'libelle'"
-             class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in regroupement"
+             class="col-xs-6 col-sm-4 col-md-3 col-lg-2 petite case animate scale-fade-in regroupement"
              data-ng-class-odd="{'vert': regroupement.type == 'classe', 'bleu': regroupement.type == 'groupe_eleve'}"
              data-ng-class-even="{'vert-moins': regroupement.type == 'classe', 'bleu-moins': regroupement.type == 'groupe_eleve'}"
              data-ng-if="!eleves && ( ( regroupement.type == 'classe' && filters.regroupements_types.classes ) || ( regroupement.type == 'groupe_eleve' && filters.regroupements_types.groupes_eleves ) )">
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in regroupement eleves"
+        <div class="col-xs-6 col-sm-4 col-md-3 col-lg-2 petite case animate scale-fade-in regroupement eleves"
              data-ng-class="{'vert': regroupement.type == 'classe', 'bleu': regroupement.type == 'groupe_eleve'}"
              data-ng-if="eleves">
             <h1 class="classe-name">{{regroupement.libelle}}</h1>
@@ -54,7 +54,7 @@
         </div>
 
         <div data-ng-repeat="eleve in eleves | filter:filters.text.user | orderBy:'nom'"
-             class="col-xs-12 col-sm-6 col-md-3 col-lg-2 petite case animate scale-fade-in people"
+             class="col-xs-4 col-sm-4 col-md-3 col-lg-2 petite case animate scale-fade-in people"
              data-ng-class-odd="'jaune'"
              data-ng-class-even="'jaune-moins'"
              data-ng-if="eleves">

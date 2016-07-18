@@ -36,7 +36,6 @@
 
     /* Page app wrapper */
     .en-tete .profil-select-wrapper { width: calc( 100% - 3em ); }
-    .help-icon { display: none; }
 }
 
 /* -xs */
