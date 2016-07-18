@@ -41,6 +41,13 @@ Metrics/MethodLength:
   Max: 200
 
 Metrics/AbcSize:
-  Max: 180
+  Max: 200
+
+Metrics/PerceivedComplexity:
+  Max: 20
+
+Metrics/CyclomaticComplexity:
+  Max: 20
+
 
 inherit_from: .rubocop_todo.yml
