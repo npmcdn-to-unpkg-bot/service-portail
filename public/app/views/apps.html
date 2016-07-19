@@ -6,8 +6,8 @@
         data-ng-model="cases">
         <li data-ng-repeat="case in cases | orderBy:'index'"
             data-as-sortable-item
-            class="col-xs-6 col-sm-4 col-md-3 col-lg-3 petite case"
-            data-ng-class="{'flippable': modification, 'show-back': case.app.configure, 'unavailable': case.app && !case.app.portail && !case.app.external && case.app.status.status == 'KO', 'empty hidden-xs hidden-sm': !case.app || !case.app.id || !case.app.active}"
+            class="col-xs-6 col-sm-4 col-md-3 col-lg-3 petite case flippable"
+            data-ng-class="{'show-back': case.app.configure, 'unavailable': case.app && !case.app.portail && !case.app.external && case.app.status.status == 'KO', 'empty hidden-xs hidden-sm': !case.app || !case.app.id || !case.app.active}"
             data-ng-if="current_user.is_logged">
 
             <div class="front"
