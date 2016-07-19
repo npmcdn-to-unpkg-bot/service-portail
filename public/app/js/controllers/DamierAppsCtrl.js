@@ -19,6 +19,7 @@ angular.module( 'portailApp' )
                            accept: function( sourceItemHandleScope, destSortableScope ) {
                                return true;
                            },
+                           longTouch: true,
                            itemMoved: sortable_callback,
                            orderChanged: sortable_callback,
                            containment: '.damier',
