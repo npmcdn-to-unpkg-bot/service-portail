@@ -97,6 +97,7 @@
                     <div class="form-group">
                         <label for="oldpasswd">Ancien mot de passe :</label>
                         <input type="password" class="form-control" id="oldpasswd"
+                               data-ng-change="mark_as_dirty()"
                                data-ng-model="password.old">
                     </div>
                 </div>
@@ -104,11 +105,13 @@
                     <div class="form-group">
                         <label for="newpasswd1">Nouveau mot de passe :</label>
                         <input type="password" class="form-control" id="newpasswd1"
+                               data-ng-change="mark_as_dirty()"
                                data-ng-model="password.new1">
                     </div>
                     <div class="form-group">
                         <label for="newpasswd2">Confirmer le nouveau mot de passe :</label>
                         <input type="password" class="form-control" id="newpasswd2"
+                               data-ng-change="mark_as_dirty()"
                                data-ng-model="password.new2">
                     </div>
                 </div>
