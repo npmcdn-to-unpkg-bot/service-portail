@@ -72,10 +72,11 @@ class SinatraApp < Sinatra::Base
   ##### routes #################################################################
 
   before  do
-    cache_control :public, :must_revalidate, max_age: 60
-
     pass if request.path =~ %r{#{APP_PATH}/(auth|login|status)/}
-    login! request.path_info unless logged?
+
+    cache_control :no_cache
+
+    login!( request.path_info ) unless logged?
   end
 
   register Portail::Routes::Index
