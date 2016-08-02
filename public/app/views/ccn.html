@@ -28,6 +28,7 @@
                  data-ng-repeat="thematique in thematiques"
                  data-ng-class="{'empty hidden-xs': !thematique.nom}">
                 <a href title="{{thematique.description}}"
+                   data-ng-if="thematique.url"
                    data-ng-click="log_and_open_link( thematique.url )"
                    target="_blank">
                     <img draggable="false" class="icone" data-ng-src="{{prefix}}{{thematique.icon}}">
