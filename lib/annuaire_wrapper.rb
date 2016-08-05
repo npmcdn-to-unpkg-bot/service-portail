@@ -135,7 +135,7 @@ module AnnuaireWrapper
 
     # Liste des personnels d'un etablissement
     def get( uai )
-      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_personnel, uai.to_s, 'expand' => 'true' )
+      Laclasse::CrossApp::Sender.send_request_signed( :service_annuaire_v2_etablissements, uai.to_s, 'expand' => 'true' )
     end
 
     # Liste des regroupements d'un établissement
