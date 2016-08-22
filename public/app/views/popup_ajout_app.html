@@ -4,35 +4,37 @@
 <div class="modal-body available-apps">
     <ul>
         <li class="new-app"
-            data-ng-repeat="app in apps"
-            data-ng-if="app.available() || app.creation"
-                data-ng-class="{'selected': app.selected, 'creation': app.creation, 'pronote': app.application_id == 'PRONOTE'}"
-                data-ng-click="selected( app )">
+            ng:repeat="app in apps"
+            ng:if="app.available() || app.creation"
+            ng:class="{'selected': app.selected, 'creation': app.creation, 'pronote': app.application_id == 'PRONOTE'}"
+            ng:click="selected( app )">
 
-                <a data-ng-if="!app.creation"
-                        title="{{ app.description }}"
-                        data-ng-style="{'background-color': app.color }">
-                        <img draggable="false" class="icone" data-ng-src="{{prefix}}/{{app.icon}}"
-                                data-ng-if="app.icon"/>
-                        <span class="app-name" data-ng-cloak>{{ app.libelle }}</span>
-                        <label data-ng-if="app.application_id == 'PRONOTE'">url <input type="text" data-ng-model="app.url" /></label>
-                </a>
+            <a ng:if="!app.creation"
+               title="{{ app.description }}"
+               ng:style="{'background-color': app.color }">
+                <img draggable="false" class="icone" ng:src="{{prefix}}/{{app.icon}}"
+                     ng:if="app.icon"/>
+                <span class="app-name" ng:cloak>{{ app.libelle }}</span>
+                <label ng:if="app.application_id == 'PRONOTE'">lien <input type="text" ng:model="app.url" ng:click="keep_app_selected( $event, app )"/></label>
+            </a>
 
-                <fieldset data-ng-if="app.creation">
-                        <legend>lien libre</legend>
+            <fieldset ng:if="app.creation">
+                <legend>lien libre</legend>
 
-                        <label>libellé <input type="text" data-ng-model="app.libelle" /></label>
-                        <label>url <input type="text" data-ng-model="app.url" /></label>
-                </fieldset>
+                <label>libellé <input type="text" ng:model="app.libelle" ng:click="keep_app_selected( $event, app )" /></label>
+                <label>lien <input type="text" ng:model="app.url" ng:click="keep_app_selected( $event, app )" /></label>
+            </fieldset>
         </li>
     </ul>
     <div class="clearfix"></div>
 </div>
 <div class="modal-footer">
-        <button class="btn btn-default" data-ng-click="cancel()">
-            <span class="glyphicon glyphicon-remove-sign"></span> <span data-ng-if="apps_selected">Annuler</span><span data-ng-if="!apps_selected">Fermer</span>
-        </button>
-        <button class="btn btn-success" data-ng-click="ok()" data-ng-if="apps_selected">
-            <span class="glyphicon glyphicon-ok-sign"></span> Valider
-        </button>
+    <button class="btn btn-default" ng:click="cancel()">
+        <span class="glyphicon glyphicon-remove-sign"></span> <span ng:if="apps_selected">Annuler</span><span ng:if="!apps_selected">Fermer</span>
+    </button>
+    <button class="btn btn-success"
+            ng:click="ok()"
+            ng:disabled="!apps_selected">
+        <span class="glyphicon glyphicon-ok-sign"></span> Valider
+    </button>
 </div>
