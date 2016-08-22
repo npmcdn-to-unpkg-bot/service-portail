@@ -65,6 +65,9 @@ angular.module( 'portailApp' )
                                controller: [ '$scope', '$uibModalInstance', 'current_user',
                                              function( $scope, $uibModalInstance, current_user ) {
                                                  $rootScope.current_user = current_user;
+                                                 $scope.password = { old: '',
+                                                                     new1: '',
+                                                                     new2: '' };
 
                                                  $scope.fermer = function( sauvegarder ) {
                                                      var password_confirmed = true;
