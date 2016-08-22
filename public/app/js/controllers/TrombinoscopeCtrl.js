@@ -2,67 +2,74 @@
 
 angular.module( 'portailApp' )
     .controller( 'TrombinoscopeCtrl',
-                 [ '$scope', '$state', 'currentUser', 'COULEURS',
-                   function( $scope, $state, currentUser, COULEURS ) {
-                       $scope.filters = {
-                           regroupements_types: { classes: true,
-                                                  groupes_eleves: false },
-                           text: { regroupement: '',
-                                   user: '' },
-                           order_asc: true
-                       };
+                 [ '$scope', '$state', 'currentUser', 'COULEURS', 'apps',
+                   function( $scope, $state, currentUser, COULEURS, apps ) {
+                       apps.query()
+                           .then( function ( response ) {
+                               if ( _.chain( response ).findWhere( { application_id: 'TROMBI' } ).isUndefined().value() ) {
+                                   $state.go( 'portail.logged', {}, { reload: true, inherit: true, notify: true } );
+                               }
 
-                       $scope.actions = {
-                           regroupement: [
-                               // {
-                               //          glyphicon: 'envelope',
-                               //          tooltip: 'Écrire un email',
-                               //          do: function( regroupement ) {
-                               //              console.log( 'Gonna send a nice email to ' + regroupement.libelle );
-                               //          }
-                               // },
-                               // {
-                               //          glyphicon: 'calendar',
-                               //          tooltip: 'Ouvrir le cahier de textes',
-                               //          do: function( regroupement ) {
-                               //              console.log( 'Gonna show the CTXT for ' + regroupement.libelle );
-                               //          }
-                               // }
-                           ],
-                           people: [
-                               // {
-                               //          glyphicon: 'envelope',
-                               //          tooltip: 'Écrire un email',
-                               //          do: function( people ) {
-                               //              console.log( 'Gonna send a nice email to ' + people.prenom + ' ' + people.nom );
-                               //          }
-                               // },
-                               // {
-                               //          glyphicon: 'refresh',
-                               //          tooltip: 'Ouvrir le suivi',
-                               //          do: function( people ) {
-                               //              console.log( 'Gonna show the SUIVI for ' + people.prenom + ' ' + people.nom );
-                               //          }
-                               // }
-                           ]
-                       };
+                               $scope.filters = {
+                                   regroupements_types: { classes: true,
+                                                          groupes_eleves: false },
+                                   text: { regroupement: '',
+                                           user: '' },
+                                   order_asc: true
+                               };
 
-                       currentUser.regroupements().then( function ( response ) {
-                           $scope.regroupements = response;
+                               $scope.actions = {
+                                   regroupement: [
+                                       // {
+                                       //          glyphicon: 'envelope',
+                                       //          tooltip: 'Écrire un email',
+                                       //          do: function( regroupement ) {
+                                       //              console.log( 'Gonna send a nice email to ' + regroupement.libelle );
+                                       //          }
+                                       // },
+                                       // {
+                                       //          glyphicon: 'calendar',
+                                       //          tooltip: 'Ouvrir le cahier de textes',
+                                       //          do: function( regroupement ) {
+                                       //              console.log( 'Gonna show the CTXT for ' + regroupement.libelle );
+                                       //          }
+                                       // }
+                                   ],
+                                   people: [
+                                       // {
+                                       //          glyphicon: 'envelope',
+                                       //          tooltip: 'Écrire un email',
+                                       //          do: function( people ) {
+                                       //              console.log( 'Gonna send a nice email to ' + people.prenom + ' ' + people.nom );
+                                       //          }
+                                       // },
+                                       // {
+                                       //          glyphicon: 'refresh',
+                                       //          tooltip: 'Ouvrir le suivi',
+                                       //          do: function( people ) {
+                                       //              console.log( 'Gonna show the SUIVI for ' + people.prenom + ' ' + people.nom );
+                                       //          }
+                                       // }
+                                   ]
+                               };
 
-                           $scope.showElevesRegroupement = function( regroupement ) {
-                               $scope.regroupement = regroupement;
-                               currentUser.eleves_regroupement( regroupement.id )
-                                   .then( function( response ) {
-                                       $scope.eleves = response;
-                                   } );
-                           };
+                               currentUser.regroupements().then( function ( response ) {
+                                   $scope.regroupements = response;
 
-                           $scope.retour = function() {
-                               $scope.eleves = undefined;
-                               $scope.regroupement = undefined;
-                           };
-                       });
+                                   $scope.showElevesRegroupement = function( regroupement ) {
+                                       $scope.regroupement = regroupement;
+                                       currentUser.eleves_regroupement( regroupement.id )
+                                           .then( function( response ) {
+                                               $scope.eleves = response;
+                                           } );
+                                   };
+
+                                   $scope.retour = function() {
+                                       $scope.eleves = undefined;
+                                       $scope.regroupement = undefined;
+                                   };
+                               } );
+                           } );
                    }
                  ]
                );

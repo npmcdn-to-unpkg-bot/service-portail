@@ -2,29 +2,19 @@
 
 angular.module( 'portailApp' )
     .controller( 'IframeCtrl',
-                 [ '$scope', '$stateParams', '$sce', '$state', 'currentUser', 'Apps',
-                   function ( $scope, $stateParams, $sce, $state, currentUser, Apps ) {
-                       currentUser.get( false ).then( function ( response ) {
-                           $scope.current_user = response;
+                 [ '$scope', '$stateParams', '$sce', '$state', 'apps',
+                   function ( $scope, $stateParams, $sce, $state, apps ) {
+                       apps.query()
+                           .then( function ( response ) {
+                               // Toutes les applications en iframe
+                               var app = _( response ).findWhere( { application_id: $stateParams.app } );
 
-                           // Les applications de l'utilisateur
-                           Apps.query()
-                               .$promise.then( function ( response ) {
-                                   // Toutes les applications en iframe
-                                   var app = _( response ).findWhere( { application_id: $stateParams.app } );
-
-                                   if ( _(app).isUndefined() ) {
-                                       app = _(response).findWhere( { libelle: $stateParams.app } );
-
-                                       // App still undefined => app is not visible from this profil => redirect to portail
-                                       if ( _(app).isUndefined() ) {
-                                           $state.go( 'portail.logged' );
-                                       }
-                                   }
-
+                               if ( _(app).isUndefined() ) {
+                                   $state.go( 'portail.logged', {}, { reload: true, inherit: true, notify: true } );
+                               } else {
                                    $scope.app = { nom: app.nom,
                                                   url: $sce.trustAsResourceUrl( app.url ) };
-                               } );
-                       } );
+                               }
+                           } );
                    }
                  ] );
