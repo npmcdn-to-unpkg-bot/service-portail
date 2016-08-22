@@ -2,7 +2,7 @@
   "apps": {
       "default": {
           "CTXT": {
-              "hidden": [],
+              "hidden": [ "ACA", "COL", "ETA" ],
               "default": true,
               "summer": true,
               "color": "#1aa1cc",
@@ -51,7 +51,7 @@
               "icon": "app/vendor/laclasse-common-client/images/11_publipostage.svg",
               "index": 6 },
           "ADMIN": {
-              "hidden": [ "ELV", "TUT" ],
+              "hidden": [ "ACA", "COL", "ETA", "EVS", "ELV", "TUT" ],
               "default": true,
               "summer": true,
               "color": "#e8c254",
