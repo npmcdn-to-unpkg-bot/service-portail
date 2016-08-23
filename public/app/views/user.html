@@ -17,7 +17,8 @@
                     <div class="avatar-container form-group">
                         <label>Avatar :</label>
                         <div class="avatar">
-                            <button class="delete-avatar" data-ng-click="delete_avatar()">x</button>
+                            <!-- FIXME: disabled due to bug #70 -->
+                            <!-- <button class="delete-avatar" ng:click="delete_avatar()">x</button> -->
 
                             <img draggable="false" class="svg"
                                  data-ng-src="{{avatar.image ? avatar.image : current_user.avatar}}" />

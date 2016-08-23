@@ -40,7 +40,10 @@ angular.module( 'portailApp' )
 
                        $rootScope.current_user.hide_email = $rootScope.current_user.profil_actif.profil_id === 'TUT' && !_( $rootScope.current_user.info.MailAdressePrincipal.match( /laclasse.com$/ ) ).isNull();
                        $scope.apply_reset_avatar = false;
-                       $rootScope.current_user.editable = _($rootScope.current_user.id_jointure_aaf).isNull();
+
+                       // FIXME: modification disabled due to bug #163
+                       // $rootScope.current_user.editable = _($rootScope.current_user.id_jointure_aaf).isNull();
+                       $rootScope.current_user.editable = false;
 
                        $rootScope.current_user.date_naissance = new Date( $rootScope.current_user.date_naissance );
                        $scope.progress_percentage = 0;
