@@ -637,6 +637,20 @@ body {
     //      font-weight: bold;
     //	}
     // }
+    .form-group {
+        padding: 12px 0;
+    }
+    .form-control{
+        padding: 0 3px;
+    }
+    .form-control[disabled] {
+        border: none;
+        background-color: rgba(16, 16, 16, 0.025);
+        color: #333;
+        font-weight: bold;
+        cursor: inherit;
+    }
+
     h3 {
         color: #b2b2b2;
         font-weight: bolder;
@@ -690,8 +704,9 @@ body {
         width: 100%;
     }
     label {
-        font-weight: 400;
+        font-weight: bold;
         padding-bottom: .33em;
+        color: #555;
     }
     input,
     .date-naissance {
