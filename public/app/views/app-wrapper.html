@@ -1,13 +1,13 @@
 <div id="app-wrapper">
 
     <div class="en-tete container gris4" role="navigation">
-        <a class="laclasse-com gris1 pull-left" data-ng-click="go_home()">
-            <div class="petit-logo gris4" data-ng-style="{'background-image': 'url(' + prefix + '/app/vendor/laclasse-common-client/images/logolaclasse.svg)' }" >
+        <a class="laclasse-com gris1 pull-left" ng:click="go_home()">
+            <div class="petit-logo gris4" ng:style="{'background-image': 'url(' + prefix + '/app/vendor/laclasse-common-client/images/logolaclasse.svg)' }" >
             </div>
             <span class="hidden-xs hidden-sm">laclasse.com</span>
         </a>
 
-        <span class="hidden-xs hidden-sm titre" data-ng-cloak>{{app.nom}}</span>
+        <span class="hidden-xs hidden-sm titre" ng:cloak>{{app.nom}}</span>
 
         <div class="dropdown hidden-xs hidden-sm hidden-md pull-right user-menu" uib-dropdown>
             <a class="dropdown-toggle" id="dropdownMenu1" uib-dropdown-toggle>
@@ -15,20 +15,20 @@
             </a>
             <ul class="gris3 dropdown-menu" role="menu" aria-labelledby="dropdownMenu1" uib-dropdown-menu>
                 <li>
-                    <a data-ng-click="go_home()"
-                       data-ng-style="{'background-image': 'url(' + prefix +'/vendor/laclasse-common-client/images/logolaclasse.svg)' }" >
+                    <a ng:click="go_home()"
+                       ng:style="{'background-image': 'url(' + prefix +'/vendor/laclasse-common-client/images/logolaclasse.svg)' }" >
                         retour au portail
                     </a>
                 </li>
                 <!-- <li>
                      <a data-ui-sref="app.external({ app: 'aide' })"
-                     data-ng-style="{'background-image': 'url(' + prefix +'/vendor/laclasse-common-client/images/12_aide.svg)' }" >
+                     ng:style="{'background-image': 'url(' + prefix +'/vendor/laclasse-common-client/images/12_aide.svg)' }" >
                      aide
                      </a>
                      </li> -->
                 <li>
-                    <a data-ng-href="{{prefix}}/logout"
-                       data-ng-style="{'background-image': 'url(' + prefix +'/vendor/laclasse-common-client/images/12_aide.svg)' }" >
+                    <a ng:href="{{prefix}}/logout"
+                       ng:style="{'background-image': 'url(' + prefix +'/vendor/laclasse-common-client/images/12_aide.svg)' }" >
                         se déconnecter
                     </a>
                 </li>
@@ -36,13 +36,13 @@
         </div>
 
         <select class="gris4 profil-select-wrapper"
-                data-ng-if="current_user.is_logged"
-                data-ng-controller="ProfilActifCtrl"
-                data-ng-model="current_user.profil_actif"
-                data-ng-change="reload()"
-                data-ng-options="profil as profil.etablissement_nom + ' : ' + profil.profil_nom group by profil.etablissement_nom for profil in current_user.profils track by profil.index" >
+                ng:if="current_user.is_logged"
+                ng:controller="ProfilActifCtrl"
+                ng:model="current_user.profil_actif"
+                ng:change="reload()"
+                ng:options="profil as profil.etablissement_nom + ' : ' + profil.profil_nom group by profil.etablissement_nom for profil in current_user.profils track by profil.index" >
         </select>
     </div>
 
-    <div data-ui-view="app"></div>
+    <div data-ui-view="app" id="app"></div>
 </div>

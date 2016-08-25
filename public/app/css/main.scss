@@ -1,6 +1,9 @@
 html,
 #app-wrapper {
     overflow: hidden;
+    #app {
+        height: calc(100% - 3em);
+    }
 }
 
 div,
@@ -609,7 +612,7 @@ body {
 }
 
 .iframe {
-    height: calc( 100% - 3em );
+    height: 100%;
     iframe {
         border: 0;
         padding: 0;
