@@ -33,7 +33,8 @@ angular.module( 'portailApp' )
                        $scope.apps_selected = false;
 
                        $scope.keep_app_selected = function( event, app ) {
-                           app.selected = true;
+                           app.selected = false; // opposite of what we want
+                           $scope.selected( app );
                            event.stopImmediatePropagation();
                        };
 
