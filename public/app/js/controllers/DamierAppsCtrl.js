@@ -36,7 +36,7 @@ angular.module( 'portailApp' )
                            app.dirty = false;
                            app.to_delete = false;
                            app.portail = app.url.match( /^app\..*/ ) !== null;
-                           app.external = ( app.type == 'EXTERNAL' ) || app.url.match( /^http.*/ ) !== null;
+                           app.external = ( app.type == 'EXTERNAL' ) || ( app.application_id !== 'BLOGS' && app.url.match( /^http.*/ ) !== null );
                            app.show = !_(app.hidden).includes( $rootScope.current_user.profil_actif.profil_id );
                            app.highlight = app.application_id == 'CCNUM' && $rootScope.current_user.profil_actif.profil_id != 'TUT' && $rootScope.current_user.profil_actif.profil_id != 'ELV';
 
@@ -47,7 +47,7 @@ angular.module( 'portailApp' )
                                           reason: '',
                                           status: 'KO' };
 
-                           if ( app.external || app.portail || app.application_id == 'MAIL') {
+                           if ( app.external || app.portail || app.application_id == 'MAIL' || app.application_id == 'BLOGS' ) {
                                app.status.status = 'OK';
                                app.status.available = true;
                            } else if ( !app.show ) {
