@@ -922,8 +922,7 @@ svg {
         background-color: white;
     }
     .damier {
-        height: calc( 100% - 3em );
-
+        height: 100%;
         .case.petite.inscritpion .app-name {
             font-size: 110%;
             font-weight: bold;
@@ -977,7 +976,7 @@ svg {
         }
     }
     .damier {
-        height: calc( 100% - 6em );
+        height: calc( 100% - 3em );
         .petite.case {
             opacity: 0.95;
             min-width: 160px;
