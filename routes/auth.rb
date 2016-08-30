@@ -6,7 +6,9 @@ module Portail
       def self.registered( app )
         app.get "#{APP_PATH}/auth/:provider/callback" do
           init_session( request.env )
-          redirect params[:url] if params[:url] != "#{env['rack.url_scheme']}://env['HTTP_HOST']#{APP_PATH}/"
+
+          protocol = CASAUTH::CONFIG[:ssl] ? 'https://' : 'http://'
+          redirect params[:url] if params[:url] != "#{protocol}://env['HTTP_HOST']#{APP_PATH}/"
           redirect APP_PATH + '/'
         end
 
@@ -28,7 +30,8 @@ module Portail
         end
 
         app.get "#{APP_PATH}/logout" do
-          logout! "#{env['rack.url_scheme']}://#{env['HTTP_HOST']}#{APP_PATH}/"
+          protocol = CASAUTH::CONFIG[:ssl] ? 'https://' : 'http://'
+          logout! "#{protocol}://#{env['HTTP_HOST']}#{APP_PATH}/"
         end
       end
     end
