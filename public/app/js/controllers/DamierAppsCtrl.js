@@ -114,8 +114,7 @@ angular.module( 'portailApp' )
                                }
                            } )
                                .result.then( function( new_apps ) {
-                                   var empty_tiles = _($scope.cases).select( function( c ) { return !_(c.app).has( 'libelle' ); } );
-
+                                   var empty_tiles = _($scope.cases).select( function( c ) { return !_(c.app).has( 'libelle' ) || c.app.to_delete; } );
                                    _(new_apps).each( function( new_app ) {
                                        if ( !_(empty_tiles).isEmpty() ) {
                                            var recipient = empty_tiles.shift();
