@@ -115,20 +115,26 @@ angular.module( 'portailApp' )
                            } )
                                .result.then( function( new_apps ) {
                                    var empty_tiles = _($scope.cases).select( function( c ) { return !_(c.app).has( 'libelle' ) || c.app.to_delete; } );
+
                                    _(new_apps).each( function( new_app ) {
-                                       if ( !_(empty_tiles).isEmpty() ) {
-                                           var recipient = empty_tiles.shift();
-
-                                           new_app.index = recipient.index;
-                                           new_app.dirty = true;
-                                           new_app.configure = true;
-                                           new_app.active = true;
-                                           new_app.to_delete = false;
-
-                                           new_app.$save().then( function() {
-                                               recipient.app = tool_app( new_app );
-                                           } );
+                                       var recipient = null;
+                                       if ( _(empty_tiles).isEmpty() ) {
+                                           recipient = { index: $scope.cases.length,
+                                                         couleur: 'gris2' };
+                                           $scope.cases.push( recipient );
+                                       } else {
+                                           recipient = empty_tiles.shift();
                                        }
+
+                                       new_app.index = recipient.index;
+                                       new_app.dirty = true;
+                                       new_app.configure = true;
+                                       new_app.active = true;
+                                       new_app.to_delete = false;
+
+                                       new_app.$save().then( function() {
+                                           recipient.app = tool_app( new_app );
+                                       } );
                                    } );
                                } );
 
@@ -169,7 +175,7 @@ angular.module( 'portailApp' )
                        };
 
                        var retrieve_apps = function( force_reload ) {
-                           $scope.cases = _( angular.copy( CASES ) ).map( function( c, i ) {
+                           $scope.cases = _(CASES).map( function( c, i ) {
                                c.index = i;
 
                                return c;
@@ -179,13 +185,17 @@ angular.module( 'portailApp' )
                                .then( function( response ) {
                                    $scope.current_apps = response;
 
-                                   $scope.current_apps.$promise.then( function() {
-                                       _.chain($scope.current_apps)
-                                           .sortBy( function( app ) { return !app.active; } )
-                                           .each( function( app ) {
+                                   _.chain($scope.current_apps)
+                                       .sortBy( function( app ) { return !app.active; } )
+                                       .each( function( app ) {
+                                           if ( !_($scope.cases[ app.index ]).isUndefined() ) {
                                                $scope.cases[ app.index ].app = tool_app( app );
-                                           } );
-                                   } );
+                                           } else {
+                                               $scope.cases.push( { app: tool_app( app ),
+                                                                    index: app.index,
+                                                                    couleur: CASES[ app.index % ( CASES.length - 1 ) ].couleur } );
+                                           }
+                                       } );
                                } );
                        };
 
