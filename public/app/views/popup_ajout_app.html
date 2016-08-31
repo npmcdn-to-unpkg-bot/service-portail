@@ -26,9 +26,14 @@
             </fieldset>
         </li>
     </ul>
+
     <div class="clearfix"></div>
 </div>
 <div class="modal-footer">
+    <button class="btn btn-primary pull-left" ng:click="add_empty_link_tile()">
+        <span class="glyphicon glyphicon-plus-sign"></span> Ajouter un lien libre
+    </button>
+
     <button class="btn btn-default" ng:click="cancel()">
         <span class="glyphicon glyphicon-remove-sign"></span> <span ng:if="apps_selected">Annuler</span><span ng:if="!apps_selected">Fermer</span>
     </button>

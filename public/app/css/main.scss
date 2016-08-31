@@ -366,20 +366,6 @@ body {
             cursor: -webkit-grab;
             cursor: -moz-grab;
         }
-        .floating-button {
-            &.on {
-                background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-blancs.svg');
-            }
-            &.save {
-                background-image: url('../vendor/laclasse-common-client/images/icon_admin-valider.svg');
-            }
-            &.cancel {
-                background-image: url('../vendor/laclasse-common-client/images/icon_admin-annuler.svg');
-            }
-            &.add-app {
-                background-image: url('../vendor/laclasse-common-client/images/icon_admin-ajouter.svg');
-            }
-        }
         .exit-configure {
             button {
                 font-size: 2em;
@@ -1052,6 +1038,21 @@ svg {
     }
     a {
         cursor: pointer;
+    }
+}
+
+.floating-button {
+    &.on {
+        background-image: url('../vendor/laclasse-common-client/images/icon_admin-outils-blancs.svg');
+    }
+    &.save {
+        background-image: url('../vendor/laclasse-common-client/images/icon_admin-valider.svg');
+    }
+    &.cancel {
+        background-image: url('../vendor/laclasse-common-client/images/icon_admin-annuler.svg');
+    }
+    &.add-app {
+        background-image: url('../vendor/laclasse-common-client/images/icon_admin-ajouter.svg');
     }
 }
 
