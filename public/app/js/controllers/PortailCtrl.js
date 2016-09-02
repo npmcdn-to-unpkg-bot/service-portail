@@ -29,6 +29,8 @@ angular.module( 'portailApp' )
                                        item.id = index;
                                        item.trusted_description = $sce.trustAsHtml( item.description );
                                        item.no_image = _(item.image).isNull();
+                                       item.pubDate = moment( item.pubDate ).toDate();
+
                                        if ( item.no_image ) {
                                            if ( item.title == 'Publipostage' ) {
                                                item.image =  APP_PATH + '/app/vendor/laclasse-common-client/images/11_publipostage.svg';
